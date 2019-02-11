@@ -1,0 +1,40 @@
+<article class="docs-component" id="docs-{{escape title}}">
+
+<a href="#docs-menu" class="small secondary expanded button hide-for-medium">Jump to Nav</a>
+
+{{> header}}
+
+<hr>
+
+{{!-- Start container for docs and table of contents --}}
+<div class="row">
+
+{{!-- Start container for docs --}}
+<div class="large-9 columns" id="docs">
+
+{{ docs }}
+
+{{#if sass}}
+<hr>
+{{> sass-reference}}
+{{/if}}
+
+{{#if js}}
+<hr>
+{{> javascript-reference}}
+{{/if}}
+
+{{#if sass}}
+<!-- <hr> -->
+{{> building-blocks}}
+{{/if}}
+
+</div>
+{{!-- End container for docs --}}
+
+{{> table-of-contents}}
+
+</div>
+{{!-- End container for docs and table of contents --}}
+
+</article>
