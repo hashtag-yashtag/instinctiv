@@ -1,1 +1,1 @@
-React Weather App 
+Instinctiv.co
