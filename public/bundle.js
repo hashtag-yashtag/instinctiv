@@ -19869,9 +19869,13 @@
 	          'ul',
 	          { className: 'menu' },
 	          React.createElement(
-	            'h1',
-	            { className: 'menu-text' },
-	            'Instinctiv'
+	            'strong',
+	            null,
+	            React.createElement(
+	              'li',
+	              { className: 'menu-text2' },
+	              'Instinctiv'
+	            )
 	          )
 	        )
 	      ),
@@ -19886,7 +19890,7 @@
 	            null,
 	            React.createElement(
 	              IndexLink,
-	              { to: '/', className: 'menu-text', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+	              { to: '/', className: 'menu-text1', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
 	              'Dashboard'
 	            )
 	          )
@@ -25939,7 +25943,7 @@
 
 
 	// module
-	exports.push([module.id, ".page-title{\n  color:#251D1D;\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n.start_page{\n   display: flex;\n   flex-direction: column;\n   background-size: cover;\n   background-color: #251D1D;\n   height: 100vh;\n}\n.menu-text{\n  color: white;\n}\ninput[type=search]{\n  box-shadow: none;\n}\n", ""]);
+	exports.push([module.id, ".page-title{\n  color:#251D1D;\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n.start_page{\n   display: flex;\n   flex-direction: column;\n   background-size: cover;\n   background-color: #251D1D;\n   height: 100vh;\n}\n.menu-text1{\n  color: white;\n  font-size: 15px;\n}\n.menu-text2{\n  color: white;\n  font-size: 45px;\n}\ninput[type=search]{\n  box-shadow: none;\n}\n", ""]);
 
 	// exports
 

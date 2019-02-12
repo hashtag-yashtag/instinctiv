@@ -10,8 +10,13 @@
    background-color: #251D1D;
    height: 100vh;
 }
-.menu-text{
+.menu-text1{
   color: white;
+  font-size: 15px;
+}
+.menu-text2{
+  color: white;
+  font-size: 45px;
 }
 input[type=search]{
   box-shadow: none;
