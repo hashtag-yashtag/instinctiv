@@ -28,25 +28,25 @@ $progress-radius: $global-radius !default;
 
 @mixin foundation-progress-element {
   progress {
-    -webkit-appearance: none;
-    -moz-appearance: none;
     display: block;
     width: 100%;
     height: $progress-height;
     margin-bottom: $progress-margin-bottom;
 
-    @if hasvalue($progress-radius) {
+    appearance: none;
+
+    @if has-value($progress-radius) {
       border-radius: $progress-radius;
     }
 
     // For Firefox
-    background: $progress-background;
     border: 0;
+    background: $progress-background;
 
     &::-webkit-progress-bar {
       background: $progress-background;
 
-      @if hasvalue($progress-radius) {
+      @if has-value($progress-radius) {
         border-radius: $progress-radius;
       }
     }
@@ -54,7 +54,7 @@ $progress-radius: $global-radius !default;
     &::-webkit-progress-value {
       background: $progress-meter-background;
 
-      @if hasvalue($progress-radius) {
+      @if has-value($progress-radius) {
         border-radius: $progress-radius;
       }
     }
@@ -62,7 +62,7 @@ $progress-radius: $global-radius !default;
     &::-moz-progress-bar {
       background: $progress-meter-background;
 
-      @if hasvalue($progress-radius) {
+      @if has-value($progress-radius) {
         border-radius: $progress-radius;
       }
     }
@@ -80,6 +80,15 @@ $progress-radius: $global-radius !default;
           background: $color;
         }
       }
+    }
+
+    // For IE and Edge
+    &::-ms-fill { // sass-lint:disable-line no-vendor-prefixes
+      @if has-value($progress-radius) {
+        border-radius: $progress-radius;
+      }
+
+      border: 0;
     }
   }
 }
