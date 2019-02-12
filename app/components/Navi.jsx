@@ -4,16 +4,16 @@ var {Link, IndexLink} = require('react-router');
 var Navi = React.createClass({
   render: function () {
   return(
-    <div className="top-bar">
+    <div>
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">Instinctiv</li>
+          <h1 className="menu-text">Instinctiv</h1>
         </ul>
          </div>
       <div className="top-bar-right">
        <ul className="vertical medium-horizontal menu">
          <li>
-           <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Dashboard</IndexLink>
+           <IndexLink to="/" className="menu-text" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Dashboard</IndexLink>
          </li>
        </ul>
        </div>

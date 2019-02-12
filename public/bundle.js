@@ -139,7 +139,7 @@
 	var Main = function Main(props) {
 	  return React.createElement(
 	    'div',
-	    null,
+	    { className: 'start_page' },
 	    React.createElement(Navi, null),
 	    React.createElement(
 	      'div',
@@ -19861,7 +19861,7 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      { className: 'top-bar' },
+	      null,
 	      React.createElement(
 	        'div',
 	        { className: 'top-bar-left' },
@@ -19869,7 +19869,7 @@
 	          'ul',
 	          { className: 'menu' },
 	          React.createElement(
-	            'li',
+	            'h1',
 	            { className: 'menu-text' },
 	            'Instinctiv'
 	          )
@@ -19886,7 +19886,7 @@
 	            null,
 	            React.createElement(
 	              IndexLink,
-	              { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+	              { to: '/', className: 'menu-text', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
 	              'Dashboard'
 	            )
 	          )
@@ -25939,7 +25939,7 @@
 
 
 	// module
-	exports.push([module.id, ".page-title{\n  color:#33B3FF;\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n\ninput[type=search]{\n  box-shadow: none;\n}\n", ""]);
+	exports.push([module.id, ".page-title{\n  color:#251D1D;\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}\n.start_page{\n   display: flex;\n   flex-direction: column;\n   background-size: cover;\n   background-color: #251D1D;\n   height: 100vh;\n}\n.menu-text{\n  color: white;\n}\ninput[type=search]{\n  box-shadow: none;\n}\n", ""]);
 
 	// exports
 
