@@ -10,38 +10,13 @@
 ///
 /// @param {Number} $n - Number of elements to display per row.
 /// @param {String} $selector ['.column'] - Selector(s) to use for child elements.
-/// @param {Number|List} $gutter
-///   The gutter to apply to child elements. Accepts multiple values:
-///   - $grid-column-gutter will use the values in the $grid-column-gutter map, including breakpoint sizes.
-///   - A fixed numeric value will apply this gutter to all breakpoints.
 @mixin grid-layout(
   $n,
-  $selector: '.column',
-  $gutter: null
+  $selector: '.column'
 ) {
   & > #{$selector} {
-    float: $global-left;
     width: percentage(1/$n);
-
-    // If a $gutter value is passed
-    @if($gutter) {
-      // Gutters
-      @if type-of($gutter) == 'map' {
-        @each $breakpoint, $value in $gutter {
-          $padding: rem-calc($value) / 2;
-
-          @include breakpoint($breakpoint) {
-            padding-right: $padding;
-            padding-left: $padding;
-          }
-        }
-      }
-      @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
-        $padding: rem-calc($gutter) / 2;
-        padding-right: $padding;
-        padding-left: $padding;
-      }
-    }
+    float: $global-left;
 
     &:nth-of-type(1n) {
       clear: none;
@@ -52,7 +27,7 @@
     }
 
     &:last-child {
-      float: $global-left;
+      float: left;
     }
   }
 }
