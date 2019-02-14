@@ -13,7 +13,10 @@ var Navi = React.createClass({
       <div className="top-bar-right">
        <ul className="vertical medium-horizontal menu">
          <li>
-           <IndexLink to="/" className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Dashboard</IndexLink>
+           <IndexLink to="/" className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}></IndexLink>
+         </li>
+         <li>
+           <IndexLink to="/dashboard" className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Dashboard</IndexLink>
          </li>
        </ul>
        </div>
