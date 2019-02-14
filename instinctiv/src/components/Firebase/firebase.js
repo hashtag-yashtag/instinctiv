@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyBvSjVcV8LNU63a5BKYuSRNh68G67Upbsk",
@@ -15,6 +16,7 @@ const config = {
       app.initializeApp(config);
 
       this.auth = app.auth();
+      this.db = app.firestore();
       //doCreateUserWithEmailAndPassword("shafayhaq123@hotmail.com", "ShafayHaq1");
       //doSignInWithEmailAndPassword("shafayhaq123@hotmail.com", "ShafayHaq1");
     }
