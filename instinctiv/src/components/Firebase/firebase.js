@@ -30,8 +30,10 @@ const config = {
     doSignInWithEmailAndPassword = (email, password) =>
       this.auth.signInWithEmailAndPassword(email, password);
 
-    doSignOut = () => this.auth.signOut();
-
+    doSignOut = () => {
+      this.auth.signOut();
+      alert("You Have Signed out.");
+    }
     doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
     doPasswordUpdate = password =>
