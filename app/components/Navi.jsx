@@ -18,6 +18,9 @@ var Navi = React.createClass({
          <li>
            <IndexLink to="/dashboard" className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Dashboard</IndexLink>
          </li>
+         <li>
+           <IndexLink to="/login" className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Login</IndexLink>
+         </li>
        </ul>
        </div>
     </div>

@@ -26,7 +26,8 @@ module.exports = {
       Main: 'app/components/Main.jsx',
       Navi: 'app/components/Navi.jsx',
       applicationStyles: 'app/styles/app.css',
-      Dashboard: 'app/components/Dashboard.jsx'
+      Dashboard: 'app/components/Dashboard.jsx',
+      Login: 'app/components/Login.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
