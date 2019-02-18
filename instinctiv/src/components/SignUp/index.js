@@ -9,6 +9,7 @@ const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
     <SignUpForm />
+    <h1>Forgot Password</h1>
     <PasswordForgetForm />
   </div>
 );
