@@ -4,14 +4,21 @@
   "private": true,
   "dependencies": {
     "alphavantage": "^1.2.0",
+    "bootstrap": "^4.3.1",
     "firebase": "^5.8.3",
     "highcharts": "^7.0.3",
     "highcharts-react-official": "^2.0.0",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.4",
-    "recompose": "^0.30.0"
+    "reactstrap": "^7.1.0",
+    "recompose": "^0.30.0",
+    "css-loader": "^0.23.1",
+    "foundation-sites": "6.2.0",
+    "jquery": "^2.2.4",
+    "script-loader": "^0.6.1",
+    "style-loader": "^0.13.0"
   },
   "scripts": {
     "start": "react-scripts start",

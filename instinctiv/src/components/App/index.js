@@ -14,6 +14,11 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import 'foundation-sites/dist/foundation.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => (
   <Router>
@@ -28,7 +33,7 @@ const App = () => (
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} /> 
+      <Route path={ROUTES.ADMIN} component={AdminPage} />
     </div>
   </Router>
 );
