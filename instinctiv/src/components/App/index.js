@@ -14,14 +14,13 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
-<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'foundation-sites/dist/foundation.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-=======
->>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
+
+
 
 const App = () => (
   <Router>
@@ -36,17 +35,9 @@ const App = () => (
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-<<<<<<< HEAD
       <Route path={ROUTES.ADMIN} component={AdminPage} />
-=======
-      <Route path={ROUTES.ADMIN} component={AdminPage} /> 
->>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
     </div>
   </Router>
 );
 
-<<<<<<< HEAD
 export default App;
-=======
-export default App;
->>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445

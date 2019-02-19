@@ -5,6 +5,7 @@ import { compose } from 'recompose';
 import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import {Button} from 'reactstrap';
 
 const SignInPage = () => (
   <div>
@@ -53,6 +54,8 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
+      <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
       <form onSubmit={this.onSubmit}>
         <input
           name="email"
@@ -68,12 +71,14 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+      <Button color = "primary" disabled={isInvalid} type="submit">
           Sign In
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>
+    </div>
+  </div>
     );
   }
 }
@@ -85,8 +90,4 @@ const SignInForm = compose(
 
 export default SignInPage;
 
-<<<<<<< HEAD
 export {   };
-=======
-export {   };
->>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445

@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
-<<<<<<< HEAD
-=======
-import { PasswordForgetForm } from '../PasswordForget';
->>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
 
 import * as ROUTES from '../../constants/routes';
+import { Button } from 'reactstrap';
 
 const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
     <SignUpForm />
-<<<<<<< HEAD
-=======
-    <h1>Forgot Password</h1>
-    <PasswordForgetForm />
->>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
   </div>
 );
 
@@ -79,6 +71,8 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
+      <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
       <form onSubmit={this.onSubmit}>
         <input
           name="username"
@@ -108,26 +102,29 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <button disabled={isInvalid} type="submit">Sign Up</button>
+
+      <Button color ="primary" disabled={isInvalid} type="submit">Sign Up</Button>
 
         {error && <p>{error.message}</p>}
       </form>
+    </div>
+  </div>
     );
   }
 }
 
 const SignUpLink = () => (
+  <div className="row">
+      <div className="column small-centered small-11 medium-6 large-5">
   <p>
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
+</div>
+</div>
 );
 
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 
 export default SignUpPage;
 
-<<<<<<< HEAD
 export { SignUpForm, SignUpLink };
-=======
-export { SignUpForm, SignUpLink };
->>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
