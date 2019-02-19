@@ -1,0 +1,25 @@
+{
+  "name": "instinctiv",
+  "version": "1.0.0",
+  "description": "Crowd sourced stock predicting platform",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^5.8.2",
+    "firebase-admin": "^7.0.0",
+    "firebaseui": "^3.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hashtag-yashtag/instinctiv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hashtag-yashtag/instinctiv/issues"
+  },
+  "homepage": "https://github.com/hashtag-yashtag/instinctiv#readme"
+}

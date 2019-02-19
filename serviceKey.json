@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "project-instinctiv",
+  "private_key_id": "fb193ba4eb772c658120c7a64f0c57659a7a22c5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCg096LweezlIJ8\nHRQVH2T15wJga/Oh693FGp4hsmW3r9YVONUZqLrgXcxW+YXVCC2c13FufBUD2PwD\nRzsxIO/kcloaPIG15R2CqLp+ihbkjbcflCdvJ/He3SNdtGewZj6GRdzzIX3dn9an\nSsGTyQk24sZDeCHp85c392uHY4UPqF9bgF2+1YktrvwBmnSG6UEwsWQe+H7KV6xC\nBERizl3KxvXOvCMw1tFPS6SJvBuF6YMP+PCBAbGgq42EUjXLEVRpM4rYdjGtOjop\nWSX72W9Mo3lAvjKacVC0ckyye4NIuMueXE/6QaS/vtjZpQvrLdpVEBFrivB4RPQM\nSDeGDIzNAgMBAAECggEAGKCI5gbBx7Z4iq/bOObPS3Zd30z4iDV5hqquR0OtnsSe\nuC41N5ImV6AVX8Yiz73KWkeFV6FJiIbMBGZ+cmX0Rhuan4Tfae6VJ8JVmHXlzobC\n4WOK7FMGDxX2ye0Lqa/maCI/lL1urCbDNGfWn547untcV82IB+6km83X2eoL4Jst\nx78wUDRtqlZTEihc2I9s+5o7tVmuWUgaA5PbB3fQcbxHf0fyFOxSx9EllFWQZsFf\n8PZ7sZ8rVCdfPk/iNA9ylVB9SBvr68/cm8mfIh5L5HhmHPXbH+uyd4vUifilJfc+\noH7vrBOoN/5m8gZXH/V7K48xSLqAaL7JXMrklbDz0wKBgQDiSdGGkUPu3hSVwOZN\nfQGoLklhWhfE7g6qAKT9xy7h8NOzRqOiaO8QepDWcjKjVRSb0j3QLYXcdpjL4IfZ\nnct3//XxWjpnuyNZkNd2l9Zev4eGp5KtUB2eB8piBLG/A3e5+TKvyN4rWSFS+GnI\nsCQq3TmMvqbj/Q5Zrw3ihT4b6wKBgQC18buyHZFz+erLdj/ub2meQ3z1efwkwj3G\n8PuEtxM8MPhRTNAv8d7oth7HeQSFYjyEgs/9LyYl0SRpXBSHQ4NmGriAajDRq0fb\ng/p2Krg0+M13Oboq06lcjGD/kDsTmiB3KqbitV2zmMbMfec3y3TzB2ISWBPPyb02\nq9do2OvkJwKBgAYdbo8PX+GVmMLPOqn/ZcsQrST3VUsaD8ViTRMajdbHNkFS+FsM\nMOGmHkHdRicJxovLa6YzhLmHbuubfrBPxk7Q2OmTwZ5J/VOPSXNH+SAIVvY5kwoh\n7xr1JO/vJop94n9hD5CWggJz3yWp1tn4gJGz9rkp8cKZdQjRZTOo3BvPAoGAAwPU\ndmkjBeb4SxLUkGDsQSEhKvgwg3NsjqVjpZlbCj5Nfxtkv8akSPrrm6aXupYcJp38\nUFe9rBbBIbXS6ULnJIQA1q/ryy2pbSvMtLSUhNwym20rdpY3Uj9JRDLhp7uAGjls\ntokG2nkHok/bywLmFzjiGSe4fFL9fbBvS1982TUCgYBiexJRgahwosZv4JNzX/s6\nvur/7iOfrPXH0agxnwDF6tV3HLcz1MEV0YcAFkyvjGCbNUAoxyKGNyrdnmA7U81W\nBExLkf1AYsMNAxUEc7SsWxgFM6GeNnGCu8njY8leuERCgWIjB5/+T2W+z31zDJ3l\ne1G7GaZQVl4ujqj7Nq+SAQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-x4m4o@project-instinctiv.iam.gserviceaccount.com",
+  "client_id": "111869178421000661667",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-x4m4o%40project-instinctiv.iam.gserviceaccount.com"
+}
