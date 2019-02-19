@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
+<<<<<<< HEAD
+=======
+import { PasswordForgetForm } from '../PasswordForget';
+>>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
 
 import * as ROUTES from '../../constants/routes';
 
@@ -8,6 +12,11 @@ const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
     <SignUpForm />
+<<<<<<< HEAD
+=======
+    <h1>Forgot Password</h1>
+    <PasswordForgetForm />
+>>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
   </div>
 );
 
@@ -117,4 +126,8 @@ const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 
 export default SignUpPage;
 
+<<<<<<< HEAD
 export { SignUpForm, SignUpLink };
+=======
+export { SignUpForm, SignUpLink };
+>>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445

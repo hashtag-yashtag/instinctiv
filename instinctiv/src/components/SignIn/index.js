@@ -85,4 +85,8 @@ const SignInForm = compose(
 
 export default SignInPage;
 
+<<<<<<< HEAD
 export {   };
+=======
+export {   };
+>>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445

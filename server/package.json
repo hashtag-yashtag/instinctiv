@@ -8,11 +8,17 @@
   },
   "author": "instinctiv",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "license": "ISC"
 =======
+=======
+>>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
   "license": "ISC",
   "dependencies": {
     "alphavantage": "^1.2.0"
   }
+<<<<<<< HEAD
 >>>>>>> tanuj
+=======
+>>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
 }
