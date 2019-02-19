@@ -5,10 +5,6 @@ app.get('/', function(req, res) {
     res.send('Hello World!');
 });
 
-<<<<<<< HEAD
-app.listen(3000, function() {
-    console.log('App listening on port 3000')
-=======
 app.listen(4000, function() {
     console.log('App listening on port 3000')
 })
@@ -33,5 +29,4 @@ alpha.data.intraday('msft', outputsize='compact', datatype='json', interval='5mi
     }
     dailyavg = sum / count;
     console.log('Daily Average for MSFT: ' + dailyavg);
->>>>>>> tanuj
 })

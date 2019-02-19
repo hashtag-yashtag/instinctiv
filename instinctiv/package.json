@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-scripts": "2.1.4"
-=======
     "alphavantage": "^1.2.0",
     "bootstrap": "^4.3.1",
     "firebase": "^5.8.3",
@@ -24,7 +19,6 @@
     "jquery": "^2.2.4",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0"
->>>>>>> tanuj
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,12 +34,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-<<<<<<< HEAD
-  ]
-=======
   ],
   "devDependencies": {
     "webpack": "^4.28.3"
   }
->>>>>>> tanuj
 }
