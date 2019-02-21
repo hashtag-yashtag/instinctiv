@@ -18,11 +18,11 @@ const LOW_PRICE = '04. low'
 const CURRENT_PRICE = '05. price'
 
 var stocksList = [
-  {ticker:'AAPL', price: ''},
-  {ticker:'TSLA', price: ''},
-  {ticker:'NFLX', price: ''},
-  {ticker:'MSFT', price: ''},
-  {ticker:'FB', price: ''}
+  {ticker:'loading...', price: ''},
+  {ticker:'loading...', price: ''},
+  {ticker:'loading...', price: ''},
+  {ticker:'loading...', price: ''},
+  {ticker:'loading...', price: ''}
 ];
 
 var alphaKey = '2U48DC45SZ4PJT3U'
@@ -40,6 +40,13 @@ async function getStockPrices() {
         data => {
           console.log(data)
           return data['Global Quote'][CURRENT_PRICE];
+        }
+    )
+    stock.ticker = await fetch(alphaURL).then(
+      response => response.json()).then(
+        data => {
+          console.log(data)
+          return data['Global Quote'][SYMBOL];
         }
     )
     console.log(stock.price);
@@ -115,7 +122,6 @@ class HomePage extends Component {
         })
       }
     )
-    viewNews();
   }
   handleSubmit = e => {
     e.preventDefault();
