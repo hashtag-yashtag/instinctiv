@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 
 import { AuthUserContext, withAuthorization } from '../Session';
 import { Alert, Label, Input } from 'reactstrap';
-<<<<<<< HEAD
-
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
-
-=======
-import TradingViewWidget, { Themes } from 'react-tradingview-widget'
->>>>>>> fix
 import { Table } from 'reactstrap';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import './home.css';
@@ -22,17 +16,10 @@ const CURRENT_PRICE = '05. price'
 
 var stocksList = [
   {ticker:'AAPL', price: ''},
-<<<<<<< HEAD
-  {ticker:'TSLA', price: ''},
-  {ticker:'NFLX', price: ''},
-  {ticker:'MSFT', price: ''},
-  {ticker:'FB', price: ''}
-=======
   {ticker:'MSFT', price: ''},
   {ticker:'TSLA', price: ''},
   {ticker:'FB', price: ''},
   {ticker:'NFLX', price: ''}
->>>>>>> fix
 ];
 
 var alphaKey = '2U48DC45SZ4PJT3U'
@@ -52,8 +39,15 @@ async function getStockPrices() {
           return data['Global Quote'][CURRENT_PRICE];
         }
     )
+    stock.ticker = await fetch(alphaURL).then(
+      response => response.json()).then(
+        data => {
+          console.log(data)
+          return data['Global Quote'][SYMBOL];
+        }
+    )
     console.log(stock.price);
-    //console.log(stocksList);
+    console.log(stocksList);
   }
 }
 
@@ -81,10 +75,13 @@ function viewNews() {
       var link = data.articles[i].url;
       var link1 = data.articles[i].urlToImage;
       var date = data.articles[i].publishedAt;
+/* 
+      var child = document.createElement('div');
+      child.innerHTML */
 
 
 
-    document.getElementById('root').append('<div class="item"><h2>' + title + '</h2>' +
+    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
                //character of escape: "quotes" and '+'
       '<img src="' + link1 +'">' +
       '<p class="publishedAt">' + date + '</p>' +
@@ -92,7 +89,7 @@ function viewNews() {
       '<p>' + auth + '</p>' +
                //character of escape: "quotes" and '+'
       '<a href="'+ link +'">Read more</a></div>'
-      );
+      ;
       }
   });
 }
@@ -245,11 +242,10 @@ class HomePage extends Component {
                 theme={Themes.LIGHT}
                 locale="en"
               />
-<<<<<<< HEAD
-=======
+              
             </div>
             <div id="news">
->>>>>>> fix
+
             </div>
         </div>
       )}
