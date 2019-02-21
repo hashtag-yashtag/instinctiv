@@ -84,7 +84,7 @@ function viewNews() {
 
 
 
-    document.getElementById('news').innerHTML += '<div class="item"><h2>' + title + '</h2>' +
+    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
                //character of escape: "quotes" and '+'
       '<img src="' + link1 +'">' +
       '<p class="publishedAt">' + date + '</p>' +
@@ -205,9 +205,7 @@ class HomePage extends Component {
                 </tbody>
               </Table>
             </div>
-            <div id="news">
-
-            </div>
+            
             <div className="float-left">
               <h3>Leaderboard</h3>
               <Table stripped>
@@ -240,6 +238,9 @@ class HomePage extends Component {
                   </tr>
                 </tbody>
               </Table>
+            </div>
+            <div id="news">
+
             </div>
         </div>
       )}
