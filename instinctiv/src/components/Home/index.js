@@ -101,6 +101,7 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
+    viewNews();
     await getStockPrices();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
