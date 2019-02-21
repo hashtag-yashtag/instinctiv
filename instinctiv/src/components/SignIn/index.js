@@ -12,6 +12,10 @@ const SignInPage = () => (
   <div>
     <h1>SignIn</h1>
     <SignInForm />
+<<<<<<< HEAD
+    <SignInGoogle />
+=======
+>>>>>>> db44897d6774e5080d10531d35885ca0679076da
     <SignUpLink />
   </div>
 );
@@ -75,10 +79,16 @@ class SignInFormBase extends Component {
       <Button color = "primary" disabled={isInvalid} type="submit">
           Sign In
         </Button>
+<<<<<<< HEAD
+
+        {error && <p>{error.message}</p>}
+      </form>
+=======
         {error && <p>{error.message}</p>}
         <SignInGoogle />
       </form>
 
+>>>>>>> db44897d6774e5080d10531d35885ca0679076da
     </div>
   </div>
     );

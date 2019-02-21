@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> db44897d6774e5080d10531d35885ca0679076da
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -104,6 +107,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 /node_modules
+<<<<<<< HEAD
+=======
 =======
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -133,3 +138,4 @@ yarn-error.log*
 Team Report*
 Individual Report*
 >>>>>>> ed0cbf742fc25253e6523f276583eecb5308c445
+>>>>>>> db44897d6774e5080d10531d35885ca0679076da
