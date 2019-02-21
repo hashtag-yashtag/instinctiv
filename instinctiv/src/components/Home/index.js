@@ -28,7 +28,7 @@ async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
     //var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
-  
+
     //Comment out for dummy values
     var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
 
@@ -62,9 +62,9 @@ function viewNews() {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-  
+
     for(var i=0; i < data.articles.length; i++){
-     
+
       var title = data.articles[i].title;
 
       if(title == null){
@@ -75,7 +75,7 @@ function viewNews() {
       var link = data.articles[i].url;
       var link1 = data.articles[i].urlToImage;
       var date = data.articles[i].publishedAt;
-/* 
+/*
       var child = document.createElement('div');
       child.innerHTML */
 
@@ -124,7 +124,7 @@ class HomePage extends Component {
     e.preventDefault();
     var stock = document.getElementById('stock').value;
     var tokens = document.getElementById('tokens').value;
-    if(this.state.balance-tokens  > 0){ 
+    if(this.state.balance-tokens  > 0){
       console.log(this.props.firebase.auth.O);
       var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O);
       userDoc.set({
@@ -144,18 +144,22 @@ class HomePage extends Component {
       }
     )
   }
-  
+
 
   render() {
     return (
       <AuthUserContext.Consumer>
       {authUser => (
       <div>
+
         <div className="home-page">
           <h1>Welcome to Instinctiv, {this.state.username}</h1>
+
           <p>The Home Page is accessible by every signed in user.</p>
+            <div className="row">
+                <div className="column small-centered small-11 medium-6 large-5">
           <input type="text" className="input" placeholder="Search..." />
-            </div>
+
             <div className="float-center">
               <Alert color="primary">
                 Token Balance: {this.state.balance}
@@ -165,12 +169,16 @@ class HomePage extends Component {
                 <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
                 <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
                 <Button>Submit</Button>
-              </form>              
+
+              </form>
+                </div>
             </div>
+          </div>
+        </div>
             <div className="float-right">
-      
+
                 <h3>Favorites</h3>
-      
+
               <Table stripped>
                 <thead>
                   <tr>
@@ -202,7 +210,7 @@ class HomePage extends Component {
                 </tbody>
               </Table>
             </div>
-            
+
             <div className="float-left">
               <h3>Leaderboard</h3>
               <Table stripped>
@@ -242,7 +250,7 @@ class HomePage extends Component {
                 theme={Themes.LIGHT}
                 locale="en"
               />
-              
+
             </div>
             <div id="news">
 
@@ -251,7 +259,7 @@ class HomePage extends Component {
       )}
       </AuthUserContext.Consumer>
     );
-    
+
   }
 
 }
