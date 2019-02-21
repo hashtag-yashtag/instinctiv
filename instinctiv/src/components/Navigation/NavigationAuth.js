@@ -35,9 +35,6 @@ const NavigationAuth = () => (
                 </DropdownMenu>
               </UncontrolledDropdown>
       <li>
-        <Link to={ROUTES.NOTIFICATIONS} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Notifications</Link>
-      </li>
-      <li>
         <SignOutButton />
       </li>
     </ul>
