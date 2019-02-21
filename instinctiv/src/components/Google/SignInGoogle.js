@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import * as ROUTES from '../../constants/routes';
 
-
-import { withFirebase } from '../Firebase';
 import {Button} from 'reactstrap';
-
 
 class SignInGoogleBase extends Component {
     constructor(props) {
       super(props);
-
+  
       this.state = { error: null };
     }
-
-
+  
     onSubmit = event => {
       this.props.firebase
         .doSignInWithGoogle()
@@ -24,7 +20,7 @@ class SignInGoogleBase extends Component {
                 username: socialAuthUser.user.displayName,
                 email: socialAuthUser.user.email,
                 //roles: [],
-              });
+              }, {merge: true});
           })
         .then(socialAuthUser => {
           this.setState({ error: null });
@@ -33,26 +29,23 @@ class SignInGoogleBase extends Component {
         .catch(error => {
           this.setState({ error });
         });
-
-
+  
       event.preventDefault();
     };
-
+  
     render() {
       const { error } = this.state;
-
+  
       return (
-        <div className="row">
-            <div className="column small-centered small-11 medium-6 large-5">
         <form onSubmit={this.onSubmit}>
-          <Button color="success" type="submit">Sign In with Google</Button>
+          <Button color = "primary" type="submit">Sign In with Google</Button>
 
+  
           {error && <p>{error.message}</p>}
         </form>
-      </div>
-    </div>
-  );
+      );
     }
-
   }
+
+
 export default SignInGoogleBase;
