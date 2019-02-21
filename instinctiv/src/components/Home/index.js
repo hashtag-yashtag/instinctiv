@@ -67,9 +67,10 @@ class HomePage extends Component {
   componentDidMount() {
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
-        console.log(data.data().balance);
+        console.log(data.data());
         this.setState({
           balance: data.data().balance,
+          username: data.data().username
         })
       }
     )
@@ -83,7 +84,7 @@ class HomePage extends Component {
       var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O);
       userDoc.set({
         balance: (this.state.balance-tokens)
-      });
+      }, {merge: true});
       userDoc.collection("Bets").add({
         stockId: stock,
         bet: tokens
@@ -106,7 +107,7 @@ class HomePage extends Component {
       {authUser => (
       <div>
         <div className="home-page">
-          <h1>Welcome to Instinctiv, {authUser.email}</h1>
+          <h1>Welcome to Instinctiv, {this.state.username}</h1>
           <p>The Home Page is accessible by every signed in user.</p>
           <input type="text" className="input" placeholder="Search..." />
             </div>

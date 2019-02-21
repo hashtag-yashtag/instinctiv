@@ -3,8 +3,6 @@ import * as ROUTES from '../../constants/routes';
 
 import {Button} from 'reactstrap';
 
-import { withFirebase } from '../Firebase';
-
 class SignInGoogleBase extends Component {
     constructor(props) {
       super(props);

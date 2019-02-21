@@ -11,7 +11,6 @@ import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
-import { AuthUserContext } from '../Session';
 import Notifications from '../Notifications';
 
 import { withAuthentication } from '../Session';
