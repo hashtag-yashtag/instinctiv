@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 
 import { AuthUserContext, withAuthorization } from '../Session';
 import { Alert, Label, Input } from 'reactstrap';
-
-import Highcharts from 'highcharts/highstock';
-import HighchartsReact from 'highcharts-react-official';
-
+import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import { Table } from 'reactstrap';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import './home.css';
@@ -18,11 +15,11 @@ const LOW_PRICE = '04. low'
 const CURRENT_PRICE = '05. price'
 
 var stocksList = [
-  {ticker:'loading...', price: ''},
-  {ticker:'loading...', price: ''},
-  {ticker:'loading...', price: ''},
-  {ticker:'loading...', price: ''},
-  {ticker:'loading...', price: ''}
+  {ticker:'AAPL', price: ''},
+  {ticker:'MSFT', price: ''},
+  {ticker:'TSLA', price: ''},
+  {ticker:'FB', price: ''},
+  {ticker:'NFLX', price: ''}
 ];
 
 var alphaKey = '2U48DC45SZ4PJT3U'
@@ -239,8 +236,14 @@ class HomePage extends Component {
                 </tbody>
               </Table>
             </div>
+            <div className="stock-chart">
+              <TradingViewWidget
+                symbol="NASDAQ:AAPL"
+                theme={Themes.LIGHT}
+                locale="en"
+              />
+            </div>
             <div id="news">
-
             </div>
         </div>
       )}
