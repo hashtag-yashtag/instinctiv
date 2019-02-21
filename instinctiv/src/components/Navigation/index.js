@@ -4,11 +4,11 @@ import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
 
-
 /* export default withAuthentication(AppS);
  */
 
 const Navigation = () => (
+
   <div className="top-bar">
     <div className="top-bar-right">
     <ul className="vertical medium-horizontal menu">
@@ -26,6 +26,9 @@ const Navigation = () => (
       </li>
       <li>
         <Link to={ROUTES.ADMIN} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Admin</Link>
+      </li>
+      <li>
+        <Link to={ROUTES.NOTIFICATIONS} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Notifications</Link>
       </li>
       <li>
         <SignOutButton />
