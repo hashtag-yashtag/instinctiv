@@ -11,6 +11,42 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import './home.css';
 import { render } from 'react-dom'
 
+const SYMBOL = '01. symbol'
+const OPEN_PRICE = '02. open'
+const HIGH_PRICE = '03. high'
+const LOW_PRICE = '04. low'
+const CURRENT_PRICE = '05. price'
+
+var stocksList = [
+  {ticker:'AAPL', price: ''},
+  {ticker:'TSLA', price: ''},
+  {ticker:'NFLX', price: ''},
+  {ticker:'MSFT', price: ''},
+  {ticker:'FB', price: ''}
+];
+
+var alphaKey = '2U48DC45SZ4PJT3U'
+
+async function getStockPrices() {
+  for (var stock of stocksList) {
+    //Comment out for actual values
+    //var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
+  
+    //Comment out for dummy values
+    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
+
+    stock.price = await fetch(alphaURL).then(
+      response => response.json()).then(
+        data => {
+          console.log(data)
+          return data['Global Quote'][CURRENT_PRICE];
+        }
+    )
+    console.log(stock.price);
+    console.log(stocksList);
+  }
+}
+
 function viewNews() {
 
   var url = 'https://newsapi.org/v2/top-headlines?' +
@@ -64,7 +100,8 @@ class HomePage extends Component {
     //this.handleSubmitStock = this.handleSubmitStock.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await getStockPrices();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
         console.log(data.data());
@@ -135,24 +172,24 @@ class HomePage extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Apple</td>
-                    <td>171.89</td>
+                    <td>{stocksList[0].ticker}</td>
+                    <td>{stocksList[0].price}</td>
                   </tr>
                   <tr>
-                    <td>Amazon</td>
-                    <td>78.89</td>
+                    <td>{stocksList[1].ticker}</td>
+                    <td>{stocksList[1].price}</td>
                   </tr>
                   <tr>
-                    <td>Netflix</td>
-                    <td>45.78</td>
+                    <td>{stocksList[2].ticker}</td>
+                    <td>{stocksList[2].price}</td>
                   </tr>
                   <tr>
-                    <td>Netflix</td>
-                    <td>45.78</td>
+                    <td>{stocksList[3].ticker}</td>
+                    <td>{stocksList[3].price}</td>
                   </tr>
                   <tr>
-                    <td>Netflix</td>
-                    <td>45.78</td>
+                    <td>{stocksList[4].ticker}</td>
+                    <td>{stocksList[4].price}</td>
                   </tr>
                 </tbody>
               </Table>
@@ -162,30 +199,30 @@ class HomePage extends Component {
               <Table stripped>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th>User</th>
+                    <th>Score</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Apple</td>
-                    <td>171.89</td>
+                    <td>Alpha</td>
+                    <td>95.33%</td>
                   </tr>
                   <tr>
-                    <td>Amazon</td>
-                    <td>78.89</td>
+                    <td>Beta</td>
+                    <td>92.1%</td>
                   </tr>
                   <tr>
-                    <td>Netflix</td>
-                    <td>45.78</td>
+                    <td>Gamma</td>
+                    <td>75.66%</td>
                   </tr>
                   <tr>
-                    <td>Netflix</td>
-                    <td>45.78</td>
+                    <td>Delta</td>
+                    <td>72.54%</td>
                   </tr>
                   <tr>
-                    <td>Netflix</td>
-                    <td>45.78</td>
+                    <td>Epsilon</td>
+                    <td>56.5%</td>
                   </tr>
                 </tbody>
               </Table>
