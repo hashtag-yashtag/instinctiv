@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 
 import { AuthUserContext, withAuthorization } from '../Session';
 import { Alert, Label, Input } from 'reactstrap';
+<<<<<<< HEAD
 
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 
+=======
+import TradingViewWidget, { Themes } from 'react-tradingview-widget'
+>>>>>>> fix
 import { Table } from 'reactstrap';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import './home.css';
@@ -18,10 +22,17 @@ const CURRENT_PRICE = '05. price'
 
 var stocksList = [
   {ticker:'AAPL', price: ''},
+<<<<<<< HEAD
   {ticker:'TSLA', price: ''},
   {ticker:'NFLX', price: ''},
   {ticker:'MSFT', price: ''},
   {ticker:'FB', price: ''}
+=======
+  {ticker:'MSFT', price: ''},
+  {ticker:'TSLA', price: ''},
+  {ticker:'FB', price: ''},
+  {ticker:'NFLX', price: ''}
+>>>>>>> fix
 ];
 
 var alphaKey = '2U48DC45SZ4PJT3U'
@@ -234,6 +245,11 @@ class HomePage extends Component {
                 theme={Themes.LIGHT}
                 locale="en"
               />
+<<<<<<< HEAD
+=======
+            </div>
+            <div id="news">
+>>>>>>> fix
             </div>
         </div>
       )}
