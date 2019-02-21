@@ -12,7 +12,6 @@ const SignInPage = () => (
   <div>
     <h1>SignIn</h1>
     <SignInForm />
-    <SignInGoogle />
     <SignUpLink />
   </div>
 );
@@ -76,9 +75,10 @@ class SignInFormBase extends Component {
       <Button color = "primary" disabled={isInvalid} type="submit">
           Sign In
         </Button>
-
         {error && <p>{error.message}</p>}
+        <SignInGoogle />
       </form>
+
     </div>
   </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as ROUTES from '../../constants/routes';
 
+import {Button} from 'reactstrap';
 
 import { withFirebase } from '../Firebase';
 
@@ -39,7 +40,8 @@ class SignInGoogleBase extends Component {
   
       return (
         <form onSubmit={this.onSubmit}>
-          <button type="submit">Sign In with Google</button>
+          <Button color = "primary" type="submit">Sign In with Google</Button>
+
   
           {error && <p>{error.message}</p>}
         </form>
