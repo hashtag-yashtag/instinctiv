@@ -1,13 +1,16 @@
-import React from 'react';
+  import React from 'react';
 import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
+import { AuthUserContext } from '../Session';
 
-import './navigation.css';
+
+/* export default withAuthentication(AppS);
+ */
 
 const Navigation = () => (
-  <div className="navigation">
-    <div div className="top-bar-right">
+  <div className="top-bar">
+    <div className="top-bar-right">
     <ul className="vertical medium-horizontal menu">
       <li>
         <Link to={ROUTES.SIGN_IN} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Sign In</Link>

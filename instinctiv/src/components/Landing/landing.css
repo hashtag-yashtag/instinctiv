@@ -1,7 +1,0 @@
-.start_page{
-   display: flex;
-   flex-direction: column;
-   background-size: cover;
-   background-color: black;
-   height: 100vh;
-}

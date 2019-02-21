@@ -14,11 +14,13 @@ const config = {
   class Firebase {
     constructor() {
       app.initializeApp(config);
-
       this.auth = app.auth();
       this.db = app.firestore();
       //doCreateUserWithEmailAndPassword("shafayhaq123@hotmail.com", "ShafayHaq1");
       //doSignInWithEmailAndPassword("shafayhaq123@hotmail.com", "ShafayHaq1");
+      
+      this.googleProvider = new app.auth.GoogleAuthProvider();
+    
     }
 
       // *** Auth API ***
@@ -35,6 +37,9 @@ const config = {
       alert("You Have Signed out.");
     }
     doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+
+    doSignInWithGoogle = () =>
+    this.auth.signInWithPopup(this.googleProvider);
 
     doPasswordUpdate = password =>
       this.auth.currentUser.updatePassword(password);

@@ -1,7 +1,8 @@
 import React from 'react';
-import './landing.css'
+
+
 const Landing = () => (
-  <div className="landing">
+  <div>
     Landing
   </div>
 );

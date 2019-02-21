@@ -6,11 +6,13 @@ import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import {Button} from 'reactstrap';
+import SignInGoogleBase from '../Google/SignInGoogle';
 
 const SignInPage = () => (
   <div>
     <h1>SignIn</h1>
     <SignInForm />
+    <SignInGoogle />
     <SignUpLink />
   </div>
 );
@@ -87,6 +89,12 @@ const SignInForm = compose(
   withRouter,
   withFirebase,
 )(SignInFormBase);
+
+const SignInGoogle = compose(
+  withRouter,
+  withFirebase,
+)(SignInGoogleBase);
+
 
 export default SignInPage;
 
