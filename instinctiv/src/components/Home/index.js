@@ -166,7 +166,7 @@ class HomePage extends Component {
               <Table stripped>
                 <thead>
                   <tr>
-                    <th>Name</th>
+                    <th>Ticker</th>
                     <th>Price</th>
                   </tr>
                 </thead>
