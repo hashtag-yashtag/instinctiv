@@ -22,6 +22,9 @@ const NavigationAuth = () => (
         <Link to={ROUTES.ADMIN} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Admin</Link>
       </li>
       <li>
+        <Link to={ROUTES.NOTIFICATIONS} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Notifications</Link>
+      </li>
+      <li>
         <SignOutButton />
       </li>
     </ul>
