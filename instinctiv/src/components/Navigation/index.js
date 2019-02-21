@@ -1,13 +1,22 @@
   import React from 'react';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
+=======
+import { AuthUserContext } from '../Session';
+import NavigationAuth from './NavigationAuth';
+import NavigationNonAuth from './NavigationNonAuth';
+
+
+>>>>>>> db44897d6774e5080d10531d35885ca0679076da
 
 /* export default withAuthentication(AppS);
  */
 
 const Navigation = () => (
+<<<<<<< HEAD
 
   <div className="top-bar">
     <div className="top-bar-right">
@@ -35,6 +44,14 @@ const Navigation = () => (
       </li>
     </ul>
     </div>
+=======
+  <div>
+    <AuthUserContext.Consumer>
+      {authUser =>
+        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+      }
+    </AuthUserContext.Consumer>
+>>>>>>> db44897d6774e5080d10531d35885ca0679076da
   </div>
 );
 

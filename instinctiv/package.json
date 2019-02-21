@@ -5,6 +5,7 @@
   "dependencies": {
     "alphavantage": "^1.2.0",
     "bootstrap": "^4.3.1",
+<<<<<<< HEAD
     "css-loader": "^0.23.1",
     "firebase": "^5.8.3",
     "foundation-sites": "^6.2.0",
@@ -17,6 +18,20 @@
     "react-scripts": "^2.1.5",
     "reactstrap": "^7.1.0",
     "recompose": "^0.30.0",
+=======
+    "firebase": "^5.8.3",
+    "highcharts": "^7.0.3",
+    "highcharts-react-official": "^2.0.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.4",
+    "reactstrap": "^7.1.0",
+    "recompose": "^0.30.0",
+    "css-loader": "^0.23.1",
+    "foundation-sites": "6.2.0",
+    "jquery": "^2.2.4",
+>>>>>>> db44897d6774e5080d10531d35885ca0679076da
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0"
   },
