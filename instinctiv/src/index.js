@@ -5,7 +5,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import Firebase, { FirebaseContext } from './components/Firebase';
 
-/* import Highcharts from 'highcharts';
+import Highcharts from 'highcharts';
 
 class Chart extends Component {
   constructor(props) {
