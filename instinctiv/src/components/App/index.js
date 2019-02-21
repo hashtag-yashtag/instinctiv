@@ -29,7 +29,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => (
     <Router>
-      <div>
+      <div> 
         <Navigation />
 
         <hr />
