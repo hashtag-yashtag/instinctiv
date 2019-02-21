@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
+import './navigation.css';
+
 const Navigation = () => (
-  <div>
+  <div className="navigation">
     <div div className="top-bar-right">
     <ul className="vertical medium-horizontal menu">
       <li>

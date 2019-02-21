@@ -4,7 +4,7 @@ import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 
 const Home = () => (
-  <div>
+  <div className="start_page">
     Home
 
   </div>
