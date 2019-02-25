@@ -1,0 +1,37 @@
+// Every heading has a hidden icon with a link to the anchor for that section.
+
+// The heading itself needs position: relative to make the positioning work
+.docs-heading {
+  // position: relative;
+}
+
+.docs-heading-icon {
+  visibility: hidden;
+  font-size: 1.8rem;
+  margin-left: 0.6rem;
+  position: relative;
+  top: 1px;
+
+  // Link icon
+  &::before {
+    font-family: 'foundation-icons';
+    content: '\f165';
+    color: #999;
+  }
+
+  // When the title or the icon itself is hovered on, display the icon
+  &:hover,
+  .docs-heading:hover & {
+    visibility: visible;
+  }
+
+  // Adjust the icon's size and position for smaller headings
+  h3 > & {
+    font-size: 1.6rem;
+    top: 2px;
+  }
+
+  h4 > & {
+    font-size: 1.6rem;
+  }
+}

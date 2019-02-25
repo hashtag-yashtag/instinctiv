@@ -41,6 +41,10 @@ class SignUpFormBase extends Component {
         .set({
           username: username,
           email: email,
+          balance: 500,
+          correctBets: 0,
+          totalBets: 0,
+          accuracy: 0.5
         }).then(() => {
           this.setState({ ...INITIAL_STATE });
           this.props.history.push(ROUTES.HOME);

@@ -1,0 +1,1281 @@
+{
+  "title": "Abide",
+  "description": "Abide is an form validation library that extends the HTML5 validation API with custom validators.",
+  "sass": {
+    "variable": [
+      {
+        "description": "Sets if error styles should be added to inputs.\n",
+        "commentRange": {
+          "start": 9,
+          "end": 10
+        },
+        "context": {
+          "type": "variable",
+          "name": "abide-inputs",
+          "value": "true",
+          "scope": "default",
+          "line": {
+            "start": 11,
+            "end": 11
+          }
+        },
+        "type": "Boolean",
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        }
+      },
+      {
+        "description": "Sets if error styles should be added to labels.\n",
+        "commentRange": {
+          "start": 13,
+          "end": 14
+        },
+        "context": {
+          "type": "variable",
+          "name": "abide-labels",
+          "value": "true",
+          "scope": "default",
+          "line": {
+            "start": 15,
+            "end": 15
+          }
+        },
+        "type": "Boolean",
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        }
+      },
+      {
+        "description": "Background color to use for invalid text inputs.\n",
+        "commentRange": {
+          "start": 17,
+          "end": 18
+        },
+        "context": {
+          "type": "variable",
+          "name": "input-background-invalid",
+          "value": "map-get($foundation-palette, alert)",
+          "scope": "default",
+          "line": {
+            "start": 19,
+            "end": 19
+          }
+        },
+        "type": "Color",
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        }
+      },
+      {
+        "description": "Color to use for labels of invalid inputs.\n",
+        "commentRange": {
+          "start": 21,
+          "end": 22
+        },
+        "context": {
+          "type": "variable",
+          "name": "form-label-color-invalid",
+          "value": "map-get($foundation-palette, alert)",
+          "scope": "default",
+          "line": {
+            "start": 23,
+            "end": 23
+          }
+        },
+        "type": "Color",
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        }
+      },
+      {
+        "description": "Default font color for form error text.\n",
+        "commentRange": {
+          "start": 25,
+          "end": 26
+        },
+        "context": {
+          "type": "variable",
+          "name": "input-error-color",
+          "value": "map-get($foundation-palette, alert)",
+          "scope": "default",
+          "line": {
+            "start": 27,
+            "end": 27
+          }
+        },
+        "type": "Color",
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        },
+        "usedBy": [
+          {
+            "description": "Adds error styles to a form element, using the values in the settings file.\n",
+            "context": {
+              "type": "mixin",
+              "name": "form-error",
+              "code": "\n  display: none;\n  margin-top: $form-spacing * -0.5;\n  margin-bottom: $form-spacing;\n  font-size: $input-error-font-size;\n  font-weight: $input-error-font-weight;\n  color: $input-error-color;\n",
+              "line": {
+                "start": 52,
+                "end": 59
+              }
+            }
+          }
+        ]
+      },
+      {
+        "description": "Default font size for form error text.\n",
+        "commentRange": {
+          "start": 29,
+          "end": 30
+        },
+        "context": {
+          "type": "variable",
+          "name": "input-error-font-size",
+          "value": "rem-calc(12)",
+          "scope": "default",
+          "line": {
+            "start": 31,
+            "end": 31
+          }
+        },
+        "type": "Number",
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        },
+        "usedBy": [
+          {
+            "description": "Adds error styles to a form element, using the values in the settings file.\n",
+            "context": {
+              "type": "mixin",
+              "name": "form-error",
+              "code": "\n  display: none;\n  margin-top: $form-spacing * -0.5;\n  margin-bottom: $form-spacing;\n  font-size: $input-error-font-size;\n  font-weight: $input-error-font-weight;\n  color: $input-error-color;\n",
+              "line": {
+                "start": 52,
+                "end": 59
+              }
+            }
+          }
+        ]
+      },
+      {
+        "description": "Default font weight for form error text.\n",
+        "commentRange": {
+          "start": 33,
+          "end": 34
+        },
+        "context": {
+          "type": "variable",
+          "name": "input-error-font-weight",
+          "value": "$global-weight-bold",
+          "scope": "default",
+          "line": {
+            "start": 35,
+            "end": 35
+          }
+        },
+        "type": "Keyword",
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        },
+        "usedBy": [
+          {
+            "description": "Adds error styles to a form element, using the values in the settings file.\n",
+            "context": {
+              "type": "mixin",
+              "name": "form-error",
+              "code": "\n  display: none;\n  margin-top: $form-spacing * -0.5;\n  margin-bottom: $form-spacing;\n  font-size: $input-error-font-size;\n  font-weight: $input-error-font-weight;\n  color: $input-error-color;\n",
+              "line": {
+                "start": 52,
+                "end": 59
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "mixin": [
+      {
+        "description": "Styles the background and border of an input field to have an error state.\n\n",
+        "commentRange": {
+          "start": 37,
+          "end": 40
+        },
+        "context": {
+          "type": "mixin",
+          "name": "form-input-error",
+          "code": "\n  &:not(:focus) {\n    background-color: rgba($background, $background-alpha);\n    border-color: $background;\n  }\n",
+          "line": {
+            "start": 41,
+            "end": 49
+          }
+        },
+        "parameter": [
+          {
+            "type": "Color",
+            "name": "background",
+            "default": "$alert-color",
+            "description": "Color to use for the background and border."
+          },
+          {
+            "type": "Number",
+            "name": "background-alpha",
+            "default": "0.1",
+            "description": "Transparency level of the background color."
+          }
+        ],
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "require": [],
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        }
+      },
+      {
+        "description": "Adds error styles to a form element, using the values in the settings file.\n",
+        "commentRange": {
+          "start": 51,
+          "end": 51
+        },
+        "context": {
+          "type": "mixin",
+          "name": "form-error",
+          "code": "\n  display: none;\n  margin-top: $form-spacing * -0.5;\n  margin-bottom: $form-spacing;\n  font-size: $input-error-font-size;\n  font-weight: $input-error-font-weight;\n  color: $input-error-color;\n",
+          "line": {
+            "start": 52,
+            "end": 59
+          }
+        },
+        "group": [
+          "abide"
+        ],
+        "access": "public",
+        "require": [
+          {
+            "type": "variable",
+            "name": "input-error-font-size"
+          },
+          {
+            "type": "variable",
+            "name": "input-error-font-weight"
+          },
+          {
+            "type": "variable",
+            "name": "input-error-color"
+          }
+        ],
+        "file": {
+          "path": "_error.scss",
+          "name": "_error.scss"
+        }
+      }
+    ]
+  },
+  "js": {
+    "module": [
+      {
+        "comment": "/**\n * Abide module.\n * @module foundation.abide\n */",
+        "meta": {
+          "range": [
+            31,
+            83
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 5,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {}
+        },
+        "description": "Abide module.",
+        "kind": "module",
+        "name": "abide",
+        "memberof": "foundation",
+        "longname": "foundation.module:abide",
+        "scope": "static"
+      }
+    ],
+    "class": [
+      {
+        "comment": "/**\n   * Creates a new instance of Abide.\n   * @class\n   * @fires Abide#init\n   * @param {Object} element - jQuery object to add the trigger to.\n   * @param {Object} options - Overrides to the default plugin settings.\n   */",
+        "meta": {
+          "range": [
+            327,
+            543
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 18,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000012",
+            "name": "Abide",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "element",
+              "options"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Creates a new instance of Abide.",
+        "kind": "class",
+        "fires": [
+          "Abide#event:init"
+        ],
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to add the trigger to.",
+            "name": "element"
+          },
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "Overrides to the default plugin settings.",
+            "name": "options"
+          }
+        ],
+        "name": "Abide",
+        "longname": "foundation.module:abide~Abide.Abide",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "static"
+      }
+    ],
+    "function": [
+      {
+        "comment": "/**\n   * Checks whether or not a form element has the required attribute and if it's checked or not\n   * @param {Object} element - jQuery object to check for required attribute\n   * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty\n   */",
+        "meta": {
+          "range": [
+            1857,
+            2364
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 80,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000192",
+            "name": "Abide#requiredCheck",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Checks whether or not a form element has the required attribute and if it's checked or not",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to check for required attribute",
+            "name": "element"
+          }
+        ],
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "Boolean value depends on whether or not attribute is checked or empty"
+          }
+        ],
+        "name": "requiredCheck",
+        "longname": "foundation.module:abide~Abide#requiredCheck",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Based on $el, get the first element with selector in this order:\n   * 1. The element's direct sibling('s).\n   * 3. The element's parent's children.\n   *\n   * This allows for multiple form errors per input, though if none are found, no form errors will be shown.\n   *\n   * @param {Object} $el - jQuery object to use as reference to find the form error selector.\n   * @returns {Object} jQuery object with the selector.\n   */",
+        "meta": {
+          "range": [
+            2802,
+            3008
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 115,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000280",
+            "name": "Abide#findFormError",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Based on $el, get the first element with selector in this order:\n1. The element's direct sibling('s).\n3. The element's parent's children.\n\nThis allows for multiple form errors per input, though if none are found, no form errors will be shown.",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to use as reference to find the form error selector.",
+            "name": "$el"
+          }
+        ],
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object with the selector."
+          }
+        ],
+        "name": "findFormError",
+        "longname": "foundation.module:abide~Abide#findFormError",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Get the first element in this order:\n   * 2. The <label> with the attribute `[for=\"someInputId\"]`\n   * 3. The `.closest()` <label>\n   *\n   * @param {Object} $el - jQuery object to check for required attribute\n   * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty\n   */",
+        "meta": {
+          "range": [
+            3332,
+            3523
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 133,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000320",
+            "name": "Abide#findLabel",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Get the first element in this order:\n2. The <label> with the attribute `[for=\"someInputId\"]`\n3. The `.closest()` <label>",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to check for required attribute",
+            "name": "$el"
+          }
+        ],
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "Boolean value depends on whether or not attribute is checked or empty"
+          }
+        ],
+        "name": "findLabel",
+        "longname": "foundation.module:abide~Abide#findLabel",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Adds the CSS error class as specified by the Abide settings to the label, input, and the form\n   * @param {Object} $el - jQuery object to add the class to\n   */",
+        "meta": {
+          "range": [
+            3699,
+            4060
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 148,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000360",
+            "name": "Abide#addErrorClasses",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Adds the CSS error class as specified by the Abide settings to the label, input, and the form",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to add the class to",
+            "name": "$el"
+          }
+        ],
+        "name": "addErrorClasses",
+        "longname": "foundation.module:abide~Abide#addErrorClasses",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Removes CSS error class as specified by the Abide settings from the label, input, and the form\n   * @param {Object} $el - jQuery object to remove the class from\n   */",
+        "meta": {
+          "range": [
+            4242,
+            4617
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 167,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000426",
+            "name": "Abide#removeErrorClasses",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Removes CSS error class as specified by the Abide settings from the label, input, and the form",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to remove the class from",
+            "name": "$el"
+          }
+        ],
+        "name": "removeErrorClasses",
+        "longname": "foundation.module:abide~Abide#removeErrorClasses",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type\n   * @fires Abide#invalid\n   * @fires Abide#valid\n   * @param {Object} element - jQuery object to validate, should be an HTML input\n   * @returns {Boolean} goodToGo - If the input is valid or not.\n   */",
+        "meta": {
+          "range": [
+            4931,
+            6263
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 189,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000491",
+            "name": "Abide#validateInput",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Goes through a form to find inputs and proceeds to validate them in ways specific to their type",
+        "fires": [
+          "Abide#event:invalid",
+          "Abide#event:valid"
+        ],
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to validate, should be an HTML input",
+            "name": "element"
+          }
+        ],
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "goodToGo - If the input is valid or not."
+          }
+        ],
+        "name": "validateInput",
+        "longname": "foundation.module:abide~Abide#validateInput",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Goes through a form and if there are any invalid inputs, it will display the form error element\n   * @returns {Boolean} noError - true if no errors were detected...\n   * @fires Abide#formvalid\n   * @fires Abide#forminvalid\n   */",
+        "meta": {
+          "range": [
+            6507,
+            7166
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 245,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000647",
+            "name": "Abide#validateForm",
+            "type": "MethodDefinition",
+            "paramnames": []
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Goes through a form and if there are any invalid inputs, it will display the form error element",
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "noError - true if no errors were detected..."
+          }
+        ],
+        "fires": [
+          "Abide#event:formvalid",
+          "Abide#event:forminvalid"
+        ],
+        "name": "validateForm",
+        "longname": "foundation.module:abide~Abide#validateForm",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance",
+        "params": []
+      },
+      {
+        "comment": "/**\n   * Determines whether or a not a text input is valid based on the pattern specified in the attribute. If no matching pattern is found, returns true.\n   * @param {Object} $el - jQuery object to validate, should be a text input HTML element\n   * @param {String} pattern - string value of one of the RegEx patterns in Abide.options.patterns\n   * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified\n   */",
+        "meta": {
+          "range": [
+            7632,
+            8222
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 274,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000726",
+            "name": "Abide#validateText",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el",
+              "pattern"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Determines whether or a not a text input is valid based on the pattern specified in the attribute. If no matching pattern is found, returns true.",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery object to validate, should be a text input HTML element",
+            "name": "$el"
+          },
+          {
+            "type": {
+              "names": [
+                "String"
+              ]
+            },
+            "description": "string value of one of the RegEx patterns in Abide.options.patterns",
+            "name": "pattern"
+          }
+        ],
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "Boolean value depends on whether or not the input value matches the pattern specified"
+          }
+        ],
+        "name": "validateText",
+        "longname": "foundation.module:abide~Abide#validateText",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Determines whether or a not a radio input is valid based on whether or not it is required and selected\n   * @param {String} groupName - A string that specifies the name of a radio button group\n   * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)\n   */",
+        "meta": {
+          "range": [
+            8562,
+            8930
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 293,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000800",
+            "name": "Abide#validateRadio",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "groupName"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Determines whether or a not a radio input is valid based on whether or not it is required and selected",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "String"
+              ]
+            },
+            "description": "A string that specifies the name of a radio button group",
+            "name": "groupName"
+          }
+        ],
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "Boolean value depends on whether or not at least one radio input has been selected (if it's required)"
+          }
+        ],
+        "name": "validateRadio",
+        "longname": "foundation.module:abide~Abide#validateRadio",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator=\"foo bar baz\"` in a space separated listed.\n   * @param {Object} $el - jQuery input element.\n   * @param {String} validators - a string of function names matching functions in the Abide.options.validators object.\n   * @param {Boolean} required - self explanatory?\n   * @returns {Boolean} - true if validations passed.\n   */",
+        "meta": {
+          "range": [
+            9417,
+            9675
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 315,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000867",
+            "name": "Abide#matchValidation",
+            "type": "MethodDefinition",
+            "paramnames": [
+              "$el",
+              "validators",
+              "required"
+            ]
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator=\"foo bar baz\"` in a space separated listed.",
+        "params": [
+          {
+            "type": {
+              "names": [
+                "Object"
+              ]
+            },
+            "description": "jQuery input element.",
+            "name": "$el"
+          },
+          {
+            "type": {
+              "names": [
+                "String"
+              ]
+            },
+            "description": "a string of function names matching functions in the Abide.options.validators object.",
+            "name": "validators"
+          },
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "self explanatory?",
+            "name": "required"
+          }
+        ],
+        "returns": [
+          {
+            "type": {
+              "names": [
+                "Boolean"
+              ]
+            },
+            "description": "- true if validations passed."
+          }
+        ],
+        "name": "matchValidation",
+        "longname": "foundation.module:abide~Abide#matchValidation",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n   * Resets form inputs and styles\n   * @fires Abide#formreset\n   */",
+        "meta": {
+          "range": [
+            9754,
+            10423
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 328,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100000919",
+            "name": "Abide#resetForm",
+            "type": "MethodDefinition",
+            "paramnames": []
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Resets form inputs and styles",
+        "fires": [
+          "Abide#event:formreset"
+        ],
+        "name": "resetForm",
+        "longname": "foundation.module:abide~Abide#resetForm",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance",
+        "params": []
+      },
+      {
+        "comment": "/**\n   * Destroys an instance of Abide.\n   * Removes error styles and classes from elements, without resetting their values.\n   */",
+        "meta": {
+          "range": [
+            10560,
+            10860
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 348,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001029",
+            "name": "Abide#destroy",
+            "type": "MethodDefinition",
+            "paramnames": []
+          },
+          "vars": {
+            "": null
+          }
+        },
+        "description": "Destroys an instance of Abide.\nRemoves error styles and classes from elements, without resetting their values.",
+        "name": "destroy",
+        "longname": "foundation.module:abide~Abide#destroy",
+        "kind": "function",
+        "memberof": "foundation.module:abide~Abide",
+        "scope": "instance",
+        "params": []
+      }
+    ],
+    "event": [
+      {
+        "comment": "/**\n     * Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`\n     * Trigger includes the DOM element of the input.\n     * @event Abide#valid\n     * @event Abide#invalid\n     */",
+        "meta": {
+          "range": [
+            5961,
+            6204
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 228,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {}
+        },
+        "description": "Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`\nTrigger includes the DOM element of the input.",
+        "kind": "event",
+        "name": "invalid",
+        "memberof": "Abide",
+        "longname": "Abide#event:invalid",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n     * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.\n     * Trigger includes the element of the form.\n     * @event Abide#formvalid\n     * @event Abide#forminvalid\n     */",
+        "meta": {
+          "range": [
+            6797,
+            7042
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 257,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {}
+        },
+        "description": "Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.\nTrigger includes the element of the form.",
+        "kind": "event",
+        "name": "forminvalid",
+        "memberof": "Abide",
+        "longname": "Abide#event:forminvalid",
+        "scope": "instance"
+      },
+      {
+        "comment": "/**\n     * Fires when the form has been reset.\n     * @event Abide#formreset\n     */",
+        "meta": {
+          "range": [
+            10285,
+            10369
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 337,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {}
+        },
+        "description": "Fires when the form has been reset.",
+        "kind": "event",
+        "name": "formreset",
+        "memberof": "Abide",
+        "longname": "Abide#event:formreset",
+        "scope": "instance"
+      }
+    ],
+    "member": [
+      {
+        "comment": "/**\n   * The default event to validate inputs. Checkboxes and radios validate immediately.\n   * Remove or change this value for manual validation.\n   * @option\n   * @example 'fieldChange'\n   */",
+        "meta": {
+          "range": [
+            11120,
+            11145
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 375,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001087",
+            "name": "validateOn",
+            "type": "Literal",
+            "value": "fieldChange"
+          }
+        },
+        "description": "The default event to validate inputs. Checkboxes and radios validate immediately.\nRemove or change this value for manual validation.",
+        "tags": [
+          {
+            "originalTitle": "option",
+            "title": "option",
+            "text": ""
+          }
+        ],
+        "examples": [
+          "'fieldChange'"
+        ],
+        "name": "validateOn",
+        "longname": "foundation.module:abide~Abide.defaults.validateOn",
+        "kind": "member",
+        "memberof": "foundation.module:abide~Abide.defaults",
+        "scope": "static"
+      },
+      {
+        "comment": "/**\n   * Class to be applied to input labels on failed validation.\n   * @option\n   * @example 'is-invalid-label'\n   */",
+        "meta": {
+          "range": [
+            11271,
+            11306
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 382,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001089",
+            "name": "labelErrorClass",
+            "type": "Literal",
+            "value": "is-invalid-label"
+          }
+        },
+        "description": "Class to be applied to input labels on failed validation.",
+        "tags": [
+          {
+            "originalTitle": "option",
+            "title": "option",
+            "text": ""
+          }
+        ],
+        "examples": [
+          "'is-invalid-label'"
+        ],
+        "name": "labelErrorClass",
+        "longname": "foundation.module:abide~Abide.defaults.labelErrorClass",
+        "kind": "member",
+        "memberof": "foundation.module:abide~Abide.defaults",
+        "scope": "static"
+      },
+      {
+        "comment": "/**\n   * Class to be applied to inputs on failed validation.\n   * @option\n   * @example 'is-invalid-input'\n   */",
+        "meta": {
+          "range": [
+            11426,
+            11461
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 389,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001091",
+            "name": "inputErrorClass",
+            "type": "Literal",
+            "value": "is-invalid-input"
+          }
+        },
+        "description": "Class to be applied to inputs on failed validation.",
+        "tags": [
+          {
+            "originalTitle": "option",
+            "title": "option",
+            "text": ""
+          }
+        ],
+        "examples": [
+          "'is-invalid-input'"
+        ],
+        "name": "inputErrorClass",
+        "longname": "foundation.module:abide~Abide.defaults.inputErrorClass",
+        "kind": "member",
+        "memberof": "foundation.module:abide~Abide.defaults",
+        "scope": "static"
+      },
+      {
+        "comment": "/**\n   * Class selector to use to target Form Errors for show/hide.\n   * @option\n   * @example '.form-error'\n   */",
+        "meta": {
+          "range": [
+            11583,
+            11615
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 396,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001093",
+            "name": "formErrorSelector",
+            "type": "Literal",
+            "value": ".form-error"
+          }
+        },
+        "description": "Class selector to use to target Form Errors for show/hide.",
+        "tags": [
+          {
+            "originalTitle": "option",
+            "title": "option",
+            "text": ""
+          }
+        ],
+        "examples": [
+          "'.form-error'"
+        ],
+        "name": "formErrorSelector",
+        "longname": "foundation.module:abide~Abide.defaults.formErrorSelector",
+        "kind": "member",
+        "memberof": "foundation.module:abide~Abide.defaults",
+        "scope": "static"
+      },
+      {
+        "comment": "/**\n   * Class added to Form Errors on failed validation.\n   * @option\n   * @example 'is-visible'\n   */",
+        "meta": {
+          "range": [
+            11726,
+            11754
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 403,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001095",
+            "name": "formErrorClass",
+            "type": "Literal",
+            "value": "is-visible"
+          }
+        },
+        "description": "Class added to Form Errors on failed validation.",
+        "tags": [
+          {
+            "originalTitle": "option",
+            "title": "option",
+            "text": ""
+          }
+        ],
+        "examples": [
+          "'is-visible'"
+        ],
+        "name": "formErrorClass",
+        "longname": "foundation.module:abide~Abide.defaults.formErrorClass",
+        "kind": "member",
+        "memberof": "foundation.module:abide~Abide.defaults",
+        "scope": "static"
+      },
+      {
+        "comment": "/**\n   * Set to true to validate text inputs on any value change.\n   * @option\n   * @example false\n   */",
+        "meta": {
+          "range": [
+            11866,
+            11885
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 410,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001097",
+            "name": "liveValidate",
+            "type": "Literal",
+            "value": false
+          }
+        },
+        "description": "Set to true to validate text inputs on any value change.",
+        "tags": [
+          {
+            "originalTitle": "option",
+            "title": "option",
+            "text": ""
+          }
+        ],
+        "examples": [
+          "false"
+        ],
+        "name": "liveValidate",
+        "longname": "foundation.module:abide~Abide.defaults.liveValidate",
+        "kind": "member",
+        "memberof": "foundation.module:abide~Abide.defaults",
+        "scope": "static"
+      },
+      {
+        "comment": "/**\n   * Optional validation functions to be used. `equalTo` being the only default included function.\n   * Functions should return only a boolean if the input is valid or not. Functions are given the following arguments:\n   * el : The jQuery element to validate.\n   * required : Boolean value of the required attribute be present or not.\n   * parent : The direct parent of the input.\n   * @option\n   */",
+        "meta": {
+          "range": [
+            14980,
+            15116
+          ],
+          "filename": "foundation.abide.js",
+          "lineno": 452,
+          "path": "/Users/geoff/Sites/fs/js",
+          "code": {
+            "id": "astnode100001133",
+            "name": "validators",
+            "type": "ObjectExpression",
+            "value": "{\"equalTo\":\"\"}"
+          }
+        },
+        "description": "Optional validation functions to be used. `equalTo` being the only default included function.\nFunctions should return only a boolean if the input is valid or not. Functions are given the following arguments:\nel : The jQuery element to validate.\nrequired : Boolean value of the required attribute be present or not.\nparent : The direct parent of the input.",
+        "tags": [
+          {
+            "originalTitle": "option",
+            "title": "option",
+            "text": ""
+          }
+        ],
+        "name": "validators",
+        "longname": "foundation.module:abide~Abide.defaults.validators",
+        "kind": "member",
+        "memberof": "foundation.module:abide~Abide.defaults",
+        "scope": "static"
+      }
+    ],
+    "package": [
+      {
+        "kind": "package",
+        "longname": "package:undefined",
+        "files": [
+          "/Users/geoff/Sites/fs/js/foundation.abide.js"
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "forms",
+    "validation"
+  ],
+  "__fm": {
+    "tags": [
+      "forms",
+      "validation"
+    ],
+    "js": "js/foundation.abide.js",
+    "sass": "scss/forms/_error.scss",
+    "description": "Abide is an form validation library that extends the HTML5 validation API with custom validators.",
+    "title": "Abide"
+  },
+  "docs": "<h3 id=\"abide-demo\" class=\"docs-heading\">Abide Demo<a class=\"docs-heading-icon\" href=\"#abide-demo\"></a></h3><p>These input types create a text field: <code>text</code>, <code>date</code>, <code>datetime</code>, <code>datetime-local</code>, <code>email</code>, <code>month</code>, <code>number</code>, <code>password</code>, <code>search</code>, <code>tel</code>, <code>time</code>, <code>url</code>, and <code>week</code>.</p>\n<div class=\"docs-code\" data-docs-code><pre><code class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">form</span> <span class=\"hljs-attr\">data-abide</span> <span class=\"hljs-attr\">novalidate</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">data-abide-error</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"alert callout\"</span> <span class=\"hljs-attr\">style</span>=<span class=\"hljs-string\">\"display: none;\"</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">i</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"fi-alert\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">i</span>&gt;</span> There are some errors in your form.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">p</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"row\"</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small-12 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span>&gt;</span>Number Required\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"text\"</span> <span class=\"hljs-attr\">placeholder</span>=<span class=\"hljs-string\">\"1234\"</span> <span class=\"hljs-attr\">aria-describedby</span>=<span class=\"hljs-string\">\"exampleHelpText\"</span> <span class=\"hljs-attr\">required</span> <span class=\"hljs-attr\">pattern</span>=<span class=\"hljs-string\">\"number\"</span>&gt;</span>\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">span</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"form-error\"</span>&gt;</span>\n          Yo, you had better fill this out, it's required.\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">span</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">p</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"help-text\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"exampleHelpText\"</span>&gt;</span>Here's how you use this input field!<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">p</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small-12 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span>&gt;</span>Nothing Required!\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"text\"</span> <span class=\"hljs-attr\">placeholder</span>=<span class=\"hljs-string\">\"Use me, or don't\"</span> <span class=\"hljs-attr\">aria-describedby</span>=<span class=\"hljs-string\">\"exampleHelpTex\"</span> <span class=\"hljs-attr\">data-abide-ignore</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">p</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"help-text\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"exampleHelpTex\"</span>&gt;</span>This input is ignored by Abide using `data-abide-ignore`<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">p</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small-12 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span>&gt;</span>Password Required\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"password\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"password\"</span> <span class=\"hljs-attr\">placeholder</span>=<span class=\"hljs-string\">\"yeti4preZ\"</span> <span class=\"hljs-attr\">aria-describedby</span>=<span class=\"hljs-string\">\"exampleHelpText\"</span> <span class=\"hljs-attr\">required</span> &gt;</span>\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">span</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"form-error\"</span>&gt;</span>\n          I'm required!\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">span</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">p</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"help-text\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"exampleHelpText\"</span>&gt;</span>Enter a password please.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">p</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small-12 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span>&gt;</span>Re-enter Password\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"password\"</span> <span class=\"hljs-attr\">placeholder</span>=<span class=\"hljs-string\">\"yeti4preZ\"</span> <span class=\"hljs-attr\">aria-describedby</span>=<span class=\"hljs-string\">\"exampleHelpText2\"</span> <span class=\"hljs-attr\">required</span> <span class=\"hljs-attr\">pattern</span>=<span class=\"hljs-string\">\"alpha_numeric\"</span> <span class=\"hljs-attr\">data-equalto</span>=<span class=\"hljs-string\">\"password\"</span>&gt;</span>\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">span</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"form-error\"</span>&gt;</span>\n          Hey, passwords are supposed to match!\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">span</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">p</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"help-text\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"exampleHelpText2\"</span>&gt;</span>This field is using the `data-equalto=\"password\"` attribute, causing it to match the password field above.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">p</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"row\"</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"medium-6 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span>&gt;</span>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"text\"</span> <span class=\"hljs-attr\">placeholder</span>=<span class=\"hljs-string\">\"http://foundation.zurb.com\"</span> <span class=\"hljs-attr\">pattern</span>=<span class=\"hljs-string\">\"url\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"medium-6 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span>&gt;</span>European Cars, Choose One, it can't be the blank option.\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">select</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"select\"</span> <span class=\"hljs-attr\">required</span>&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">option</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">option</span>&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">option</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"volvo\"</span>&gt;</span>Volvo<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">option</span>&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">option</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"saab\"</span>&gt;</span>Saab<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">option</span>&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">option</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"mercedes\"</span>&gt;</span>Mercedes<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">option</span>&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">option</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"audi\"</span>&gt;</span>Audi<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">option</span>&gt;</span>\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">select</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"row\"</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">fieldset</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"large-6 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">legend</span>&gt;</span>Choose Your Favorite, and this is required, so you have to pick one.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">legend</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"radio\"</span> <span class=\"hljs-attr\">name</span>=<span class=\"hljs-string\">\"pokemon\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Red\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"pokemonRed\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"pokemonRed\"</span>&gt;</span>Red<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"radio\"</span> <span class=\"hljs-attr\">name</span>=<span class=\"hljs-string\">\"pokemon\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Blue\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"pokemonBlue\"</span> <span class=\"hljs-attr\">required</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"pokemonBlue\"</span>&gt;</span>Blue<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"radio\"</span> <span class=\"hljs-attr\">name</span>=<span class=\"hljs-string\">\"pokemon\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Yellow\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"pokemonYellow\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"pokemonYellow\"</span>&gt;</span>Yellow<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">fieldset</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">fieldset</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"large-6 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">legend</span>&gt;</span>Choose Your Favorite - not required, you can leave this one blank.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">legend</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"radio\"</span> <span class=\"hljs-attr\">name</span>=<span class=\"hljs-string\">\"pockets\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Red\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"pocketsRed\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"pocketsRed\"</span>&gt;</span>Red<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"radio\"</span> <span class=\"hljs-attr\">name</span>=<span class=\"hljs-string\">\"pockets\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Blue\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"pocketsBlue\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"pocketsBlue\"</span>&gt;</span>Blue<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"radio\"</span> <span class=\"hljs-attr\">name</span>=<span class=\"hljs-string\">\"pockets\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Yellow\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"pocketsYellow\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"pocketsYellow\"</span>&gt;</span>Yellow<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">fieldset</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">fieldset</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"large-6 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">legend</span>&gt;</span>Check these out<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">legend</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"checkbox1\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"checkbox\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"checkbox1\"</span>&gt;</span>Checkbox 1<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"checkbox2\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"checkbox\"</span> <span class=\"hljs-attr\">required</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"checkbox2\"</span>&gt;</span>Checkbox 2<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"checkbox3\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"checkbox\"</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">for</span>=<span class=\"hljs-string\">\"checkbox3\"</span>&gt;</span>Checkbox 3<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">fieldset</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"row\"</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">fieldset</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"large-6 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">button</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"button\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"submit\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Submit\"</span>&gt;</span>Submit<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">button</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">fieldset</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">fieldset</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"large-6 columns\"</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">button</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"button\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"reset\"</span> <span class=\"hljs-attr\">value</span>=<span class=\"hljs-string\">\"Reset\"</span>&gt;</span>Reset<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">button</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">fieldset</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">form</span>&gt;</span></code></pre></div>\n\n<div class=\"docs-code-live\"><form data-abide novalidate>\n  <div data-abide-error class=\"alert callout\" style=\"display: none;\">\n    <p><i class=\"fi-alert\"></i> There are some errors in your form.</p>\n  </div>\n  <div class=\"row\">\n    <div class=\"small-12 columns\">\n      <label>Number Required\n        <input type=\"text\" placeholder=\"1234\" aria-describedby=\"exampleHelpText\" required pattern=\"number\">\n        <span class=\"form-error\">\n          Yo, you had better fill this out, it's required.\n        </span>\n      </label>\n      <p class=\"help-text\" id=\"exampleHelpText\">Here's how you use this input field!</p>\n    </div>\n    <div class=\"small-12 columns\">\n      <label>Nothing Required!\n        <input type=\"text\" placeholder=\"Use me, or don't\" aria-describedby=\"exampleHelpTex\" data-abide-ignore>\n      </label>\n      <p class=\"help-text\" id=\"exampleHelpTex\">This input is ignored by Abide using `data-abide-ignore`</p>\n    </div>\n    <div class=\"small-12 columns\">\n      <label>Password Required\n        <input type=\"password\" id=\"password\" placeholder=\"yeti4preZ\" aria-describedby=\"exampleHelpText\" required >\n        <span class=\"form-error\">\n          I'm required!\n        </span>\n      </label>\n      <p class=\"help-text\" id=\"exampleHelpText\">Enter a password please.</p>\n    </div>\n    <div class=\"small-12 columns\">\n      <label>Re-enter Password\n        <input type=\"password\" placeholder=\"yeti4preZ\" aria-describedby=\"exampleHelpText2\" required pattern=\"alpha_numeric\" data-equalto=\"password\">\n        <span class=\"form-error\">\n          Hey, passwords are supposed to match!\n        </span>\n      </label>\n      <p class=\"help-text\" id=\"exampleHelpText2\">This field is using the `data-equalto=\"password\"` attribute, causing it to match the password field above.</p>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"medium-6 columns\">\n      <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.\n        <input type=\"text\" placeholder=\"http://foundation.zurb.com\" pattern=\"url\">\n      </label>\n    </div>\n    <div class=\"medium-6 columns\">\n      <label>European Cars, Choose One, it can't be the blank option.\n        <select id=\"select\" required>\n          <option value=\"\"></option>\n          <option value=\"volvo\">Volvo</option>\n          <option value=\"saab\">Saab</option>\n          <option value=\"mercedes\">Mercedes</option>\n          <option value=\"audi\">Audi</option>\n        </select>\n      </label>\n    </div>\n  </div>\n  <div class=\"row\">\n    <fieldset class=\"large-6 columns\">\n      <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>\n      <input type=\"radio\" name=\"pokemon\" value=\"Red\" id=\"pokemonRed\"><label for=\"pokemonRed\">Red</label>\n      <input type=\"radio\" name=\"pokemon\" value=\"Blue\" id=\"pokemonBlue\" required><label for=\"pokemonBlue\">Blue</label>\n      <input type=\"radio\" name=\"pokemon\" value=\"Yellow\" id=\"pokemonYellow\"><label for=\"pokemonYellow\">Yellow</label>\n    </fieldset>\n    <fieldset class=\"large-6 columns\">\n      <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>\n      <input type=\"radio\" name=\"pockets\" value=\"Red\" id=\"pocketsRed\"><label for=\"pocketsRed\">Red</label>\n      <input type=\"radio\" name=\"pockets\" value=\"Blue\" id=\"pocketsBlue\"><label for=\"pocketsBlue\">Blue</label>\n      <input type=\"radio\" name=\"pockets\" value=\"Yellow\" id=\"pocketsYellow\"><label for=\"pocketsYellow\">Yellow</label>\n    </fieldset>\n    <fieldset class=\"large-6 columns\">\n      <legend>Check these out</legend>\n      <input id=\"checkbox1\" type=\"checkbox\"><label for=\"checkbox1\">Checkbox 1</label>\n      <input id=\"checkbox2\" type=\"checkbox\" required><label for=\"checkbox2\">Checkbox 2</label>\n      <input id=\"checkbox3\" type=\"checkbox\"><label for=\"checkbox3\">Checkbox 3</label>\n    </fieldset>\n  </div>\n  <div class=\"row\">\n    <fieldset class=\"large-6 columns\">\n      <button class=\"button\" type=\"submit\" value=\"Submit\">Submit</button>\n    </fieldset>\n    <fieldset class=\"large-6 columns\">\n      <button class=\"button\" type=\"reset\" value=\"Reset\">Reset</button>\n    </fieldset>\n  </div>\n</form></div><hr>\n<p>&nbsp;</p>\n\n<div class=\"alert callout\">\n  <p><i class=\"fi-alert\"></i> There are some errors in your form.</p>\n</div>\n\n<label class=\"is-invalid-label\">\n  Required Thing\n  <input type=\"text\" class=\"is-invalid-input\">\n  <span class=\"form-error is-visible\">\n    Yo, you had better fill this out.\n  </span>\n</label>\n\n<label class=\"is-invalid-label\">\n  Required Thing\n  <textarea type=\"text\" class=\"is-invalid-input\"></textarea>\n</label>\n\n<h2 id=\"initial-state\" class=\"docs-heading\" data-magellan-target=\"initial-state\">Initial State<a class=\"docs-heading-icon\" href=\"#initial-state\"></a></h2><div class=\"docs-code\" data-docs-code><pre><code class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">form</span> <span class=\"hljs-attr\">data-abide</span>&gt;</span>\n  <span class=\"hljs-comment\">&lt;!-- Add \"display: none\" right away --&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">data-abide-error</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"alert callout\"</span> <span class=\"hljs-attr\">style</span>=<span class=\"hljs-string\">\"display: none;\"</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">i</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"fi-alert\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">i</span>&gt;</span> There are some errors in your form.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">p</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span>&gt;</span>\n    Name\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"text\"</span> <span class=\"hljs-attr\">required</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">span</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"form-error\"</span>&gt;</span>This field is required.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">span</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">form</span>&gt;</span></code></pre></div><h2 id=\"error-state\" class=\"docs-heading\" data-magellan-target=\"error-state\">Error State<a class=\"docs-heading-icon\" href=\"#error-state\"></a></h2><div class=\"docs-code\" data-docs-code><pre><code class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">form</span> <span class=\"hljs-attr\">data-abide</span>&gt;</span>\n  <span class=\"hljs-comment\">&lt;!-- Add role=\"alert\" --&gt;</span>\n  <span class=\"hljs-comment\">&lt;!-- Add \"display: block\" --&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">data-abide-error</span> <span class=\"hljs-attr\">role</span>=<span class=\"hljs-string\">\"alert\"</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"alert callout\"</span> <span class=\"hljs-attr\">style</span>=<span class=\"hljs-string\">\"display: block;\"</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">p</span>&gt;</span><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">i</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"fi-alert\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">i</span>&gt;</span> There are some errors in your form.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">p</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span>\n  <span class=\"hljs-comment\">&lt;!-- Add \"is-invalid-label\" --&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">label</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"is-invalid-label\"</span>&gt;</span>\n    Name\n    <span class=\"hljs-comment\">&lt;!-- Add \"is-invalid-input\" --&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"text\"</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"is-invalid-input\"</span> <span class=\"hljs-attr\">required</span> <span class=\"hljs-attr\">aria-invalid</span> <span class=\"hljs-attr\">aria-describedby</span>=<span class=\"hljs-string\">\"uuid\"</span>&gt;</span>\n    <span class=\"hljs-comment\">&lt;!-- Add \"is-visible\" --&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">span</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"form-error is-visible\"</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"uuid\"</span>&gt;</span>This field is required.<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">span</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">label</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">form</span>&gt;</span></code></pre></div><h2 id=\"event-listener\" class=\"docs-heading\" data-magellan-target=\"event-listener\">Event Listener<a class=\"docs-heading-icon\" href=\"#event-listener\"></a></h2><p>Setup event listener after foundation is initialized (especially for formvalid/forminvalid). Easier to chain via document selector.</p>\n<ul>\n<li>valid.zf.abide and invalid.zf.abide are field level events, triggered in validateInput function <ul>\n<li>ev.target is the DOM field element, </li>\n<li>elem is jQuery selector for field element</li>\n</ul>\n</li>\n<li>formvalid.zf.abide and forminvalid.zf.abide are form events, triggered in validateForm function<ul>\n<li>ev.target is the DOM form element, </li>\n<li>frm is jQuery selector for form element</li>\n</ul>\n</li>\n</ul>\n<div class=\"docs-code\" data-docs-code><pre><code class=\"javascript\">$(<span class=\"hljs-built_in\">document</span>)\n  <span class=\"hljs-comment\">// field element is invalid</span>\n  .on(<span class=\"hljs-string\">\"invalid.zf.abide\"</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">ev,elem</span>) </span>{\n    <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">\"Field id \"</span>+ev.target.id+<span class=\"hljs-string\">\" is invalid\"</span>);\n  })\n  <span class=\"hljs-comment\">// field element is valid</span>\n  .on(<span class=\"hljs-string\">\"valid.zf.abide\"</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">ev,elem</span>) </span>{\n    <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">\"Field name \"</span>+elem.attr(<span class=\"hljs-string\">'name'</span>)+<span class=\"hljs-string\">\" is valid\"</span>);\n  })\n  <span class=\"hljs-comment\">// form validation failed</span>\n  .on(<span class=\"hljs-string\">\"forminvalid.zf.abide\"</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">ev,frm</span>) </span>{\n    <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">\"Form id \"</span>+ev.target.id+<span class=\"hljs-string\">\" is invalid\"</span>);\n  })\n  <span class=\"hljs-comment\">// form validation passed, form will submit if submit event not returned false</span>\n  .on(<span class=\"hljs-string\">\"formvalid.zf.abide\"</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">ev,frm</span>) </span>{\n    <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">\"Form id \"</span>+frm.attr(<span class=\"hljs-string\">'id'</span>)+<span class=\"hljs-string\">\" is invalid\"</span>);\n    <span class=\"hljs-comment\">// ajax post form </span>\n  })\n  <span class=\"hljs-comment\">// to prevent form from submitting upon successful validation</span>\n  .on(<span class=\"hljs-string\">\"submit\"</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">ev</span>) </span>{\n    ev.preventDefault();\n    <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">\"Submit for form id \"</span>+ev.target.id+<span class=\"hljs-string\">\" intercepted\"</span>);\n  });\n<span class=\"hljs-comment\">// You can bind field or form event selectively</span>\n$(<span class=\"hljs-string\">\"#foo\"</span>).on(<span class=\"hljs-string\">\"invalid.zf.abide\"</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">ev,el</span>) </span>{\n  alert(<span class=\"hljs-string\">\"Input field foo is invalid\"</span>);\n});\n$(<span class=\"hljs-string\">\"#bar\"</span>).on(<span class=\"hljs-string\">\"formvalid.zf.abide\"</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">ev,frm</span>) </span>{\n  alert(<span class=\"hljs-string\">\"Form is valid, finally!\"</span>);\n  <span class=\"hljs-comment\">// do something perhaps</span>\n});</code></pre></div><h2 id=\"adding-custom-pattern-and-validator\" class=\"docs-heading\" data-magellan-target=\"adding-custom-pattern-and-validator\">Adding Custom Pattern and Validator<a class=\"docs-heading-icon\" href=\"#adding-custom-pattern-and-validator\"></a></h2><ul>\n<li>Override builtin patterns and validators before foundation is initialized</li>\n<li>Add new patterns and validators before or after foundation is initialized</li>\n</ul>\n<div class=\"docs-code\" data-docs-code><pre><code class=\"javascript\">$(<span class=\"hljs-built_in\">document</span>).foundation();\nFoundation.Abide.defaults.patterns[<span class=\"hljs-string\">'dashes_only'</span>] = <span class=\"hljs-regexp\">/^[0-9-]*$/</span>;\nFoundation.Abide.defaults.validators[<span class=\"hljs-string\">'greater_than'</span>] =\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">$el,required,parent</span>) </span>{\n  <span class=\"hljs-comment\">// parameter 1 is jQuery selector</span>\n  <span class=\"hljs-keyword\">if</span> (!required) <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\n  <span class=\"hljs-keyword\">var</span> <span class=\"hljs-keyword\">from</span> = $(<span class=\"hljs-string\">'#'</span>+$el.attr(<span class=\"hljs-string\">'data-greater-than'</span>)).val(),\n      to = $el.val();\n  <span class=\"hljs-keyword\">return</span> (<span class=\"hljs-built_in\">parseInt</span>(to) &gt; <span class=\"hljs-built_in\">parseInt</span>(<span class=\"hljs-keyword\">from</span>));\n};</code></pre></div><div class=\"docs-code\" data-docs-code><pre><code class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"phone\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"text\"</span> <span class=\"hljs-attr\">pattern</span>=<span class=\"hljs-string\">\"dashes_only\"</span> <span class=\"hljs-attr\">required</span> &gt;</span>\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"min\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"number\"</span> <span class=\"hljs-attr\">required</span> &gt;</span>\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">input</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"max\"</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">\"number\"</span> <span class=\"hljs-attr\">data-validator</span>=<span class=\"hljs-string\">\"greater_than\"</span> <span class=\"hljs-attr\">data-greater-than</span>=<span class=\"hljs-string\">\"min\"</span> <span class=\"hljs-attr\">required</span>&gt;</span></code></pre></div>",
+  "fileName": "docs/pages/abide.md",
+  "_adapterData": {
+    "sass": "scss/forms/_error.scss",
+    "js": "js/foundation.abide.js"
+  }
+}
