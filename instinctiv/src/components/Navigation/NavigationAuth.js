@@ -10,7 +10,7 @@ import * as ROUTES from '../../constants/routes';
 const NavigationAuth = () => (
   <div>
     <div div className="top-bar-right">
-    
+
     <ul className="vertical medium-horizontal menu">
       <li>
         <Link to={ROUTES.HOME} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Home</Link>
