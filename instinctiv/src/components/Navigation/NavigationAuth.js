@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
-
+import {UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem} from 'reactstrap';
 
 /* export default withAuthentication(AppS);
  */
@@ -21,6 +24,16 @@ const NavigationAuth = () => (
       <li>
         <Link to={ROUTES.ADMIN} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Admin</Link>
       </li>
+      <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Notifications
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    No Notifications
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
       <li>
         <SignOutButton />
       </li>
