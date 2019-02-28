@@ -52,7 +52,7 @@ async function getStockPrices() {
 }
 
 function viewNews(ticker) {
-
+  document.getElementById('news').innerHTML ='';
   var stock = ticker;
   var url = 'https://newsapi.org/v2/everything?q=' 
             + stock  +
@@ -63,7 +63,7 @@ function viewNews(ticker) {
     .then(data => {
       console.log(data);
 
-    for(var i=0; i < data.articles.length; i++){
+    for(var i=0; i < 12; i++){
 
       var title = data.articles[i].title;
 
