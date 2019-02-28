@@ -109,7 +109,17 @@ class HomePage extends Component {
 
   async componentDidMount() {
     viewNews();
-    await getStockPrices();
+    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
+      console.log(`Received doc snapshot: docSnapshot`, docSnapshot);
+      this.setState({
+        balance: docSnapshot.data().balance,
+        username: docSnapshot.data().username
+      });      // ...
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+    await getStockPrices();//Do this at end
+    /* 
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
         console.log(data.data());
@@ -118,7 +128,7 @@ class HomePage extends Component {
           username: data.data().username
         })
       }
-    )
+    ) */
   }
   handleSubmit = e => {
     e.preventDefault();
