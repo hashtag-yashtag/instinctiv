@@ -51,11 +51,11 @@ async function getStockPrices() {
   }
 }
 
-function viewNews() {
-
-  var url = 'https://newsapi.org/v2/top-headlines?' +
-            'country=us&category=business'+
-
+function viewNews(ticker) {
+  document.getElementById('news').innerHTML ='';
+  var stock = ticker;
+  var url = 'https://newsapi.org/v2/everything?q=' 
+            + stock  +
             '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
 
   fetch(url)
@@ -63,7 +63,7 @@ function viewNews() {
     .then(data => {
       console.log(data);
 
-    for(var i=0; i < data.articles.length; i++){
+    for(var i=0; i < 12; i++){
 
       var title = data.articles[i].title;
 
@@ -108,7 +108,7 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
-    viewNews();
+    //viewNews();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot);
       this.setState({
@@ -134,6 +134,7 @@ class HomePage extends Component {
     e.preventDefault();
     var stock = document.getElementById('stock').value;
     var tokens = document.getElementById('tokens').value;
+    viewNews(stock)
     if(this.state.balance-tokens  > 0){
       console.log(this.props.firebase.auth.O);
       var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O);
