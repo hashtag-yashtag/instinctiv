@@ -16,26 +16,39 @@ class SignInGoogleBase extends Component {
         .then(socialAuthUser => {
             // Create a user in your Firebase Realtime Database too
             return this.props.firebase.db.collection("Users").doc(socialAuthUser.user.uid)
-              .set({
-                username: socialAuthUser.user.displayName,
-                email: socialAuthUser.user.email,
-                balance: 500,
-                correctBets: 0,
-                totalBets: 0,
-                accuracy: 0.5
-                //roles: [],
-              }, {merge: true});
-          })
-        .then(socialAuthUser => {
-          this.setState({ error: null });
-          this.props.history.push(ROUTES.HOME);
-        })
-        .catch(error => {
-          this.setState({ error });
-        });
+            .onSnapshot(docSnapshot => {
+              if(docSnapshot.exists){
+                console.log('exists');
+                
+              }else{
+                this.props.firebase.db.collection("Users").doc(socialAuthUser.user.uid)
+                .set({
+                  username: socialAuthUser.user.displayName,
+                  email: socialAuthUser.user.email,
+                  balance: 500,
+                  correctBets: 0,
+                  totalBets: 0,
+                  accuracy: 0.5
+                  //roles: [],
+                }, {merge: true});
+              }
+              this.setState({
+                balance: docSnapshot.data().balance,
+                username: docSnapshot.data().username,
+                correctBets: docSnapshot.data().correctBets,
+                totalBets: docSnapshot.data().totalBets,
+                accuracy: docSnapshot.data().accuracy
+              });      // ...
+              this.setState({ error: null });
+              this.props.history.push(ROUTES.HOME);
+              // ...
+            }, error => {
+              this.setState({ error });
+            });
   
+      });
       event.preventDefault();
-    };
+  }
   
     render() {
       const { error } = this.state;
