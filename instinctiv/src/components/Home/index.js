@@ -110,7 +110,7 @@ class HomePage extends Component {
   async componentDidMount() {
     //viewNews();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
-      console.log(`Received doc snapshot: docSnapshot`, docSnapshot);
+      console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
         balance: docSnapshot.data().balance,
         username: docSnapshot.data().username
@@ -130,31 +130,7 @@ class HomePage extends Component {
       }
     ) */
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    var stock = document.getElementById('stock').value;
-    var tokens = document.getElementById('tokens').value;
-    viewNews(stock)
-    if(this.state.balance-tokens  > 0){
-      console.log(this.props.firebase.auth.O);
-      var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O);
-      userDoc.set({
-        balance: (this.state.balance-tokens)
-      }, {merge: true});
-      userDoc.collection("Bets").add({
-        stockId: stock,
-        bet: tokens
-      });
-    }
-    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
-        this.setState({data: data});
-        console.log(data.data().balance);
-        this.setState({
-          balance: data.data().balance,
-        })
-      }
-    )
-  }
+  
 
 
   render() {
@@ -175,13 +151,6 @@ class HomePage extends Component {
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
-              <form onSubmit={this.handleSubmit}>
-                <Label for="Stock">Stock</Label>
-                <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
-                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
-                <Button>Submit</Button>
-
-              </form>
                 </div>
             </div>
           </div>
