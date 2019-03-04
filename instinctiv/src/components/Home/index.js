@@ -54,7 +54,7 @@ async function getStockPrices() {
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
-  var url = 'https://newsapi.org/v2/everything?q=' 
+  var url = 'https://newsapi.org/v2/everything?q='
             + stock  +
             '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
 
@@ -119,7 +119,7 @@ class HomePage extends Component {
       console.log(`Encountered error: ${err}`);
     });
     await getStockPrices();//Do this at end
-    /* 
+    /*
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
         console.log(data.data());
@@ -156,7 +156,6 @@ class HomePage extends Component {
     )
   }
 
-
   render() {
     return (
       <AuthUserContext.Consumer>
@@ -169,7 +168,8 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
-          <input type="text" className="input" placeholder="Search..." />
+
+                    <Input type="text" name="Search" placeholder="Search..." />
 
             <div className="float-center">
               <Alert color="primary">
@@ -179,7 +179,7 @@ class HomePage extends Component {
                 <Label for="Stock">Stock</Label>
                 <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
                 <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
-                <Button>Submit</Button>
+                <Button color="primary" size="lg" block>Submit</Button>
 
               </form>
                 </div>
