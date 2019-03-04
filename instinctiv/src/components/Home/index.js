@@ -51,6 +51,7 @@ async function getStockPrices() {
   }
 }
 
+<<<<<<< HEAD
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
@@ -93,6 +94,8 @@ function viewNews(ticker) {
       }
   });
 }
+=======
+>>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
 
 
 class HomePage extends Component {
@@ -110,7 +113,7 @@ class HomePage extends Component {
   async componentDidMount() {
     //viewNews();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
-      console.log(`Received doc snapshot: docSnapshot`, docSnapshot);
+      console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
         balance: docSnapshot.data().balance,
         username: docSnapshot.data().username
@@ -130,31 +133,7 @@ class HomePage extends Component {
       }
     ) */
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    var stock = document.getElementById('stock').value;
-    var tokens = document.getElementById('tokens').value;
-    viewNews(stock)
-    if(this.state.balance-tokens  > 0){
-      console.log(this.props.firebase.auth.O);
-      var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O);
-      userDoc.set({
-        balance: (this.state.balance-tokens)
-      }, {merge: true});
-      userDoc.collection("Bets").add({
-        stockId: stock,
-        bet: tokens
-      });
-    }
-    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
-        this.setState({data: data});
-        console.log(data.data().balance);
-        this.setState({
-          balance: data.data().balance,
-        })
-      }
-    )
-  }
+  
 
   render() {
     return (
@@ -175,6 +154,7 @@ class HomePage extends Component {
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
+<<<<<<< HEAD
               <form onSubmit={this.handleSubmit}>
                 <Label for="Stock">Stock</Label>
                 <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
@@ -182,6 +162,8 @@ class HomePage extends Component {
                 <Button color="primary" size="lg" block>Submit</Button>
 
               </form>
+=======
+>>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
                 </div>
             </div>
           </div>

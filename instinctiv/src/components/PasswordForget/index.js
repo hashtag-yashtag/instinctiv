@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
 
-import { Button } from 'reactstrap';
+import { Button } from "reactstrap";
 
 const PasswordForget = () => (
   <div>
@@ -14,8 +14,8 @@ const PasswordForget = () => (
 );
 
 const INITIAL_STATE = {
-  email: '',
-  error: null,
+  email: "",
+  error: null
 };
 
 class PasswordForgetFormBase extends Component {
@@ -47,28 +47,28 @@ class PasswordForgetFormBase extends Component {
   render() {
     const { email, error } = this.state;
 
-    const isInvalid = email === '';
+    const isInvalid = email === "";
 
     return (
       <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
-      <form onSubmit={this.onSubmit}>
-        <label>Email</label>
-        <input
-          name="email"
-          value={this.state.email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-      <Button color = "primary" disabled={isInvalid} type="submit">
-          Reset My Password
-        </Button>
+        <div className="column small-centered small-11 medium-6 large-5">
+          <form onSubmit={this.onSubmit}>
+            <label>Email</label>
+            <input
+              name="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Email Address"
+            />
+            <Button color="primary" disabled={isInvalid} type="submit">
+              Reset My Password
+            </Button>
 
-        {error && <p>{error.message}</p>}
-      </form>
-    </div>
-  </div>
+            {error && <p>{error.message}</p>}
+          </form>
+        </div>
+      </div>
     );
   }
 }
