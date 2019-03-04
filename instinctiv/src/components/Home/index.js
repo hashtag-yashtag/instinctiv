@@ -51,6 +51,51 @@ async function getStockPrices() {
   }
 }
 
+<<<<<<< HEAD
+function viewNews(ticker) {
+  document.getElementById('news').innerHTML ='';
+  var stock = ticker;
+  var url = 'https://newsapi.org/v2/everything?q='
+            + stock  +
+            '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+
+    for(var i=0; i < 12; i++){
+
+      var title = data.articles[i].title;
+
+      if(title == null){
+        title ="";
+      }
+      var desc = data.articles[i].description;
+      var auth = data.articles[i].author;
+      var link = data.articles[i].url;
+      var link1 = data.articles[i].urlToImage;
+      var date = data.articles[i].publishedAt;
+/*
+      var child = document.createElement('div');
+      child.innerHTML */
+
+
+
+    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
+               //character of escape: "quotes" and '+'
+      '<img src="' + link1 +'">' +
+      '<p class="publishedAt">' + date + '</p>' +
+      '<p>' + desc + '</p>' +
+      '<p>' + auth + '</p>' +
+               //character of escape: "quotes" and '+'
+      '<a href="'+ link +'">Read more</a></div>'
+      ;
+      }
+  });
+}
+=======
+>>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
 
 
 class HomePage extends Component {
@@ -77,7 +122,7 @@ class HomePage extends Component {
       console.log(`Encountered error: ${err}`);
     });
     await getStockPrices();//Do this at end
-    /* 
+    /*
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
         console.log(data.data());
@@ -89,7 +134,6 @@ class HomePage extends Component {
     ) */
   }
   
-
 
   render() {
     return (
@@ -103,12 +147,23 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
-          <input type="text" className="input" placeholder="Search..." />
+
+                    <Input type="text" name="Search" placeholder="Search..." />
 
             <div className="float-center">
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
+<<<<<<< HEAD
+              <form onSubmit={this.handleSubmit}>
+                <Label for="Stock">Stock</Label>
+                <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
+                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
+                <Button color="primary" size="lg" block>Submit</Button>
+
+              </form>
+=======
+>>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
                 </div>
             </div>
           </div>
