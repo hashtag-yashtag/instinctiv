@@ -51,7 +51,6 @@ async function getStockPrices() {
   }
 }
 
-<<<<<<< HEAD
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
@@ -94,8 +93,6 @@ function viewNews(ticker) {
       }
   });
 }
-=======
->>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
 
 
 class HomePage extends Component {
@@ -154,16 +151,6 @@ class HomePage extends Component {
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
-<<<<<<< HEAD
-              <form onSubmit={this.handleSubmit}>
-                <Label for="Stock">Stock</Label>
-                <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
-                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
-                <Button color="primary" size="lg" block>Submit</Button>
-
-              </form>
-=======
->>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
                 </div>
             </div>
           </div>

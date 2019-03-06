@@ -50,7 +50,6 @@ class Stocks extends Component {
           <h9> number of tokens.</h9>
           <h9> </h9>
           <h4> Search Stock News</h4>
-          <button onclick="viewNews();">View News</button>
           <div id="news"></div>
           
           
@@ -60,7 +59,7 @@ class Stocks extends Component {
       </AuthUserContext.Consumer>
     );
   }
-
+ 
   handleUp(e){
     e.preventDefault();
     this.handleSubmit('Up');
@@ -115,7 +114,7 @@ class Stocks extends Component {
     return balance === 0 ? "Zero" : balance;
   }
 }
-
+viewNews();
 function viewNews() {
   document.getElementById('news').innerHTML ='';
   var stock = "Microsoft";
