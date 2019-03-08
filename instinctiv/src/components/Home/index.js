@@ -27,10 +27,10 @@ var alphaKey = '2U48DC45SZ4PJT3U'
 async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
-    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
+    // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
 
     //Comment out for dummy values
-    //var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
+    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
 
     stock.price = await fetch(alphaURL).then(
       response => response.json()).then(
@@ -50,53 +50,6 @@ async function getStockPrices() {
     console.log(stocksList);
   }
 }
-
-<<<<<<< HEAD
-function viewNews(ticker) {
-  document.getElementById('news').innerHTML ='';
-  var stock = ticker;
-  var url = 'https://newsapi.org/v2/everything?q='
-            + stock  +
-            '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-
-    for(var i=0; i < 12; i++){
-
-      var title = data.articles[i].title;
-
-      if(title == null){
-        title ="";
-      }
-      var desc = data.articles[i].description;
-      var auth = data.articles[i].author;
-      var link = data.articles[i].url;
-      var link1 = data.articles[i].urlToImage;
-      var date = data.articles[i].publishedAt;
-/*
-      var child = document.createElement('div');
-      child.innerHTML */
-
-
-
-    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
-               //character of escape: "quotes" and '+'
-      '<img src="' + link1 +'">' +
-      '<p class="publishedAt">' + date + '</p>' +
-      '<p>' + desc + '</p>' +
-      '<p>' + auth + '</p>' +
-               //character of escape: "quotes" and '+'
-      '<a href="'+ link +'">Read more</a></div>'
-      ;
-      }
-  });
-}
-=======
->>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
-
 
 class HomePage extends Component {
   constructor(){
@@ -154,16 +107,6 @@ class HomePage extends Component {
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
-<<<<<<< HEAD
-              <form onSubmit={this.handleSubmit}>
-                <Label for="Stock">Stock</Label>
-                <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
-                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
-                <Button color="primary" size="lg" block>Submit</Button>
-
-              </form>
-=======
->>>>>>> 1f3598ffa1adcdaf94ac0db5ec057748790becd5
                 </div>
             </div>
           </div>
@@ -181,24 +124,24 @@ class HomePage extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{stocksList[0].ticker}</td>
-                    <td>{stocksList[0].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[1].ticker}</td>
-                    <td>{stocksList[1].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[2].ticker}</td>
-                    <td>{stocksList[2].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[3].ticker}</td>
-                    <td>{stocksList[3].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[4].ticker}</td>
-                    <td>{stocksList[4].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                 </tbody>
               </Table>
@@ -239,7 +182,7 @@ class HomePage extends Component {
             </div>
             <div className="stock-chart">
               <TradingViewWidget
-                symbol="NASDAQ:AAPL"
+                symbol="AMZN"
                 theme={Themes.LIGHT}
                 locale="en"
               />
