@@ -57,7 +57,7 @@ class Stocks extends Component {
           
           <input type="text" id="compName" placeholder="Company Name"></input>
           
-          <button onClick="viewNews()">Search</button>
+          <button onClick={this.viewNews}>Search</button>
           <div id="news"></div>
           
           </div>
@@ -127,7 +127,7 @@ class Stocks extends Component {
 
   viewNews() {
      //document.getElementById('news').innerHTML ='No News';
-     var stock = "Apple"
+     var stock = document.getElementById("compName").value;
      var url = 'https://newsapi.org/v2/everything?q='
                + stock  +
                '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
