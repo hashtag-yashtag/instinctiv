@@ -53,7 +53,6 @@ class Stocks extends Component {
           <h9> number of tokens.</h9>
           <h9> </h9>
           <h4> Search Stock News</h4>
-          <button onclick="viewNews();">View News</button>
           <div id="news"></div>
           </div>
         </div>
@@ -65,7 +64,7 @@ class Stocks extends Component {
       </AuthUserContext.Consumer>
     );
   }
-
+ 
   handleUp(e){
     e.preventDefault();
     this.handleSubmit('Up');
@@ -120,7 +119,7 @@ class Stocks extends Component {
     return balance === 0 ? "Zero" : balance;
   }
 }
-
+viewNews();
 function viewNews() {
   document.getElementById('news').innerHTML ='';
   var stock = "Microsoft";
@@ -151,7 +150,7 @@ function viewNews() {
 
 
 
-    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
+    /* document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
                //character of escape: "quotes" and '+'
       '<img src="' + link1 +'">' +
       '<p class="publishedAt">' + date + '</p>' +
@@ -160,8 +159,8 @@ function viewNews() {
                //character of escape: "quotes" and '+'
       '<a href="'+ link +'">Read more</a></div>'
       ;
-      }
-  });
+      } 
+  });*/
 }
 
 const condition = authUser => !!authUser;

@@ -27,10 +27,10 @@ var alphaKey = '2U48DC45SZ4PJT3U'
 async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
-    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
+    // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
 
     //Comment out for dummy values
-    //var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
+    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
 
     stock.price = await fetch(alphaURL).then(
       response => response.json()).then(
@@ -50,8 +50,6 @@ async function getStockPrices() {
     console.log(stocksList);
   }
 }
-
-
 
 class HomePage extends Component {
   constructor(){
@@ -77,7 +75,7 @@ class HomePage extends Component {
       console.log(`Encountered error: ${err}`);
     });
     await getStockPrices();//Do this at end
-    /* 
+    /*
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
         console.log(data.data());
@@ -89,7 +87,6 @@ class HomePage extends Component {
     ) */
   }
   
-
 
   render() {
     return (
@@ -103,7 +100,8 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
-          <input type="text" className="input" placeholder="Search..." />
+
+                    <Input type="text" name="Search" placeholder="Search..." />
 
             <div className="float-center">
               <Alert color="primary">
@@ -126,24 +124,24 @@ class HomePage extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{stocksList[0].ticker}</td>
-                    <td>{stocksList[0].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[1].ticker}</td>
-                    <td>{stocksList[1].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[2].ticker}</td>
-                    <td>{stocksList[2].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[3].ticker}</td>
-                    <td>{stocksList[3].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[4].ticker}</td>
-                    <td>{stocksList[4].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                 </tbody>
               </Table>
@@ -184,7 +182,7 @@ class HomePage extends Component {
             </div>
             <div className="stock-chart">
               <TradingViewWidget
-                symbol="NASDAQ:AAPL"
+                symbol="AMZN"
                 theme={Themes.LIGHT}
                 locale="en"
               />
