@@ -145,7 +145,7 @@ function viewNews() {
 
 
 
-    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
+    /* document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
                //character of escape: "quotes" and '+'
       '<img src="' + link1 +'">' +
       '<p class="publishedAt">' + date + '</p>' +
@@ -154,8 +154,8 @@ function viewNews() {
                //character of escape: "quotes" and '+'
       '<a href="'+ link +'">Read more</a></div>'
       ;
-      }
-  });
+      } 
+  });*/
 }
 
 const condition = authUser => !!authUser;
