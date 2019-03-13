@@ -144,13 +144,11 @@ function viewNews() {
       var link = data.articles[i].url;
       var link1 = data.articles[i].urlToImage;
       var date = data.articles[i].publishedAt;
-/*
-      var child = document.createElement('div');
-      child.innerHTML */
 
 
 
-    /* document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
+
+    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
                //character of escape: "quotes" and '+'
       '<img src="' + link1 +'">' +
       '<p class="publishedAt">' + date + '</p>' +
@@ -159,7 +157,7 @@ function viewNews() {
                //character of escape: "quotes" and '+'
       '<a href="'+ link +'">Read more</a></div>'
       ;
-      } */
+      
   }
 });
 
