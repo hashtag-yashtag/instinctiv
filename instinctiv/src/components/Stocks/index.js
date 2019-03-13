@@ -119,7 +119,7 @@ class Stocks extends Component {
     return balance === 0 ? "Zero" : balance;
   }
 }
-viewNews();
+//viewNews();
 function viewNews() {
   document.getElementById('news').innerHTML ='';
   var stock = "Microsoft";
@@ -159,10 +159,11 @@ function viewNews() {
                //character of escape: "quotes" and '+'
       '<a href="'+ link +'">Read more</a></div>'
       ;
-      } 
-  });*/
-}
+      } */
+  }
+});
 
+}
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(Stocks);
