@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input } from 'reactstrap';
+import { Input, Button } from 'reactstrap';
 
 
 class Stocks extends Component {
@@ -33,16 +33,19 @@ class Stocks extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
+          <div className="row">
+              <div className="column small-centered small-11 medium-6 large-5">
           <h1>Stocks</h1>
-          <textarea>Search for stocks here</textarea>
+          <Input>Search Stocks</Input>
           <form>
             <label>
               Tokens to Bet:
               <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
-              <button className="btn btn-secondary btn-sm" id="up" onClick={this.handleUp.bind(this)}>up</button>
-              <button className="btn btn-secondary btn-sm" id="down" onClick={this.handleDown.bind(this)}>dwn</button>
+              <Button color = "success" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
+              <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
             </label>
           </form>
+
           <h3>You currently have</h3>
           <span className={this.getBadgeClasses()}>
             {this.formatnumberOfTokensLeft()}
@@ -52,10 +55,12 @@ class Stocks extends Component {
           <h4> Search Stock News</h4>
           <button onclick="viewNews();">View News</button>
           <div id="news"></div>
-          
-          
+          </div>
         </div>
-        
+
+
+        </div>
+
       )}
       </AuthUserContext.Consumer>
     );
@@ -74,7 +79,7 @@ class Stocks extends Component {
   }
 
   handleSubmit(dir) {
-    
+
     //e.preventDefault();
     var stock = 'temp';//document.getElementById('stock').value;
     var tokens = document.getElementById('tokens').value;
@@ -102,7 +107,7 @@ class Stocks extends Component {
     )
   }
 
-  
+
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
@@ -119,7 +124,7 @@ class Stocks extends Component {
 function viewNews() {
   document.getElementById('news').innerHTML ='';
   var stock = "Microsoft";
-  var url = 'https://newsapi.org/v2/everything?q=' 
+  var url = 'https://newsapi.org/v2/everything?q='
             + stock  +
             '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
 
