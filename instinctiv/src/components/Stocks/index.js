@@ -58,11 +58,10 @@ class Stocks extends Component {
           <input type="text" id="compName" placeholder="Company Name"></input>
           
           <button onClick={this.viewNews}>Search</button>
-          <div id="news"></div>
-          
           </div>
         </div>
-
+        <br></br>
+        <div id="news"></div>
 
         </div>
 
