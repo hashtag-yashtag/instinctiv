@@ -126,7 +126,7 @@ class Stocks extends Component {
   }
 
   viewNews() {
-     //document.getElementById('news').innerHTML ='No News';
+     document.getElementById('news').innerHTML ='';
      var stock = document.getElementById("compName").value;
      var url = 'https://newsapi.org/v2/everything?q='
                + stock  +
