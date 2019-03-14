@@ -11,7 +11,7 @@ import AccountPage from "../Account";
 import Notifications from "../Notifications";
 import Stocks from "../Stocks";
 
-<<<<<<< HEAD
+
 import { withAuthentication } from '../Session';
 
 
@@ -22,9 +22,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'foundation-sites/dist/css/foundation.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-=======
+
 import { withAuthentication } from "../Session";
->>>>>>> 6ec8d16f83329e64a321fffc95a7f3e7833a7873
+
 
 import AdminPage from "../Admin";
 
@@ -35,7 +35,7 @@ import "foundation-sites/dist/foundation.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => (
-<<<<<<< HEAD
+
     <Router>
       <div>
         <Navigation />
@@ -52,7 +52,6 @@ const App = () => (
         <Route path={ROUTES.NOTIFICATIONS} component={Notifications} />
       </div>
     </Router>
-=======
   <Router>
     <div>
       <Navigation />
@@ -70,7 +69,7 @@ const App = () => (
       <Route path={ROUTES.STOCKS} component={Stocks} />
     </div>
   </Router>
->>>>>>> 6ec8d16f83329e64a321fffc95a7f3e7833a7873
+
 );
 
 export default withAuthentication(App);

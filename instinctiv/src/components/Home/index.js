@@ -59,12 +59,15 @@ function searchStock(ticker){
             '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   fetch(url)
     .then(response => response.json())
     .then(data => {
       console.log(data);
 
 }*/
+=======
+>>>>>>> 9a73d4f7dc7cc834bf2bfe7a9fc22acdeff0ce4e
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
@@ -144,7 +147,7 @@ class HomePage extends Component {
       }
     ) */
   }
-  
+
 
 
   render() {
@@ -176,6 +179,18 @@ class HomePage extends Component {
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
+<<<<<<< HEAD
+=======
+
+              <form onSubmit={this.handleSubmit}>
+                <Label for="Stock">Stock</Label>
+                <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
+                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
+                <Button color="primary" size="lg" block>Submit</Button>
+
+              </form>
+
+>>>>>>> 9a73d4f7dc7cc834bf2bfe7a9fc22acdeff0ce4e
                 </div>
             </div>
           </div>
