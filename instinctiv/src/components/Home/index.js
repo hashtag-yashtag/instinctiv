@@ -51,7 +51,6 @@ async function getStockPrices() {
   }
 }
 
-<<<<<<< HEAD
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
@@ -95,9 +94,6 @@ function viewNews(ticker) {
   });
 }
 
-
-=======
->>>>>>> ecd147ceb9592af81f0f4025956c844928044f0c
 class HomePage extends Component {
   constructor(){
     super();
@@ -153,7 +149,7 @@ class HomePage extends Component {
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
-<<<<<<< HEAD
+
 
               <form onSubmit={this.handleSubmit}>
                 <Label for="Stock">Stock</Label>
@@ -162,9 +158,6 @@ class HomePage extends Component {
                 <Button color="primary" size="lg" block>Submit</Button>
 
               </form>
-
-=======
->>>>>>> ecd147ceb9592af81f0f4025956c844928044f0c
                 </div>
             </div>
           </div>
