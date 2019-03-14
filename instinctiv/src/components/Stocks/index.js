@@ -54,10 +54,10 @@ class Stocks extends Component {
           <h9> number of tokens.</h9>
           <h9> </h9>
           <h4> Search Stock News</h4>
-          
+
           <input type="text" id="compName" placeholder="Company Name"></input>
-          
-          <button onClick={this.viewNews}>Search</button>
+
+          <Button outline color="primary" onClick={this.viewNews} block>Search</Button>
           </div>
         </div>
         <br></br>
@@ -69,7 +69,7 @@ class Stocks extends Component {
       </AuthUserContext.Consumer>
     );
   }
- 
+
   handleUp(e){
     e.preventDefault();
     this.handleSubmit('Up');
@@ -130,16 +130,16 @@ class Stocks extends Component {
      var url = 'https://newsapi.org/v2/everything?q='
                + stock  +
                '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
-   
+
      fetch(url)
        .then(response => response.json())
        .then(data => {
          console.log(data);
-   
+
        for(var i=0; i < 12; i++){
-   
+
          var title = data.articles[i].title;
-   
+
          if(title == null){
            title ="";
          }
@@ -148,10 +148,10 @@ class Stocks extends Component {
          var link = data.articles[i].url;
          var link1 = data.articles[i].urlToImage;
          var date = data.articles[i].publishedAt;
-   
-   
-   
-   
+
+
+
+
        document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
                   //character of escape: "quotes" and '+'
          '<img src="' + link1 +'">' +
@@ -161,10 +161,10 @@ class Stocks extends Component {
                   //character of escape: "quotes" and '+'
          '<a href="'+ link +'">Read more</a></div>'
          ;
-         
+
      }
      });
-   
+
    }
 
 }
