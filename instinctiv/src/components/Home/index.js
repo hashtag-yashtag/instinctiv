@@ -4,7 +4,7 @@ import { AuthUserContext, withAuthorization } from '../Session';
 import { Alert, Label, Input } from 'reactstrap';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import { Table } from 'reactstrap';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import {Button} from 'reactstrap';
 import './home.css';
 import { render } from 'react-dom'
 

@@ -4,13 +4,12 @@ import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
 
 import * as ROUTES from '../../constants/routes';
-import { Button } from 'reactstrap';
+import {Button, Form, Input} from 'reactstrap';
 
 const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
     <SignUpForm />
-    <PasswordForgetForm />
   </div>
 );
 
@@ -79,29 +78,29 @@ class SignUpFormBase extends Component {
     return (
       <div className="row">
           <div className="column small-centered small-11 medium-6 large-5">
-      <form onSubmit={this.onSubmit}>
-        <input
+      <Form onSubmit={this.onSubmit}>
+        <Input
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
           placeholder="Full Name"
         />
-        <input
+      <Input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <input
+      <Input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
         />
-        <input
+      <Input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
@@ -112,7 +111,7 @@ class SignUpFormBase extends Component {
       <Button color ="primary" disabled={isInvalid} type="submit">Sign Up</Button>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     </div>
   </div>
     );
