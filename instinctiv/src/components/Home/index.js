@@ -27,10 +27,10 @@ var alphaKey = '2U48DC45SZ4PJT3U'
 async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
-    // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
+    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
 
     //Comment out for dummy values
-    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
+    //var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
 
     stock.price = await fetch(alphaURL).then(
       response => response.json()).then(
@@ -50,30 +50,14 @@ async function getStockPrices() {
     console.log(stocksList);
   }
 }
-/*
-function searchStock(ticker){
-  document.getElementById('search').innerHTML ='';
-  var stock = ticker;
-  var url = 'https://newsapi.org/v2/everything?q='
-            + stock  +
-            '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-
-}*/
-=======
->>>>>>> 9a73d4f7dc7cc834bf2bfe7a9fc22acdeff0ce4e
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
   var url = 'https://newsapi.org/v2/everything?q='
             + stock  +
             '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
+
   fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -111,8 +95,6 @@ function viewNews(ticker) {
 }
 
 
-=======
->>>>>>> 6ec8d16f83329e64a321fffc95a7f3e7833a7873
 class HomePage extends Component {
   constructor(){
     super();
@@ -126,6 +108,7 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
+    //viewNews();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
@@ -149,7 +132,6 @@ class HomePage extends Component {
   }
 
 
-
   render() {
     return (
       <AuthUserContext.Consumer>
@@ -163,24 +145,12 @@ class HomePage extends Component {
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
 
-<<<<<<< HEAD
-                <form onSubmit={this.handleSubmit}>
-
-                  <Input type="text" name="Search" id="stock" placeholder="Search ..." />
-
-                  <Button>Submit</Button>
-
-                </form>
-=======
                     <Input type="text" name="Search" placeholder="Search..." />
->>>>>>> 6ec8d16f83329e64a321fffc95a7f3e7833a7873
 
             <div className="float-center">
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
-<<<<<<< HEAD
-=======
 
               <form onSubmit={this.handleSubmit}>
                 <Label for="Stock">Stock</Label>
@@ -190,7 +160,6 @@ class HomePage extends Component {
 
               </form>
 
->>>>>>> 9a73d4f7dc7cc834bf2bfe7a9fc22acdeff0ce4e
                 </div>
             </div>
           </div>
@@ -208,24 +177,24 @@ class HomePage extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>stock</td>
-                    <td>price</td>
+                    <td>{stocksList[0].ticker}</td>
+                    <td>{stocksList[0].price}</td>
                   </tr>
                   <tr>
-                    <td>stock</td>
-                    <td>price</td>
+                    <td>{stocksList[1].ticker}</td>
+                    <td>{stocksList[1].price}</td>
                   </tr>
                   <tr>
-                    <td>stock</td>
-                    <td>price</td>
+                    <td>{stocksList[2].ticker}</td>
+                    <td>{stocksList[2].price}</td>
                   </tr>
                   <tr>
-                    <td>stock</td>
-                    <td>price</td>
+                    <td>{stocksList[3].ticker}</td>
+                    <td>{stocksList[3].price}</td>
                   </tr>
                   <tr>
-                    <td>stock</td>
-                    <td>price</td>
+                    <td>{stocksList[4].ticker}</td>
+                    <td>{stocksList[4].price}</td>
                   </tr>
                 </tbody>
               </Table>
@@ -266,7 +235,7 @@ class HomePage extends Component {
             </div>
             <div className="stock-chart">
               <TradingViewWidget
-                symbol="AMZN"
+                symbol="NASDAQ:AAPL"
                 theme={Themes.LIGHT}
                 locale="en"
               />

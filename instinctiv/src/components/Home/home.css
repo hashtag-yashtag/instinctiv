@@ -3,13 +3,18 @@
   color: green;
 }
 
-
+.item {
+  width: 400px;
+  color: #333;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(100, 100, 100, 0.5);
+}
 
 .header{
   font-size: 20px;
   font-weight: bold;
 }
-<<<<<<< HEAD
 
 .item img {
   border-radius: 5px;
@@ -76,5 +81,3 @@
 .item:nth-child(7n+12) {
   background: #8ab2f6;
 }
-=======
->>>>>>> 6ec8d16f83329e64a321fffc95a7f3e7833a7873
