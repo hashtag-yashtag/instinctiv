@@ -4,7 +4,7 @@ import { AuthUserContext, withAuthorization } from '../Session';
 import { Alert, Label, Input } from 'reactstrap';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import { Table } from 'reactstrap';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import {Button} from 'reactstrap';
 import './home.css';
 import { render } from 'react-dom'
 
@@ -27,10 +27,10 @@ var alphaKey = '2U48DC45SZ4PJT3U'
 async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
-    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
+    // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
 
     //Comment out for dummy values
-    //var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
+    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
 
     stock.price = await fetch(alphaURL).then(
       response => response.json()).then(
@@ -94,7 +94,6 @@ function viewNews(ticker) {
   });
 }
 
-
 class HomePage extends Component {
   constructor(){
     super();
@@ -108,7 +107,6 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
-    //viewNews();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
@@ -152,6 +150,7 @@ class HomePage extends Component {
                 Token Balance: {this.state.balance}
               </Alert>
 
+
               <form onSubmit={this.handleSubmit}>
                 <Label for="Stock">Stock</Label>
                 <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
@@ -159,7 +158,6 @@ class HomePage extends Component {
                 <Button color="primary" size="lg" block>Submit</Button>
 
               </form>
-
                 </div>
             </div>
           </div>
@@ -177,24 +175,24 @@ class HomePage extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{stocksList[0].ticker}</td>
-                    <td>{stocksList[0].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[1].ticker}</td>
-                    <td>{stocksList[1].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[2].ticker}</td>
-                    <td>{stocksList[2].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[3].ticker}</td>
-                    <td>{stocksList[3].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[4].ticker}</td>
-                    <td>{stocksList[4].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                 </tbody>
               </Table>
@@ -235,7 +233,7 @@ class HomePage extends Component {
             </div>
             <div className="stock-chart">
               <TradingViewWidget
-                symbol="NASDAQ:AAPL"
+                symbol="AMZN"
                 theme={Themes.LIGHT}
                 locale="en"
               />

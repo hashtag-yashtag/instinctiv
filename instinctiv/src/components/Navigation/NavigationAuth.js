@@ -25,7 +25,7 @@ this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSna
 if(balance < 100){
   var out = "You are low on tokens!";
 }else{
-  var out ="";
+  var out ="No new notifications";
 }
 
 
