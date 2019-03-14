@@ -70,7 +70,6 @@ function viewNews(ticker) {
   var url = 'https://newsapi.org/v2/everything?q='
             + stock  +
             '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
-
   fetch(url)
     .then(response => response.json())
     .then(data => {
