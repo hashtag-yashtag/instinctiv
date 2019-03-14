@@ -8,8 +8,10 @@ export default class Example extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false
-    };
+    }
   }
+
+  
 
   toggle() {
     this.setState(prevState => ({

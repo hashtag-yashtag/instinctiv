@@ -27,10 +27,10 @@ var alphaKey = '2U48DC45SZ4PJT3U'
 async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
-    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
+    // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
 
     //Comment out for dummy values
-    //var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
+    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
 
     stock.price = await fetch(alphaURL).then(
       response => response.json()).then(
@@ -58,6 +58,7 @@ function searchStock(ticker){
             + stock  +
             '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
 
+<<<<<<< HEAD
   fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -107,6 +108,8 @@ function viewNews(ticker) {
 }
 
 
+=======
+>>>>>>> 6ec8d16f83329e64a321fffc95a7f3e7833a7873
 class HomePage extends Component {
   constructor(){
     super();
@@ -120,9 +123,8 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
-    //viewNews();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
-      console.log(`Received doc snapshot: docSnapshot`, docSnapshot);
+      console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
         balance: docSnapshot.data().balance,
         username: docSnapshot.data().username
@@ -142,32 +144,7 @@ class HomePage extends Component {
       }
     ) */
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    var stock = document.getElementById('stock').value;
-    var tokens = document.getElementById('tokens').value;
-    viewNews(stock)
-    if(this.state.balance-tokens  > 0){
-      console.log(this.props.firebase.auth.O);
-      var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O);
-      userDoc.set({
-        balance: (this.state.balance-tokens)
-      }, {merge: true});
-      userDoc.collection("Bets").add({
-        stockId: stock,
-        bet: tokens
-      });
-    }
-    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
-        this.setState({data: data});
-        console.log(data.data().balance);
-        this.setState({
-          balance: data.data().balance,
-        })
-      }
-    )
-  }
-
+  
 
 
   render() {
@@ -183,6 +160,7 @@ class HomePage extends Component {
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
 
+<<<<<<< HEAD
                 <form onSubmit={this.handleSubmit}>
 
                   <Input type="text" name="Search" id="stock" placeholder="Search ..." />
@@ -190,18 +168,14 @@ class HomePage extends Component {
                   <Button>Submit</Button>
 
                 </form>
+=======
+                    <Input type="text" name="Search" placeholder="Search..." />
+>>>>>>> 6ec8d16f83329e64a321fffc95a7f3e7833a7873
 
             <div className="float-center">
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
-              <form onSubmit={this.handleSubmit}>
-                <Label for="Stock">Stock</Label>
-                <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
-                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
-                <Button>Submit</Button>
-
-              </form>
                 </div>
             </div>
           </div>
@@ -219,24 +193,24 @@ class HomePage extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{stocksList[0].ticker}</td>
-                    <td>{stocksList[0].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[1].ticker}</td>
-                    <td>{stocksList[1].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[2].ticker}</td>
-                    <td>{stocksList[2].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[3].ticker}</td>
-                    <td>{stocksList[3].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                   <tr>
-                    <td>{stocksList[4].ticker}</td>
-                    <td>{stocksList[4].price}</td>
+                    <td>stock</td>
+                    <td>price</td>
                   </tr>
                 </tbody>
               </Table>
@@ -277,7 +251,7 @@ class HomePage extends Component {
             </div>
             <div className="stock-chart">
               <TradingViewWidget
-                symbol="NASDAQ:AAPL"
+                symbol="AMZN"
                 theme={Themes.LIGHT}
                 locale="en"
               />
