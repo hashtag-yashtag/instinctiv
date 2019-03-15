@@ -79,6 +79,8 @@ class HomePage extends Component {
       console.log(`Encountered error: ${err}`);
     });
     
+    //NEEDS FIX HERE
+    //ADD EACH TICKER AND NAME TO STOCKLIST[]
     this.props.firebase.db.collection("Stocks").doc().onSnapshot(docSnapshot => {
       console.log("Snapshot Loaded")
       console.log(docSnapshot.data());
