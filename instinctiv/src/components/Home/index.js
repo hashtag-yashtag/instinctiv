@@ -7,12 +7,16 @@ import { Table } from 'reactstrap';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import './home.css';
 import { render } from 'react-dom'
+import TextInput from 'react-autocomplete-input'
+import 'react-autocomplete-input/dist/bundle.css'
 
 const SYMBOL = '01. symbol'
 const OPEN_PRICE = '02. open'
 const HIGH_PRICE = '03. high'
 const LOW_PRICE = '04. low'
 const CURRENT_PRICE = '05. price'
+
+var stockSearchList = []
 
 var stocksList = [
   {ticker:'AAPL', price: ''},
@@ -52,6 +56,7 @@ async function getStockPrices() {
 }
 
 class HomePage extends Component {
+  
   constructor(){
     super();
     this.state = {
@@ -73,7 +78,12 @@ class HomePage extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
-    await getStockPrices();//Do this at end
+    
+    this.props.firebase.db.collection("Stocks").doc().onSnapshot(docSnapshot => {
+      console.log("Snapshot Loaded")
+      console.log(docSnapshot.data());
+    })
+    
     /*
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
@@ -85,7 +95,7 @@ class HomePage extends Component {
       }
     ) */
   }
-  
+
 
   render() {
     return (
@@ -99,8 +109,7 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
-
-                    <Input type="text" name="Search" placeholder="Search..." />
+                <TextInput options={stockSearchList} trigger='' />
 
             <div className="float-center">
               <Alert color="primary">
