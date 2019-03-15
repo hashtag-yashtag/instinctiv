@@ -43,7 +43,7 @@ class PasswordChangeForm extends Component {
 
     return (
       <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
+          <div className="column small-7 medium-4 large-3">
       <form onSubmit={this.onSubmit}>
         <label>Enter Password</label>
         <input

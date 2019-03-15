@@ -46,7 +46,7 @@ const NavigationAuth = () => (
             Admin
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             to={ROUTES.STOCKS}
             className="menu-text1"
@@ -55,7 +55,7 @@ const NavigationAuth = () => (
           >
             Stocks
           </Link>
-        </li>
+        </li> */}
         <UncontrolledDropdown nav inNavbar>
           <DropdownToggle nav caret>
             Notifications
