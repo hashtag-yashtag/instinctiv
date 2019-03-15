@@ -64,7 +64,6 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
-    //viewNews();
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({

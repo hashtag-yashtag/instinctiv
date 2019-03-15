@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../SignOut";
+import { AuthUserContext, withAuthorization } from '../Session';
+
 import * as ROUTES from "../../constants/routes";
 import {
   UncontrolledDropdown,
@@ -8,6 +10,24 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+
+var balance = 496;
+
+/*
+this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
+  console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
+  balance = docSnapshot.data().balance;    // ...
+}, err => {
+  console.log(`Encountered error: ${err}`);
+});
+*/
+
+if(balance < 100){
+  var out = "You are low on tokens!";
+}else{
+  var out ="";
+}
+
 
 /* export default withAuthentication(AppS);
  */
@@ -61,7 +81,7 @@ const NavigationAuth = () => (
             Notifications
           </DropdownToggle>
           <DropdownMenu right>
-            <DropdownItem>No Notifications</DropdownItem>
+            <DropdownItem>{out}</DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
         <li>
