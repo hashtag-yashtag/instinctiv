@@ -19,17 +19,6 @@ firebase.initializeApp(config);
 
 var db = firebase.firestore();
 
-db.collection('stocks').doc('test').set({
-    test1: "tt",
-    test2: "t2"
-}).then(
-    console.log("written")
-).catch(
-    function(error) {
-        console.log("ERROR "+ error);
-    }
-)
-
 const HIGH_KEY = '2. high';
 const LOW_KEY = '3. low';
 

@@ -9,6 +9,9 @@ import './home.css';
 import { render } from 'react-dom'
 import TextInput from 'react-autocomplete-input'
 import 'react-autocomplete-input/dist/bundle.css'
+import Autocomplete from "./Autocomplete"
+
+import * as firebase from 'firebase'
 
 const SYMBOL = '01. symbol'
 const OPEN_PRICE = '02. open'
@@ -69,6 +72,7 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
+
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
@@ -78,13 +82,17 @@ class HomePage extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
-    
+
+    await this.props.firebase.db.collection("Stocks").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          stockSearchList.push(doc.data()['ticker'] + ": " + doc.data()['name'])
+      });
+    });
+
+    console.log(stockSearchList);
     //NEEDS FIX HERE
     //ADD EACH TICKER AND NAME TO STOCKLIST[]
-    this.props.firebase.db.collection("Stocks").doc().onSnapshot(docSnapshot => {
-      console.log("Snapshot Loaded")
-      console.log(docSnapshot.data());
-    })
     
     /*
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
@@ -111,9 +119,9 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
-                <TextInput options={stockSearchList} trigger='' />
+                  <Autocomplete suggestions={stockSearchList} />
 
-            <div className="float-center">
+              <div className="float-center">
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
