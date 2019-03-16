@@ -58,10 +58,11 @@ async function getPrices() {
         console.log(stock);
         await securityAPI.getSecurityRealtimePrice(stock, opts).then(data => (
             db.collection('Stocks').doc(stock).set({
-                price: data['last_price']
+                price: data['last_price'],
+                time_updated: Date.getTime()
             }, { merge: true })
         ), 
-        (error) => console.error(error));
+        (error) => { throw new Error(error)})
     }
 }
 
@@ -79,7 +80,7 @@ async function makeCalls(stocks) {
                 price: data['last_price']
             })
         ), 
-        (error) => console.error(error));
+        (error) => { throw new Error(error) })
     }
 }
 
@@ -90,7 +91,7 @@ async function throttleCalls(tc_idx) {
         tc_idx = (tc_idx > stockTickers.length) ? 0 : tc_idx;
         return tc_idx;
     } catch(e) {
-        console.log(e)
+        throw new Error(e);
     }
 }
 
