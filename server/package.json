@@ -9,6 +9,7 @@
   "author": "instinctiv",
   "license": "ISC",
   "dependencies": {
+    "@grpc/proto-loader": "^0.4.0",
     "alphavantage": "^1.2.0",
     "firebase": "^5.9.0",
     "firebase-admin": "^7.1.0",

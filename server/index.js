@@ -22,33 +22,38 @@ var db = firebase.firestore();
 const HIGH_KEY = '2. high';
 const LOW_KEY = '3. low';
 
-var stockNames = []
-var stockTickers = []
+const stockNames = []
+const stockTickers = []
 
-companyAPI.getAllCompanies({'pageSize': 200}).then(function (data) {
-    console.log('API called successfully. Returned data: ');
-    console.log(util.inspect(data, false, null, true));
-    var companyData = data;
-    //console.log(typeof(companyData))
-    for (var d of companyData['companies']) {
-        stockNames.push(d['name']);
-        stockTickers.push(d['ticker']);
-        db.collection('Stocks').doc(d['ticker']).set({
-            ticker: d['ticker'],
-            name: d['name']
-        }).then(
-            console.log("written")
-        ).catch(
-            function(error) {
-                console.log("ERROR "+ error);
-            }
-        )
+async function getCompanies() {
+    await db.collection('Stocks').get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            stockTickers.push(doc.data()['ticker'])
+            stockNames.push(doc.data()['name'])
+        });
+    });
+}
+
+async function getPrices() {
+    // populate stock names and tickers
+    await getCompanies();
+    let identifier;
+    for (let stock of stockTickers) {
+        await companyAPI.getCompany(stock).then(data => (
+            db.collection('Stocks').doc(stock).set({
+                description: data['short_description'],
+                stockExchange: data['stock_exchange'],
+                companyURL: data['company_url'],
+                ceo: data['ceo'],
+                address: data['business_address'],
+                employees: data['employees']
+            }, { merge: true })
+        ), 
+        (error) => console.error(error));          
     }
-}, function (error) {
-    console.error(error);
-});
+}
 
-
+getPrices();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
