@@ -42,14 +42,12 @@ async function getStockPrices() {
     stock.price = await fetch(alphaURL).then(
       response => response.json()).then(
         data => {
-          console.log(data)
           return data['Global Quote'][CURRENT_PRICE];
         }
     )
     stock.ticker = await fetch(alphaURL).then(
       response => response.json()).then(
         data => {
-          console.log(data)
           return data['Global Quote'][SYMBOL];
         }
     )
@@ -89,21 +87,6 @@ class HomePage extends Component {
           stockSearchList.push(doc.data()['ticker'] + ": " + doc.data()['name'])
       });
     });
-
-    console.log(stockSearchList);
-    //NEEDS FIX HERE
-    //ADD EACH TICKER AND NAME TO STOCKLIST[]
-    
-    /*
-    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
-        this.setState({data: data});
-        console.log(data.data());
-        this.setState({
-          balance: data.data().balance,
-          username: data.data().username
-        })
-      }
-    ) */
   }
 
 

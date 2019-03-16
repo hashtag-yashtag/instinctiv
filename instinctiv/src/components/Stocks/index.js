@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
 import { Input, Button } from 'reactstrap';
 import './stocks.css';
-
+import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 
 class Stocks extends Component {
 
@@ -59,6 +59,14 @@ class Stocks extends Component {
 
           <Button outline color="primary" onClick={this.viewNews} block>Search</Button>
           </div>
+          <div className="float-center">
+              <TradingViewWidget
+                symbol="AAPL"
+                theme={Themes.LIGHT}
+                locale="en"
+              />
+
+            </div>
         </div>
         <br></br>
         <div id="news"></div>
@@ -85,7 +93,7 @@ class Stocks extends Component {
   handleSubmit(dir) {
 
     //e.preventDefault();
-    var stock = 'temp';//document.getElementById('stock').value;
+    var stock = document.getElementById('stock').value;
     var tokens = document.getElementById('tokens').value;
     if(tokens !=  "" && this.state.balance-tokens  >= 0){
       console.log(this.props.firebase.auth.O);
