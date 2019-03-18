@@ -51,6 +51,8 @@ async function getStockPrices() {
   }
 }
 
+
+
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
@@ -129,16 +131,21 @@ class HomePage extends Component {
     ) */
   }
 
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
 
   render() {
     return (
       <AuthUserContext.Consumer>
       {authUser => (
       <div>
-
+        <body id="body" class="light-mode">
         <div className="home-page">
           <h1>Welcome to Instinctiv, {this.state.username}</h1>
-
+          <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
@@ -242,6 +249,7 @@ class HomePage extends Component {
             <div id="news">
 
             </div>
+            </body>
         </div>
       )}
       </AuthUserContext.Consumer>

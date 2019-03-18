@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
 import { Input, Button } from 'reactstrap';
 import './stocks.css';
+import {toggleDarkLight} from '../Home'
 
 
 class Stocks extends Component {
@@ -29,14 +30,22 @@ class Stocks extends Component {
     });
   }
 
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
+
   render() {
     return (
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
+          <body id="body" class="light-mode">
           <div className="row">
               <div className="column small-centered small-11 medium-6 large-5">
           <h1>Stocks</h1>
+          <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
           <Input>Search Stocks</Input>
           <form>
             <label>
@@ -62,7 +71,7 @@ class Stocks extends Component {
         </div>
         <br></br>
         <div id="news"></div>
-
+        </body>
         </div>
 
       )}

@@ -20,24 +20,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "foundation-sites/dist/css/foundation.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Title from './Title';
-import { ThemeProvider } from 'styled-components';
-import Sky from './Sky';
-import CelestialObject from './CelestialObject';
 
-const dayTheme = {
-  skyColor: '#37d8e6',
-  celestialObjectColor: '#ffdd00',
-  celestialObjectBorderColor: '#f1c40f'
-};
 
-const nightTheme = {
-  skyColor: '#2c3e50',
-  celestialObjectColor: '#bdc3c7',
-  celestialObjectBorderColor: '#eaeff2'
-}
 
-const Pages = () => (
+
+const App = () => (
 
   <Router>
     <div>
@@ -58,43 +45,6 @@ const Pages = () => (
   </Router>
 );
 
-class App extends React.Component{
-
-  constructor(props) {
-    super(props);
-
-
-    // Initial state: day time!
-    this.state = {
-      isDay: true,
-      theme: dayTheme
-
-    };
-  }
-
-  handleClick() {
-    // Toggle day / night on click
-    const isDay = !this.state.isDay;
-
-    this.setState({
-      isDay: isDay,
-      theme: isDay ? dayTheme : nightTheme
-
-    });
-  }
-
-  render() {
-    // Wrap the entire content in a <ThemeProvider>
-    return <ThemeProvider theme={this.state.theme}>
-        <Sky>
-          <Title>{this.state.title}</Title>
-          <CelestialObject
-            onClick={() => this.handleClick()}>
-          </CelestialObject>
-        </Sky>
-    </ThemeProvider>
-  }
-}
 
 
 export default withAuthentication(App);

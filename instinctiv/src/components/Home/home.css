@@ -81,3 +81,27 @@
 .item:nth-child(7n+12) {
   background: #8ab2f6;
 }
+
+body.dark-mode {
+  background-color: #111;
+  color: #eee;
+  a {
+    color: #111;
+  }
+  button {
+    background-color: #eee;
+    color: #111;
+  }
+}
+
+body.light-mode {
+  background-color: #eee;
+  color: #111;
+  a {
+    color: #111;
+  }
+  button {
+    background-color: #111;
+    color: #eee;
+  }
+}
