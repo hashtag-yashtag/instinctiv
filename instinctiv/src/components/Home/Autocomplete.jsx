@@ -80,39 +80,7 @@ class Autocomplete extends Component {
     //e.preventDefault();
   };
 
-  onKeyDown = e => {
-    const { activeSuggestion, filteredSuggestions, filteredUserSuggestions } = this.state;
-
-    // User pressed the enter key
-
-    var uInput = activeSuggestion > filteredSuggestions.length ? filteredUserSuggestions[activeSuggestion] : filteredSuggestions[activeSuggestion];
-
-    if (e.keyCode === 13) {
-      this.setState({
-        activeSuggestion: 0,
-        showSuggestions: false,
-        userInput: uInput
-      });
-    }
-
-
-    // User pressed the up arrow
-    else if (e.keyCode === 38) {
-      if (activeSuggestion === 0) {
-        return;
-      }
-
-      this.setState({ activeSuggestion: activeSuggestion - 1 });
-    }
-    // User pressed the down arrow
-    else if (e.keyCode === 40) {
-      if (activeSuggestion === (filteredSuggestions.length + filteredUserSuggestions.length-1)) {
-        return;
-      }
-
-      this.setState({ activeSuggestion: activeSuggestion + 1 });
-    }
-  };
+  
 
   render() {
     const {
@@ -132,7 +100,7 @@ class Autocomplete extends Component {
 
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length || filteredUserSuggestions.length) {
-        suggestionsListComponent = /* withRouter(({ history }) =>  */(
+        suggestionsListComponent = (
           <div>
             <h5> Stocks </h5>
             <ul className="suggestions">
@@ -193,7 +161,7 @@ class Autocomplete extends Component {
               })}
           </ul>
         </div>
-        )/* ) */;
+        );
       } else {
         suggestionsListComponent = (
           <div className="no-suggestions">
@@ -205,12 +173,48 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
-        <input
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-        />
+        <Route render={({ history}) => (
+                    
+          <input
+            type="text"
+            onChange={onChange}
+            onKeyDown={e => {
+
+              const { activeSuggestion, filteredSuggestions, filteredUserSuggestions } = this.state;
+
+              // User pressed the enter key
+
+              
+              if (e.keyCode === 13) {
+                
+                history.push(activeSuggestion >= filteredSuggestions.length ? 
+                  '/user/'+filteredUserSuggestions[activeSuggestion-filteredSuggestions.length] :
+                  '/stocks/'+filteredSuggestions[activeSuggestion].substring(0, filteredSuggestions[activeSuggestion].indexOf(":")));
+                return;
+              }
+
+
+              // User pressed the up arrow
+              else if (e.keyCode === 38) {
+                if (activeSuggestion === 0) {
+                  return;
+                }
+
+                this.setState({ activeSuggestion: activeSuggestion - 1 });
+              }
+              // User pressed the down arrow
+              else if (e.keyCode === 40) {
+                if (activeSuggestion === (filteredSuggestions.length + filteredUserSuggestions.length-1)) {
+                  return;
+                }
+
+                this.setState({ activeSuggestion: activeSuggestion + 1 });
+              }
+
+            }}
+            value={userInput}
+          />
+        )} />  
         {suggestionsListComponent}
       </Fragment>
     );
