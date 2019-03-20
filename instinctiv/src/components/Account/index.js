@@ -85,7 +85,7 @@ class Account extends Component {
             <Row>
             <Col sm="4">
             <Card body outline color="primary">
-            <img  src={authUser.photoURL} alt="https://goo.gl/Fz9nrQ" />
+            <img alt='' src={authUser.photoURL || 'https://goo.gl/Fz9nrQ'}/>
             <CardText>
 
                 <Alert color="primary">
