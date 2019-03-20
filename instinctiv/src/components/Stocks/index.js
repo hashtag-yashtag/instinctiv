@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input, Button, Col, Row, Card, CardText, Alert } from 'reactstrap';
+import { Input, Button, Col, Row, Card, CardText, Alert, Table } from 'reactstrap';
 import './stocks.css';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 
@@ -56,52 +56,53 @@ class Stocks extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
-          <div className="column small-centered small-11 medium-6 large-5">
-          <h1>{this.props.match.params.name}</h1>
-          <Card body outline color="primary">
-              <CardText>
-                  <Alert color="primary">
-                    <strong>name: {this.state.name}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>address: {this.state.address}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>ceo: {this.state.ceo}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>companyURL: {this.state.companyURL}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>description: {this.state.description}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>employees: {this.state.employees}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>stockExchange: {this.state.stockExchange}</strong>
-                  </Alert>
-                  <Alert color="warning">
-                    <strong>price: {this.state.price}</strong>
-                  </Alert>
-                  <Alert color="success">
-                    <strong>time_updated: {this.state.time_updated}</strong>
-                  </Alert>
-              </CardText>
-            </Card>
+          <div>
+            <Row>
+            <Col sm="5">
+              <Card body inverse color="info">
+        <CardText>
+            <Alert color="primary">
+              <strong>Name: {this.state.name}</strong>
+            </Alert>
+            <Alert color="primary">
+              <strong>Address: {this.state.address}</strong><br/>
+            </Alert>
+            <Alert color="primary">
+              <strong>Ceo: {this.state.ceo}</strong><br/>
+            </Alert>
+            <Alert color="primary">
+              <strong>CompanyURL: {this.state.companyURL}</strong><br/>
+            </Alert>
+            <Alert color="primary">
+              <strong>Employees: {this.state.employees}</strong><br/>
+            </Alert>
+            <Alert color="primary">
+              <strong>stockExchange: {this.state.stockExchange}</strong><br/>
+            </Alert>
+            <Alert color="primary">
+              <strong>Price: {this.state.price}</strong><br/>
+            </Alert>
+            <Alert color="primary">
+              <strong>TimeUpdated: this.state.time_updated}</strong><br/>
+            </Alert>
+        </CardText>
+      </Card>
+          </Col>
+          <Col sm="7">
+            <Card body outline color="info">
+      <CardText>
+        <strong>Description: {this.state.description}</strong>
+      </CardText>
+    </Card>
 
-          <Row>
-              <Col sm="6">
+        </Col>
+              <Col sm="3">
                 <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
-              </Col>
-              <Col sm="2">
                 <Button color = "success" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
-              </Col>
-              <Col sm="2">
                 <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
               </Col>
           </Row>
-          
+
 
           <h3>You currently have</h3>
           <span className={this.getBadgeClasses()}>
@@ -116,6 +117,7 @@ class Stocks extends Component {
           <div id="news"></div>{/* <Button outline color="primary" onClick={this.viewNews} block>Search</Button> */}
 
         </div>
+
 
       )}
       </AuthUserContext.Consumer>
