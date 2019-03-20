@@ -124,7 +124,7 @@ class Autocomplete extends Component {
       if (filteredSuggestions.length || filteredUserSuggestions.length) {
         suggestionsListComponent = (
           <div>
-            <h5> Suggestions </h5>
+            <h5> Stocks </h5>
             <ul className="suggestions">
               {filteredSuggestions.map((suggestion, index) => {
                 let className;
@@ -134,7 +134,7 @@ class Autocomplete extends Component {
                   className = "suggestion-active";
                 }
 
-                console.log('sugg', index, activeSuggestion);
+                //console.log('sugg', index, activeSuggestion);
 
                 return (
                   <li className={className} key={suggestion} onClick={onClick}>
@@ -145,21 +145,21 @@ class Autocomplete extends Component {
             </ul>
             <h5> Users </h5>
             <ul className="suggestions">
-            {filteredUserSuggestions.map((suggestion, index) => {
-              let className;
+              {filteredUserSuggestions.map((suggestion, index) => {
+                let className;
 
-              // Flag the active suggestion with a class
-              console.log('user',index, activeSuggestion);
-              if (index === activeSuggestion - filteredSuggestions.length) {
-                className = "suggestion-active";
-              }
+                // Flag the active suggestion with a class
+                //console.log('user',index, activeSuggestion);
+                if (index === activeSuggestion - filteredSuggestions.length) {
+                  className = "suggestion-active";
+                }
 
-              return (
-                <li className={className} key={suggestion} onClick={onClick}>
-                  {suggestion}
-                </li>
-              );
-            })}
+                return (
+                  <li className={className} key={suggestion} onClick={onClick}>
+                    {suggestion}
+                  </li>
+                );
+              })}
           </ul>
         </div>
         );
