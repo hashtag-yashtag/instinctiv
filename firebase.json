@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "instinctiv",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/Home/index.html"
+      }
+    ]
+  }
+}

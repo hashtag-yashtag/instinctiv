@@ -10,6 +10,7 @@ import HomePage from "../Home";
 import AccountPage from "../Account";
 import Notifications from "../Notifications";
 import Stocks from "../Stocks";
+import User from "../User";
 
 import { withAuthentication } from "../Session";
 
@@ -37,6 +38,7 @@ const App = () => (
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.NOTIFICATIONS} component={Notifications} />
       <Route path={ROUTES.STOCKS} component={Stocks} />
+      <Route path={ROUTES.USER} component={User} />
     </div>
   </Router>
 );
