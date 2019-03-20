@@ -15,7 +15,6 @@ class Account extends Component {
       accuracy: 0,
     }
     var db = this.props.firebase.db;
-
     db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       querySnapshot.forEach(element => {

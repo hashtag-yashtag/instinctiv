@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu} from 'reactstrap';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class Example extends React.Component {
     }
   }
 
-  
+
 
   toggle() {
     this.setState(prevState => ({
@@ -21,6 +21,8 @@ export default class Example extends React.Component {
 
   render() {
     return (
+      <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>
           Notifications
@@ -29,6 +31,8 @@ export default class Example extends React.Component {
           <p>No new notifications</p>
         </DropdownMenu>
       </Dropdown>
+    </div>
+  </div>
     );
   }
 }
