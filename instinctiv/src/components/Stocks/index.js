@@ -93,9 +93,9 @@ class Stocks extends Component {
   handleSubmit(dir) {
 
     //e.preventDefault();
-    var stock = document.getElementById('stock').value;
+    var stock = 'temp';//document.getElementById('stock').value;
     var tokens = document.getElementById('tokens').value;
-    if(tokens !=  "" && this.state.balance-tokens  >= 0){
+    if(tokens !==  "" && this.state.balance-tokens  >= 0){
       console.log(this.props.firebase.auth.O);
       var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O);
       userDoc.set({

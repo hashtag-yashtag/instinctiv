@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../SignOut";
-import { AuthUserContext, withAuthorization } from '../Session';
+//import { AuthUserContext, withAuthorization } from '../Session';
 
 import * as ROUTES from "../../constants/routes";
 import {
@@ -25,7 +25,7 @@ this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSna
 if(balance < 100){
   var out = "You are low on tokens!";
 }else{
-  var out ="";
+  out ="";
 }
 
 

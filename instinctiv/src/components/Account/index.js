@@ -1,7 +1,7 @@
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Alert, Table, Button, Card, CardBody, CardImg, Col, Row, CardText } from 'reactstrap';
+import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
 
 class Account extends Component {
   constructor(props){
@@ -38,7 +38,7 @@ class Account extends Component {
         username: docSnapshot.data().username,
         betsList: this.state.betsList,
         authUser: docSnapshot.data(),
-        email: docSnapshot.data(). email,
+        email: docSnapshot.data().email,
         accuracy:docSnapshot.data().accuracy,
       });      // ...
     }, err => {
@@ -58,7 +58,6 @@ class Account extends Component {
     betTD.textContent = bet.data().bet;
     var dirTD = document.createElement('td');
     dirTD.textContent = bet.data().direction;
-    var del = document.createElement('td');
     var delBut = document.createElement('button');
     delBut.addEventListener('click',(e)=>{
       e.stopPropagation();
@@ -74,32 +73,9 @@ class Account extends Component {
     row.appendChild(delBut);
 
     document.getElementById("bodyBets").appendChild(row);
-    /*
-    function removeBet(){
-      //db.collection("Bets").doc(id).delete();
-
-      console.log(5, 'clicked')
-    }
-     */
-    /* (
-      <tr key={index} >
-        <td>{bet.stockId}</td>
-        <td>{bet.bet}</td>
-        <td>{bet.direction}</td>
-        <td>
-          <button className="btn btn-secondary btn-sm" id="delete" onClick={removeBet} color="primary">
-          X
-          </button>
-        </td>
-      </tr>
-    ) */
+    
   }
 
-  handleDel(){
-    //e.preventDefault();
-    //onClick="handleDeleteBet()"bet.id   {this.state.betsList.map(this.renderBets)}
-    console.log('here'/* id */);
-  }
 
   render() {
     return (
@@ -109,7 +85,7 @@ class Account extends Component {
             <Row>
             <Col sm="4">
             <Card body outline color="primary">
-            <img  src={authUser.photoURL} />
+            <img  src={authUser.photoURL} alt="https://goo.gl/Fz9nrQ" />
             <CardText>
 
                 <Alert color="primary">
