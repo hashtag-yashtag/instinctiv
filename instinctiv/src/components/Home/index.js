@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Alert, Label, Input } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import { Table } from 'reactstrap';
-import {Button} from 'reactstrap';
+import {Button, Input, Label} from 'reactstrap';
 import './home.css';
-import { render } from 'react-dom'
+import 'react-autocomplete-input/dist/bundle.css'
+import Autocomplete from "./Autocomplete"
 
+/* 
 const SYMBOL = '01. symbol'
 const OPEN_PRICE = '02. open'
 const HIGH_PRICE = '03. high'
-const LOW_PRICE = '04. low'
+const LOW_PRICE = '04. low' 
 const CURRENT_PRICE = '05. price'
+
 
 var stocksList = [
   {ticker:'AAPL', price: ''},
@@ -20,11 +23,14 @@ var stocksList = [
   {ticker:'TSLA', price: ''},
   {ticker:'FB', price: ''},
   {ticker:'NFLX', price: ''}
-];
+];*/
 
-var alphaKey = '2U48DC45SZ4PJT3U'
+var stockSearchList = []
+var userSearchList = []
 
-async function getStockPrices() {
+//var alphaKey = '2U48DC45SZ4PJT3U'
+
+/* async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
     // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
@@ -35,21 +41,19 @@ async function getStockPrices() {
     stock.price = await fetch(alphaURL).then(
       response => response.json()).then(
         data => {
-          console.log(data)
           return data['Global Quote'][CURRENT_PRICE];
         }
     )
     stock.ticker = await fetch(alphaURL).then(
       response => response.json()).then(
         data => {
-          console.log(data)
           return data['Global Quote'][SYMBOL];
         }
     )
     console.log(stock.price);
     console.log(stocksList);
   }
-}
+} */
 
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
@@ -95,6 +99,7 @@ function viewNews(ticker) {
 }
 
 class HomePage extends Component {
+  
   constructor(){
     super();
     this.state = {
@@ -107,6 +112,8 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
+    stockSearchList = []
+    userSearchList = []
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
@@ -116,17 +123,20 @@ class HomePage extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
-    await getStockPrices();//Do this at end
-    /*
-    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
-        this.setState({data: data});
-        console.log(data.data());
-        this.setState({
-          balance: data.data().balance,
-          username: data.data().username
-        })
-      }
-    ) */
+
+    await this.props.firebase.db.collection("Stocks").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          stockSearchList.push(doc.data()['ticker'] + ": " + doc.data()['name'])
+      });
+    });
+
+    await this.props.firebase.db.collection("Users").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          userSearchList.push(doc.data()['username']);
+      });
+    });
   }
 
 
@@ -142,10 +152,9 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
+                  <Autocomplete suggestions={stockSearchList} userSuggestions={userSearchList} />
 
-                    <Input type="text" name="Search" placeholder="Search..." />
-
-            <div className="float-center">
+              <div className="float-center">
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>

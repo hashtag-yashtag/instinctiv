@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../SignOut";
-import { AuthUserContext, withAuthorization } from '../Session';
+//import { AuthUserContext, withAuthorization } from '../Session';
 
 import * as ROUTES from "../../constants/routes";
 import {
@@ -25,7 +25,7 @@ this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSna
 if(balance < 100){
   var out = "You are low on tokens!";
 }else{
-  var out ="No new notifications";
+  out ="";
 }
 
 
@@ -66,7 +66,7 @@ const NavigationAuth = () => (
             Admin
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             to={ROUTES.STOCKS}
             className="menu-text1"
@@ -75,7 +75,7 @@ const NavigationAuth = () => (
           >
             Stocks
           </Link>
-        </li>
+        </li> */}
         <UncontrolledDropdown nav inNavbar>
           <DropdownToggle nav caret>
             Notifications

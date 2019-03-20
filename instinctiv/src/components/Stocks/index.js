@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input, Button } from 'reactstrap';
+import { Input, Button, Col, Row, Card, CardText, Alert } from 'reactstrap';
 import './stocks.css';
-
+import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 
 class Stocks extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      authUser: null,
+      username: '',
       balance: '',
-
+      stock: this.props.match.params.name,
     }
     //this.handleChange = this.handleChange.bind(this);
     //this.handleSubmitStock = this.handleSubmitStock.bind(this);
@@ -22,11 +22,33 @@ class Stocks extends Component {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
         balance: docSnapshot.data().balance,
-        username: docSnapshot.data().username
+        username: docSnapshot.data().username,
+        stock: this.props.match.params.name
       });      // ...
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
+
+    this.props.firebase.db.collection("Stocks").doc(this.props.match.params.name).onSnapshot(docSnapshot => {
+      console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
+      this.setState({
+        balance: this.state.balance,
+        username: this.state.username,
+        address: docSnapshot.data().address,
+        ceo: docSnapshot.data().ceo,
+        companyURL: docSnapshot.data().companyURL,
+        description: docSnapshot.data().description,
+        employees: docSnapshot.data().employees,
+        name: docSnapshot.data().name,
+        price: docSnapshot.data().price,
+        stockExchange: docSnapshot.data().stockExchange,
+        ticker: docSnapshot.data().ticker,
+        time_updated: docSnapshot.data().time_updated,
+      });      // ...
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+    this.viewNews();
   }
 
   render() {
@@ -34,34 +56,64 @@ class Stocks extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
-          <div className="row">
-              <div className="column small-centered small-11 medium-6 large-5">
-          <h1>Stocks</h1>
-          <Input>Search Stocks</Input>
-          <form>
-            <label>
-              Tokens to Bet:
-              <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
-              <Button color = "success" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
-              <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
-            </label>
-          </form>
+          <div className="column small-centered small-11 medium-6 large-5">
+          <h1>{this.props.match.params.name}</h1>
+          <Card body outline color="primary">
+              <CardText>
+                  <Alert color="primary">
+                    <strong>name: {this.state.name}</strong>
+                  </Alert>
+                  <Alert color="info">
+                    <strong>address: {this.state.address}</strong>
+                  </Alert>
+                  <Alert color="info">
+                    <strong>ceo: {this.state.ceo}</strong>
+                  </Alert>
+                  <Alert color="info">
+                    <strong>companyURL: {this.state.companyURL}</strong>
+                  </Alert>
+                  <Alert color="info">
+                    <strong>description: {this.state.description}</strong>
+                  </Alert>
+                  <Alert color="info">
+                    <strong>employees: {this.state.employees}</strong>
+                  </Alert>
+                  <Alert color="info">
+                    <strong>stockExchange: {this.state.stockExchange}</strong>
+                  </Alert>
+                  <Alert color="warning">
+                    <strong>price: {this.state.price}</strong>
+                  </Alert>
+                  <Alert color="success">
+                    <strong>time_updated: {this.state.time_updated}</strong>
+                  </Alert>
+              </CardText>
+            </Card>
+
+          <Row>
+              <Col sm="6">
+                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
+              </Col>
+              <Col sm="2">
+                <Button color = "success" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
+              </Col>
+              <Col sm="2">
+                <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
+              </Col>
+          </Row>
+          
 
           <h3>You currently have</h3>
           <span className={this.getBadgeClasses()}>
-            {this.formatnumberOfTokensLeft()}
+            {this.formatNumberOfTokensLeft()}
           </span>
-          <h9> number of tokens.</h9>
-          <h9> </h9>
-          <h4> Search Stock News</h4>
-
-          <input type="text" id="compName" placeholder="Company Name"></input>
-
-          <Button outline color="primary" onClick={this.viewNews} block>Search</Button>
+          <h6> number of tokens.</h6>
           </div>
-        </div>
-        <br></br>
-        <div id="news"></div>
+          <div className="float-center">
+            <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
+          </div>
+          <h4> Stock News</h4>
+          <div id="news"></div>{/* <Button outline color="primary" onClick={this.viewNews} block>Search</Button> */}
 
         </div>
 
@@ -85,7 +137,7 @@ class Stocks extends Component {
   handleSubmit(dir) {
 
     //e.preventDefault();
-    var stock = 'temp';//document.getElementById('stock').value;
+    var stock = this.props.match.params.name;
     var tokens = document.getElementById('tokens').value;
     if(tokens !==  "" && this.state.balance-tokens  >= 0){
       console.log(this.props.firebase.auth.O);
@@ -98,6 +150,7 @@ class Stocks extends Component {
         userDoc: userDoc,
         stockId: stock,
         direction: dir,
+        username: this.state.username,
         bet: tokens
       });
     }
@@ -119,14 +172,14 @@ class Stocks extends Component {
     return classes;
   }
 
-  formatnumberOfTokensLeft() {
+  formatNumberOfTokensLeft() {
     const { balance } = this.state;
     return balance === 0 ? "Zero" : balance;
   }
 
   viewNews() {
      document.getElementById('news').innerHTML ='';
-     var stock = document.getElementById("compName").value;
+     var stock = this.props.match.params.name;
      var url = 'https://newsapi.org/v2/everything?q='
                + stock  +
                '&apiKey=34c665fbab834d7c80356f0bf458b1a7';

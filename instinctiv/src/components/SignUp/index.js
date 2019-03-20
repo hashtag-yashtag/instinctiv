@@ -16,6 +16,7 @@ const SignUpPage = () => (
 const INITIAL_STATE = {
   username: '',
   email: '',
+  photoURL: '',
   passwordOne: '',
   passwordTwo: '',
   error: null,
@@ -30,7 +31,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { username, email, passwordOne, photoURL } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -40,6 +41,7 @@ class SignUpFormBase extends Component {
         .set({
           username: username,
           email: email,
+          photoURL: photoURL || 'https://goo.gl/Fz9nrQ',
           balance: 500,
           correctBets: 0,
           totalBets: 0,
@@ -64,6 +66,7 @@ class SignUpFormBase extends Component {
     const {
       username,
       email,
+      photoURL,
       passwordOne,
       passwordTwo,
       error,
@@ -73,7 +76,8 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === '';
+      username === '' ||
+      photoURL === '';
 
     return (
       <div className="row">
@@ -106,6 +110,13 @@ class SignUpFormBase extends Component {
           onChange={this.onChange}
           type="password"
           placeholder="Confirm Password"
+        />
+        <input
+          name="photoURL"
+          value={photoURL}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Enter photo URL"
         />
 
       <Button color ="primary" disabled={isInvalid} type="submit">Sign Up</Button>
