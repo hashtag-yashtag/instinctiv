@@ -45,7 +45,11 @@ class SignInFormBase extends Component {
 
     event.preventDefault();
   };
-
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -57,8 +61,10 @@ class SignInFormBase extends Component {
 
     return (
       <div className="row">
+        <body id="body" class="light-mode">
           <div className="column small-centered small-11 medium-6 large-5">
       <Form onSubmit={this.onSubmit}>
+        <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
         <Input
           name="email"
           value={email}
@@ -81,6 +87,7 @@ class SignInFormBase extends Component {
         <SignInGoogle />
 
     </div>
+    </body>
   </div>
     );
   }

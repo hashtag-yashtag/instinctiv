@@ -1,7 +1,20 @@
+<<<<<<< HEAD
+import {toggleDarkLight} from '../Home'
+import React from 'react';
+import PasswordChangeForm from '../PasswordChange';
+import { AuthUserContext, withAuthorization } from '../Session';
+import {Button} from 'reactstrap';
+
+=======
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
+<<<<<<< HEAD
+import { Table, Button } from 'reactstrap';
+>>>>>>> bf936d23a353427159960f6eb17d5a190f150177
+=======
 import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
 
 class Account extends Component {
   constructor(props){
@@ -15,6 +28,24 @@ class Account extends Component {
       accuracy: 0,
     }
     var db = this.props.firebase.db;
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+const Account = () => (
+  <AuthUserContext.Consumer>
+    {authUser => (
+      <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
+        <h1>Account: {authUser.email}</h1>
+        <PasswordChangeForm />
+      </div>
+    </div>
+    )}
+  </AuthUserContext.Consumer>
+);
+=======
+=======
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
     db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       querySnapshot.forEach(element => {
@@ -138,6 +169,10 @@ class Account extends Component {
     );
   }
 }
+<<<<<<< HEAD
+>>>>>>> bf936d23a353427159960f6eb17d5a190f150177
+=======
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
 
 const condition = authUser => !!authUser;
 

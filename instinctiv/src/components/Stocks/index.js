@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
 import { Input, Button, Col, Row, Card, CardText, Alert } from 'reactstrap';
 import './stocks.css';
+<<<<<<< HEAD
+import {toggleDarkLight} from '../Home'
+
+=======
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
+>>>>>>> bf936d23a353427159960f6eb17d5a190f150177
 
 class Stocks extends Component {
 
@@ -51,11 +56,33 @@ class Stocks extends Component {
     this.viewNews();
   }
 
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
+
   render() {
     return (
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
+<<<<<<< HEAD
+          <body id="body" class="light-mode">
+          <div className="row">
+              <div className="column small-centered small-11 medium-6 large-5">
+          <h1>Stocks</h1>
+          <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
+          <Input>Search Stocks</Input>
+          <form>
+            <label>
+              Tokens to Bet:
+              <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
+              <Button color = "success" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
+              <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
+            </label>
+          </form>
+=======
           <div className="column small-centered small-11 medium-6 large-5">
           <h1>{this.props.match.params.name}</h1>
           <Card body outline color="primary">
@@ -102,6 +129,7 @@ class Stocks extends Component {
               </Col>
           </Row>
           
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
 
           <h3>You currently have</h3>
           <span className={this.getBadgeClasses()}>
@@ -110,11 +138,25 @@ class Stocks extends Component {
           <h6> number of tokens.</h6>
           </div>
           <div className="float-center">
+<<<<<<< HEAD
+              <TradingViewWidget
+                symbol="AAPL"
+                theme={Themes.LIGHT}
+                locale="en"
+              />
+
+            </div>
+        </div>
+        <br></br>
+        <div id="news"></div>
+        </body>
+=======
             <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
           </div>
           <h4> Stock News</h4>
           <div id="news"></div>{/* <Button outline color="primary" onClick={this.viewNews} block>Search</Button> */}
 
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
         </div>
 
       )}

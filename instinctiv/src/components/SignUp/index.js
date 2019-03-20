@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
+import {toggleDarkLight} from '../Home'
 
 import * as ROUTES from '../../constants/routes';
 import {Button, Form, Input} from 'reactstrap';
@@ -29,6 +30,11 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
 
   }
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
 
   onSubmit = event => {
     const { username, email, passwordOne, photoURL } = this.state;
@@ -81,8 +87,10 @@ class SignUpFormBase extends Component {
 
     return (
       <div className="row">
+        <body id="body" class="light-mode">
           <div className="column small-centered small-11 medium-6 large-5">
       <Form onSubmit={this.onSubmit}>
+        <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
         <Input
           name="username"
           value={username}
@@ -124,6 +132,7 @@ class SignUpFormBase extends Component {
         {error && <p>{error.message}</p>}
       </Form>
     </div>
+    </body>
   </div>
     );
   }
