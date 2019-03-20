@@ -9,8 +9,12 @@ import {Button} from 'reactstrap';
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
+<<<<<<< HEAD
 import { Table, Button } from 'reactstrap';
 >>>>>>> bf936d23a353427159960f6eb17d5a190f150177
+=======
+import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
 
 class Account extends Component {
   constructor(props){
@@ -24,6 +28,7 @@ class Account extends Component {
       accuracy: 0,
     }
     var db = this.props.firebase.db;
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 const Account = () => (
@@ -39,6 +44,8 @@ const Account = () => (
   </AuthUserContext.Consumer>
 );
 =======
+=======
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
     db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       querySnapshot.forEach(element => {
@@ -61,7 +68,7 @@ const Account = () => (
         username: docSnapshot.data().username,
         betsList: this.state.betsList,
         authUser: docSnapshot.data(),
-        email: docSnapshot.data(). email,
+        email: docSnapshot.data().email,
         accuracy:docSnapshot.data().accuracy,
       });      // ...
     }, err => {
@@ -81,7 +88,6 @@ const Account = () => (
     betTD.textContent = bet.data().bet;
     var dirTD = document.createElement('td');
     dirTD.textContent = bet.data().direction;
-    var del = document.createElement('td');
     var delBut = document.createElement('button');
     delBut.addEventListener('click',(e)=>{
       e.stopPropagation();
@@ -95,45 +101,44 @@ const Account = () => (
     row.appendChild(betTD);
     row.appendChild(dirTD);
     row.appendChild(delBut);
-    
+
     document.getElementById("bodyBets").appendChild(row);
-    /* 
-    function removeBet(){
-      //db.collection("Bets").doc(id).delete();
-
-      console.log(5, 'clicked')
-    }
-     */
-    /* (
-      <tr key={index} >
-        <td>{bet.stockId}</td>
-        <td>{bet.bet}</td>
-        <td>{bet.direction}</td>
-        <td>
-          <button className="btn btn-secondary btn-sm" id="delete" onClick={removeBet} color="primary">
-          X
-          </button>
-        </td>
-      </tr>
-    ) */
+    
   }
 
-  handleDel(){
-    //e.preventDefault();
-    //onClick="handleDeleteBet()"bet.id   {this.state.betsList.map(this.renderBets)}
-    console.log('here'/* id */);
-  }
 
   render() {
     return (
       <AuthUserContext.Consumer>
       {authUser => (
           <div>
-            <h2>Email: {this.state.email}</h2>
-            <h2>Username: {this.state.username}</h2>
-            <h3>Balance: {this.state.balance}</h3>
-            <h3>Accuracy: {this.state.accuracy}</h3>
-            <img  src={authUser.photoURL} />
+            <Row>
+            <Col sm="4">
+            <Card body outline color="primary">
+            <img alt='' src={authUser.photoURL || 'https://goo.gl/Fz9nrQ'}/>
+            <CardText>
+
+                <Alert color="primary">
+                <strong>Email: {this.state.email}</strong>
+                  </Alert>
+
+                <Alert color="info">
+                 <strong>Username: {this.state.username}</strong>
+                  </Alert>
+
+                  <Alert color="warning">
+                  <strong> Balance: {this.state.balance}</strong>
+                    </Alert>
+
+                    <Alert color="success">
+                    <strong> Accuracy: {this.state.accuracy}</strong>
+                      </Alert>
+          </CardText>
+            </Card>
+          </Col>
+
+          <Col sm="4">
+             <Card body outline color="warning">
             <Table striped hover>
               <thead>
                 <tr>
@@ -144,17 +149,30 @@ const Account = () => (
                 </tr>
               </thead>
               <tbody id='bodyBets'>
-                
+
               </tbody>
             </Table>
-            <PasswordChangeForm />
+
+            </Card>
+            </Col>
+
+            <Col sm="4">
+               <Card body outline color="info">
+                 <h3><strong>Change Password</strong></h3>
+                 <PasswordChangeForm />
+               </Card>
+               </Col>
+              </Row>
           </div>
         )}
       </AuthUserContext.Consumer>
     );
   }
 }
+<<<<<<< HEAD
 >>>>>>> bf936d23a353427159960f6eb17d5a190f150177
+=======
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
 
 const condition = authUser => !!authUser;
 

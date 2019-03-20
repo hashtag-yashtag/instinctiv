@@ -267,25 +267,25 @@ export default withAuthorization(condition)(HomePage);
 import React, { Component } from 'react';
 
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Alert, Label, Input } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import { Table } from 'reactstrap';
+<<<<<<< HEAD
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
+=======
+import {Button, Input, Label} from 'reactstrap';
+>>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
 import './home.css';
-import { render } from 'react-dom'
-import TextInput from 'react-autocomplete-input'
 import 'react-autocomplete-input/dist/bundle.css'
 import Autocomplete from "./Autocomplete"
 
-import * as firebase from 'firebase'
-
+/* 
 const SYMBOL = '01. symbol'
 const OPEN_PRICE = '02. open'
 const HIGH_PRICE = '03. high'
-const LOW_PRICE = '04. low'
+const LOW_PRICE = '04. low' 
 const CURRENT_PRICE = '05. price'
 
-var stockSearchList = []
 
 var stocksList = [
   {ticker:'AAPL', price: ''},
@@ -293,11 +293,14 @@ var stocksList = [
   {ticker:'TSLA', price: ''},
   {ticker:'FB', price: ''},
   {ticker:'NFLX', price: ''}
-];
+];*/
 
-var alphaKey = '2U48DC45SZ4PJT3U'
+var stockSearchList = []
+var userSearchList = []
 
-async function getStockPrices() {
+//var alphaKey = '2U48DC45SZ4PJT3U'
+
+/* async function getStockPrices() {
   for (var stock of stocksList) {
     //Comment out for actual values
     // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
@@ -320,7 +323,7 @@ async function getStockPrices() {
     console.log(stock.price);
     console.log(stocksList);
   }
-}
+} */
 
 class HomePage extends Component {
   
@@ -336,7 +339,8 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
-
+    stockSearchList = []
+    userSearchList = []
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
@@ -351,6 +355,13 @@ class HomePage extends Component {
       querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
           stockSearchList.push(doc.data()['ticker'] + ": " + doc.data()['name'])
+      });
+    });
+
+    await this.props.firebase.db.collection("Users").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          userSearchList.push(doc.data()['username']);
       });
     });
   }
@@ -368,7 +379,7 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
-                  <Autocomplete suggestions={stockSearchList} />
+                  <Autocomplete suggestions={stockSearchList} userSuggestions={userSearchList} />
 
               <div className="float-center">
               <Alert color="primary">
