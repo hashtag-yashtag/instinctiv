@@ -64,26 +64,26 @@ class Stocks extends Component {
             <Alert color="primary">
               <strong>Name: {this.state.name}</strong>
             </Alert>
-            <Alert color="primary">
+            <Alert color="info">
               <strong>Address: {this.state.address}</strong><br/>
             </Alert>
-            <Alert color="primary">
+            <Alert color="secondary">
               <strong>Ceo: {this.state.ceo}</strong><br/>
             </Alert>
-            <Alert color="primary">
+            <Alert color="warning">
               <strong>CompanyURL: {this.state.companyURL}</strong><br/>
             </Alert>
-            <Alert color="primary">
+            <Alert color="success">
               <strong>Employees: {this.state.employees}</strong><br/>
             </Alert>
-            <Alert color="primary">
-              <strong>stockExchange: {this.state.stockExchange}</strong><br/>
+            <Alert color="dark">
+              <strong>StockExchange: {this.state.stockExchange}</strong><br/>
             </Alert>
-            <Alert color="primary">
+            <Alert color="danger">
               <strong>Price: {this.state.price}</strong><br/>
             </Alert>
-            <Alert color="primary">
-              <strong>TimeUpdated: this.state.time_updated}</strong><br/>
+            <Alert color="light">
+              <strong>TimeUpdated: {this.state.time_updated}</strong><br/>
             </Alert>
         </CardText>
       </Card>
@@ -91,26 +91,28 @@ class Stocks extends Component {
           <Col sm="7">
             <Card body outline color="info">
       <CardText>
-        <strong>Description: {this.state.description}</strong>
+          <Alert color="dark">
+            <strong>StockExchange: {this.state.description}</strong><br/>
+          </Alert>
       </CardText>
     </Card>
+    <h1>Bet</h1>
+    <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
+    <Button color = "success" block size="lg" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
+    <Button color = "danger" block size="lg"id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
 
+      <h3>You currently have</h3>
+      <span className={this.getBadgeClasses()}>
+        {this.formatNumberOfTokensLeft()}
+      </span>
+      <h6> number of tokens.</h6>
         </Col>
-              <Col sm="3">
-                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
-                <Button color = "success" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
-                <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
-              </Col>
           </Row>
 
 
-          <h3>You currently have</h3>
-          <span className={this.getBadgeClasses()}>
-            {this.formatNumberOfTokensLeft()}
-          </span>
-          <h6> number of tokens.</h6>
+
           </div>
-          <div className="float-center">
+          <div>
             <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
           </div>
           <h4> Stock News</h4>
