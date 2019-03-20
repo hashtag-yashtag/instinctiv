@@ -42,7 +42,7 @@ class SignUpFormBase extends Component {
         .set({
           username: username,
           email: email,
-          photoURL: photoURL,
+          photoURL: photoURL || 'https://goo.gl/Fz9nrQ',
           balance: 500,
           correctBets: 0,
           totalBets: 0,

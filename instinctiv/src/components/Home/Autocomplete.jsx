@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import * as ROUTES from '../../constants/routes';
 import { withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom'
 
 
 class Autocomplete extends Component {
@@ -131,7 +132,7 @@ class Autocomplete extends Component {
 
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length || filteredUserSuggestions.length) {
-        suggestionsListComponent = (
+        suggestionsListComponent = /* withRouter(({ history }) =>  */(
           <div>
             <h5> Stocks </h5>
             <ul className="suggestions">
@@ -146,9 +147,20 @@ class Autocomplete extends Component {
                 //console.log('sugg', index, activeSuggestion);
 
                 return (
-                  <li className={className} key={suggestion} onClick={onClick}>
-                    {suggestion}
-                  </li>
+                  <Route render={({ history}) => (
+                    <li className={className} key={suggestion} onClick={() => { 
+                      this.setState({
+                        activeSuggestion: 0,
+                        filteredSuggestions: [],
+                        showSuggestions: false,
+                        userInput: suggestion
+                      }); 
+                      var str = suggestion.substring(0, suggestion.indexOf(":"));
+                      history.push('/stocks/'+str);
+                    }}>
+                      {suggestion}
+                    </li>
+                  )} />
                 );
               })}
             </ul>
@@ -164,17 +176,27 @@ class Autocomplete extends Component {
                 }
 
                 return (
-                  <li className={className} key={suggestion} onClick={onClick}>
-                    {suggestion}
-                  </li>
+                  <Route render={({ history}) => (
+                    <li className={className} key={suggestion} onClick={() => { 
+                      this.setState({
+                        activeSuggestion: 0,
+                        filteredSuggestions: [],
+                        showSuggestions: false,
+                        userInput: suggestion
+                      }); 
+                      history.push('/user/'+suggestion);
+                    }}>
+                      {suggestion}
+                    </li>
+                  )} />
                 );
               })}
           </ul>
         </div>
-        );
+        )/* ) */;
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
+          <div className="no-suggestions">
             <em>No results :(</em>
           </div>
         );
