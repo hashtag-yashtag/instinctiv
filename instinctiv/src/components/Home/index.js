@@ -20,6 +20,7 @@ const LOW_PRICE = '04. low'
 const CURRENT_PRICE = '05. price'
 
 var stockSearchList = []
+var userSearchList = []
 
 var stocksList = [
   {ticker:'AAPL', price: ''},
@@ -87,6 +88,13 @@ class HomePage extends Component {
           stockSearchList.push(doc.data()['ticker'] + ": " + doc.data()['name'])
       });
     });
+
+    await this.props.firebase.db.collection("Users").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          userSearchList.push(doc.data()['username']);
+      });
+    });
   }
 
 
@@ -102,7 +110,7 @@ class HomePage extends Component {
           <p>The Home Page is accessible by every signed in user.</p>
             <div className="row">
                 <div className="column small-centered small-11 medium-6 large-5">
-                  <Autocomplete suggestions={stockSearchList} />
+                  <Autocomplete suggestions={stockSearchList} userSuggestions={userSearchList} />
 
               <div className="float-center">
               <Alert color="primary">
