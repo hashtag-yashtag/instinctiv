@@ -1,7 +1,7 @@
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Alert, Table, Card, Col, Row, CardText, Button } from 'reactstrap';
+import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
 
 class Account extends Component {
   constructor(props){
@@ -15,18 +15,6 @@ class Account extends Component {
       accuracy: 0,
     }
     var db = this.props.firebase.db;
-const Account = () => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-      <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
-        <h1>Account: {authUser.email}</h1>
-        <PasswordChangeForm />
-      </div>
-    </div>
-    )}
-  </AuthUserContext.Consumer>
-);
     db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       querySnapshot.forEach(element => {
