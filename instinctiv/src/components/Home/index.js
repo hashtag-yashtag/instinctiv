@@ -80,6 +80,15 @@ class HomePage extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
+    var db = this.props.firebase.db;
+    //get collection for stocks per user
+    
+    db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").onSnapshot(querySnapshot=> {
+      querySnapshot.forEach(element => {
+        this.renderFavorites(element, element.id);
+    });
+
+    })
 
     await this.props.firebase.db.collection("Stocks").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
@@ -96,6 +105,20 @@ class HomePage extends Component {
     });
   }
 
+
+  renderFavorites(ticker, id){
+    var row = document.createElement('tr');
+    row.setAttribute('id', id);
+    var ticker1 = document.createElement('td');
+    ticker1.textContent = ticker.data().Ticker;
+    var price = document.createElement('td');
+    price.textContent = ticker.data().price;
+
+    row.appendChild(ticker1);
+    row.appendChild(price);
+    document.getElementById("favs").appendChild(row);
+
+  }
 
   render() {
     return (
@@ -130,27 +153,8 @@ class HomePage extends Component {
                     <th>Price</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
+                <tbody id ="favs">
+                  
                 </tbody>
               </Table>
             </div>

@@ -68,6 +68,7 @@ class Stocks extends Component {
           <h1>{this.props.match.params.name}</h1>
           <Card body outline color="primary">
               <CardText>
+              <Button color = "success" id="up" onClick={this.handleFavorite.bind(this)} type="submit">Favorite</Button>
                   <Alert color="primary">
                     <strong>name: {this.state.name}</strong>
                   </Alert>
@@ -149,6 +150,15 @@ class Stocks extends Component {
     e.preventDefault();
     this.handleSubmit('Down');
     console.log('Down');
+  }
+
+  handleFavorite(e){
+    var ticker = this.props.match.params.name;
+    var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker)
+    userDoc.set({
+      Ticker: ticker,
+      price: this.state.price
+    })
   }
 
   handleSubmit(dir) {
