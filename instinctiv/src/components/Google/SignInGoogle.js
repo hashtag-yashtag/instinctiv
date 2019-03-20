@@ -25,6 +25,7 @@ class SignInGoogleBase extends Component {
                 .set({
                   username: socialAuthUser.user.displayName,
                   email: socialAuthUser.user.email,
+                  photoURL: socialAuthUser.user.photoURL,
                   balance: 500,
                   correctBets: 0,
                   totalBets: 0,

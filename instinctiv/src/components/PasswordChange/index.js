@@ -51,8 +51,12 @@ class PasswordChangeForm extends Component {
     return (
       <body id="body" class="light-mode">
       <div className="row">
+<<<<<<< HEAD
           <div className="column small-centered small-11 medium-6 large-5">
           <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
+=======
+          <div className="column small-7 medium-4 large-3">
+>>>>>>> bf936d23a353427159960f6eb17d5a190f150177
       <form onSubmit={this.onSubmit}>
         <label>Enter Password</label>
         <input

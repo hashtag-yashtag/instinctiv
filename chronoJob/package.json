@@ -1,0 +1,15 @@
+{
+  "name": "chronojob",
+  "version": "1.0.0",
+  "description": "chronologically get stock prices using Amazon Lambda Function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^5.9.0",
+    "intrinio-sdk": "^2.1.0"
+  }
+}
