@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
 
-import { Button } from 'reactstrap';
+import { Button, Form, Input } from 'reactstrap';
 
 const INITIAL_STATE = {
   passwordOne: '',
@@ -42,11 +42,10 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <div className="row">
-          <div className="column small-7 medium-4 large-3">
-      <form onSubmit={this.onSubmit}>
+      <div>
+      <Form onSubmit={this.onSubmit}>
         <label>Enter Password</label>
-        <input
+        <Input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
@@ -54,20 +53,19 @@ class PasswordChangeForm extends Component {
           placeholder="New Password"
         />
         <label>Confirm password</label>
-        <input
+        <Input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
           placeholder="Confirm New Password"
         />
-      <Button color = "primary" disabled={isInvalid} type="submit">
+      <Button color = "primary" block disabled={isInvalid} type="submit">
           Change My Password
         </Button>
 
         {error && <p>{error.message}</p>}
-      </form>
-    </div>
+      </Form>
   </div>
     );
   }

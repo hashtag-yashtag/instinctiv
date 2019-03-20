@@ -1,7 +1,7 @@
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Table, Button } from 'reactstrap';
+import { Alert, Table, Button, Card, CardBody, CardImg, Col, Row, CardText } from 'reactstrap';
 
 class Account extends Component {
   constructor(props){
@@ -72,9 +72,9 @@ class Account extends Component {
     row.appendChild(betTD);
     row.appendChild(dirTD);
     row.appendChild(delBut);
-    
+
     document.getElementById("bodyBets").appendChild(row);
-    /* 
+    /*
     function removeBet(){
       //db.collection("Bets").doc(id).delete();
 
@@ -106,11 +106,33 @@ class Account extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
           <div>
-            <h2>Email: {this.state.email}</h2>
-            <h2>Username: {this.state.username}</h2>
-            <h3>Balance: {this.state.balance}</h3>
-            <h3>Accuracy: {this.state.accuracy}</h3>
+            <Row>
+            <Col sm="4">
+            <Card body outline color="primary">
             <img  src={authUser.photoURL} />
+            <CardText>
+
+                <Alert color="primary">
+                <strong>Email: {this.state.email}</strong>
+                  </Alert>
+
+                <Alert color="info">
+                 <strong>Username: {this.state.username}</strong>
+                  </Alert>
+
+                  <Alert color="warning">
+                  <strong> Balance: {this.state.balance}</strong>
+                    </Alert>
+
+                    <Alert color="success">
+                    <strong> Accuracy: {this.state.accuracy}</strong>
+                      </Alert>
+          </CardText>
+            </Card>
+          </Col>
+
+          <Col sm="4">
+             <Card body outline color="warning">
             <Table striped hover>
               <thead>
                 <tr>
@@ -121,10 +143,20 @@ class Account extends Component {
                 </tr>
               </thead>
               <tbody id='bodyBets'>
-                
+
               </tbody>
             </Table>
-            <PasswordChangeForm />
+
+            </Card>
+            </Col>
+
+            <Col sm="4">
+               <Card body outline color="info">
+                 <h3><strong>Change Password</strong></h3>
+                 <PasswordChangeForm />
+               </Card>
+               </Col>
+              </Row>
           </div>
         )}
       </AuthUserContext.Consumer>
