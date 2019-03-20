@@ -49,20 +49,15 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-<<<<<<< HEAD
+      <div>
       <body id="body" class="light-mode">
       <div className="row">
-<<<<<<< HEAD
-          <div className="column small-centered small-11 medium-6 large-5">
+          <div>
           <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
-=======
           <div className="column small-7 medium-4 large-3">
->>>>>>> bf936d23a353427159960f6eb17d5a190f150177
       <form onSubmit={this.onSubmit}>
-=======
       <div>
       <Form onSubmit={this.onSubmit}>
->>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
         <label>Enter Password</label>
         <Input
           name="passwordOne"
@@ -86,8 +81,15 @@ class PasswordChangeForm extends Component {
 
         {error && <p>{error.message}</p>}
       </Form>
+        </div>
+    </form>
+
+  </div>
+  </div>
   </div>
   </body>
+  </div>
+
     );
   }
 }
