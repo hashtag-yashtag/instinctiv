@@ -158,15 +158,6 @@ class HomePage extends Component {
               <Alert color="primary">
                 Token Balance: {this.state.balance}
               </Alert>
-
-
-              <form onSubmit={this.handleSubmit}>
-                <Label for="Stock">Stock</Label>
-                <Input type="text" name="StockID" id="stock" placeholder="Enter a Stock ID" />
-                <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet" />
-                <Button color="primary" size="lg" block>Submit</Button>
-
-              </form>
                 </div>
             </div>
           </div>
