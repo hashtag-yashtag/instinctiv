@@ -56,7 +56,6 @@ class Stocks extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
-<<<<<<< HEAD
           <div>
             <Row>
             <Col sm="5">
@@ -98,47 +97,6 @@ class Stocks extends Component {
 
         </Col>
               <Col sm="3">
-=======
-          <body id="body" class="light-mode">
-          <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
-          <h1>{this.props.match.params.name}</h1>
-          <Card body outline color="primary">
-              <CardText>
-              <Button color = "success" id="up" onClick={this.handleFavorite.bind(this)} type="submit">Favorite</Button>
-                  <Alert color="primary">
-                    <strong>name: {this.state.name}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>address: {this.state.address}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>ceo: {this.state.ceo}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>companyURL: {this.state.companyURL}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>description: {this.state.description}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>employees: {this.state.employees}</strong>
-                  </Alert>
-                  <Alert color="info">
-                    <strong>stockExchange: {this.state.stockExchange}</strong>
-                  </Alert>
-                  <Alert color="warning">
-                    <strong>price: {this.state.price}</strong>
-                  </Alert>
-                  <Alert color="success">
-                    <strong>time_updated: {this.state.time_updated}</strong>
-                  </Alert>
-              </CardText>
-            </Card>
-
-          <Row>
-              <Col sm="6">
->>>>>>> 17f47e6f49b5cd918c8c8ecea91dc477ae536893
                 <Input type="number" name="tokens" id="tokens" placeholder="Enter a amount to bet"/>
                 <Button color = "success" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
                 <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
