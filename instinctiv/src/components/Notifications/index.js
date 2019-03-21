@@ -19,7 +19,7 @@ class Notifications extends Component {
     
   }
 
-  
+
 
   toggle() {
     this.setState(prevState => ({

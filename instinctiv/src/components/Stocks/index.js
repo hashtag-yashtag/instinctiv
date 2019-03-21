@@ -91,6 +91,15 @@ class Stocks extends Component {
     
   }
 
+  handleFavorite(e){
+    var ticker = this.props.match.params.name;
+    var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker)
+    userDoc.set({
+      Ticker: ticker,
+      price: this.state.price
+    })
+  }
+
   render() {
     return (
       <AuthUserContext.Consumer>
@@ -99,6 +108,7 @@ class Stocks extends Component {
           <div className="column small-centered small-11 medium-6 large-5">
           <h1>{this.props.match.params.name}</h1>
           <Card body outline color="primary">
+                  <Button color = "success" id="up" onClick={this.handleFavorite.bind(this)} type="submit">Favorite</Button>
                   <Alert color="primary">
                     <strong>name: {this.state.name}</strong>
                   </Alert>
@@ -139,7 +149,6 @@ class Stocks extends Component {
                 <Button color = "secondary" id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
               </Col>
           </Row>
-          
 
           <h3>You currently have</h3>
           <span className={this.getBadgeClasses()}>
@@ -159,13 +168,14 @@ class Stocks extends Component {
               </tbody>
             </Table>
           </div>
-          <div className="float-center">
+          <div>
             <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
           </div>
           <h4> Stock News</h4>
           <div id="news"></div>{/* <Button outline color="primary" onClick={this.viewNews} block>Search</Button> */}
 
         </div>
+
 
       )}
       </AuthUserContext.Consumer>
@@ -182,6 +192,15 @@ class Stocks extends Component {
     e.preventDefault();
     this.handleSubmit('Down');
     console.log('Down');
+  }
+
+  handleFavorite(e){
+    var ticker = this.props.match.params.name;
+    var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker)
+    userDoc.set({
+      Ticker: ticker,
+      price: this.state.price
+    })
   }
 
   handleSubmit(dir) {

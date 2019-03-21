@@ -4,15 +4,16 @@ import { AuthUserContext, withAuthorization } from '../Session';
 import { Alert } from 'reactstrap';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import { Table } from 'reactstrap';
+//import {Button, Input, Label} from 'reactstrap';
 import './home.css';
 import 'react-autocomplete-input/dist/bundle.css'
 import Autocomplete from "./Autocomplete"
 
-/* 
+/*
 const SYMBOL = '01. symbol'
 const OPEN_PRICE = '02. open'
 const HIGH_PRICE = '03. high'
-const LOW_PRICE = '04. low' 
+const LOW_PRICE = '04. low'
 const CURRENT_PRICE = '05. price'
 
 
@@ -53,9 +54,52 @@ var userSearchList = []
     console.log(stocksList);
   }
 } */
+/* 
+function viewNews(ticker) {
+  document.getElementById('news').innerHTML ='';
+  var stock = ticker;
+  var url = 'https://newsapi.org/v2/everything?q='
+            + stock  +
+            '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+
+    for(var i=0; i < 12; i++){
+
+      var title = data.articles[i].title;
+
+      if(title == null){
+        title ="";
+      }
+      var desc = data.articles[i].description;
+      var auth = data.articles[i].author;
+      var link = data.articles[i].url;
+      var link1 = data.articles[i].urlToImage;
+      var date = data.articles[i].publishedAt;
+/*
+      var child = document.createElement('div');
+      child.innerHTML 
+
+
+
+    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
+               //character of escape: "quotes" and '+'
+      '<img src="' + link1 +'">' +
+      '<p class="publishedAt">' + date + '</p>' +
+      '<p>' + desc + '</p>' +
+      '<p>' + auth + '</p>' +
+               //character of escape: "quotes" and '+'
+      '<a href="'+ link +'">Read more</a></div>'
+      ;
+      }
+  });
+} */
 
 class HomePage extends Component {
-  
+
   constructor(){
     super();
     this.state = {
@@ -79,6 +123,15 @@ class HomePage extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
+    var db = this.props.firebase.db;
+    //get collection for stocks per user
+    
+    db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").onSnapshot(querySnapshot=> {
+      querySnapshot.forEach(element => {
+        this.renderFavorites(element, element.id);
+    });
+
+    })
 
     await this.props.firebase.db.collection("Stocks").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
@@ -95,6 +148,20 @@ class HomePage extends Component {
     });
   }
 
+
+  renderFavorites(ticker, id){
+    var row = document.createElement('tr');
+    row.setAttribute('id', id);
+    var ticker1 = document.createElement('td');
+    ticker1.textContent = ticker.data().Ticker;
+    var price = document.createElement('td');
+    price.textContent = ticker.data().price;
+
+    row.appendChild(ticker1);
+    row.appendChild(price);
+    document.getElementById("favs").appendChild(row);
+
+  }
 
   render() {
     return (
@@ -129,27 +196,8 @@ class HomePage extends Component {
                     <th>Price</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
-                  <tr>
-                    <td>stock</td>
-                    <td>price</td>
-                  </tr>
+                <tbody id ="favs">
+                  
                 </tbody>
               </Table>
             </div>

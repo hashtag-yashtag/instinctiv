@@ -79,7 +79,7 @@ class Account extends Component {
     row.appendChild(delBut);
 
     document.getElementById("bodyBets").appendChild(row);
-    
+
   }
 
 
