@@ -91,15 +91,6 @@ class Stocks extends Component {
     
   }
 
-  handleFavorite(e){
-    var ticker = this.props.match.params.name;
-    var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker)
-    userDoc.set({
-      Ticker: ticker,
-      price: this.state.price
-    })
-  }
-
   render() {
     return (
       <AuthUserContext.Consumer>
