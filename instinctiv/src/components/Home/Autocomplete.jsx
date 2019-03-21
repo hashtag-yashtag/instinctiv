@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import * as ROUTES from '../../constants/routes';
-import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom'
 
 
@@ -65,28 +63,10 @@ class Autocomplete extends Component {
     });
   };
 
-  onClick = e => {
-
-    
-    this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
-      userInput: e.currentTarget.innerText
-    });
-
-    console.log('redirect?');
-    //this.props.history.push(ROUTES.ACCOUNT);
-    //e.preventDefault();
-  };
-
-  
 
   render() {
     const {
       onChange,
-      onClick,
-      onKeyDown,
       state: {
         activeSuggestion,
         filteredSuggestions,

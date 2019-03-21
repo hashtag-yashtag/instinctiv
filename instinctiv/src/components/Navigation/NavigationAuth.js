@@ -1,17 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../SignOut";
-//import { AuthUserContext, withAuthorization } from '../Session';
+import Notifications from "../Notifications";
 
 import * as ROUTES from "../../constants/routes";
-import {
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
 
-var balance = 496;
 
 /*
 this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
@@ -22,26 +15,19 @@ this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSna
 });
 */
 
-if(balance < 100){
-  var out = "You are low on tokens!";
-}else{
-  out ="";
-}
-
-
 /* export default withAuthentication(AppS);
  */
 
 const NavigationAuth = () => (
   <div>
-    <div div className="top-bar-right">
+    <div className="top-bar-right">
       <ul className="vertical medium-horizontal menu">
         <li>
           <Link
             to={ROUTES.HOME}
             className="menu-text1"
-            activeClassName="active"
-            activeStyle={{ fontWeight: "bold" }}
+            activeclassname="active"
+            activestyle={{ fontWeight: "bold" }}
           >
             Home
           </Link>
@@ -50,8 +36,8 @@ const NavigationAuth = () => (
           <Link
             to={ROUTES.ACCOUNT}
             className="menu-text1"
-            activeClassName="active"
-            activeStyle={{ fontWeight: "bold" }}
+            activeclassname="active"
+            activestyle={{ fontWeight: "bold" }}
           >
             Account
           </Link>
@@ -60,30 +46,14 @@ const NavigationAuth = () => (
           <Link
             to={ROUTES.ADMIN}
             className="menu-text1"
-            activeClassName="active"
-            activeStyle={{ fontWeight: "bold" }}
+            activeclassname="active"
+            activestyle={{ fontWeight: "bold" }}
           >
             Admin
           </Link>
         </li>
-        {/* <li>
-          <Link
-            to={ROUTES.STOCKS}
-            className="menu-text1"
-            activeClassName="active"
-            activeStyle={{ fontWeight: "bold" }}
-          >
-            Stocks
-          </Link>
-        </li> */}
-        <UncontrolledDropdown nav inNavbar>
-          <DropdownToggle nav caret>
-            Notifications
-          </DropdownToggle>
-          <DropdownMenu right>
-            <DropdownItem>{out}</DropdownItem>
-          </DropdownMenu>
-        </UncontrolledDropdown>
+          <Notifications />
+        
         <li>
           <SignOutButton />
         </li>

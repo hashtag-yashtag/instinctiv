@@ -1,7 +1,7 @@
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
+import { Alert, Table, Card, Col, Row } from 'reactstrap';
 
 class Account extends Component {
   constructor(props){
@@ -16,8 +16,9 @@ class Account extends Component {
     }
     var db = this.props.firebase.db;
 
-    db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
+    this.bets = db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
+      document.getElementById("bodyBets").innerHTML = "";
       querySnapshot.forEach(element => {
           this.renderBets(element, element.id);
         //element.data().id = element.id;
@@ -44,14 +45,15 @@ class Account extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
-
-
+  }
+  componentWillUnmount() {
+    this.bets();
   }
 
   renderBets(bet, index) {
     //var db = this.props.firebase.db;
     var row = document.createElement('tr');
-    row.setAttribute('id', bet.id);
+    row.setAttribute('id', bet.id+':'+bet.data().bet);
     var stockIdTD = document.createElement('td');
     stockIdTD.textContent = bet.data().stockId;
     var betTD = document.createElement('td');
@@ -61,8 +63,12 @@ class Account extends Component {
     var delBut = document.createElement('button');
     delBut.addEventListener('click',(e)=>{
       e.stopPropagation();
-      console.log(e.target.parentElement.getAttribute('id'));
-      this.props.firebase.db.collection("Bets").doc(e.target.parentElement.getAttribute('id')).delete();
+      var id = e.target.parentElement.getAttribute('id');
+      console.log(id);
+      this.props.firebase.db.collection('Users').doc(this.props.firebase.auth.O).update({
+        balance: this.state.balance + (+ id.substring(id.indexOf(':')+1)),
+      });
+      this.props.firebase.db.collection("Bets").doc(id.substring(0, id.indexOf(':'))).delete();
       document.getElementById("bodyBets").innerHTML = "";
     });
     delBut.textContent = 'X';
@@ -86,7 +92,6 @@ class Account extends Component {
             <Col sm="4">
             <Card body outline color="primary">
             <img alt='' src={authUser.photoURL || 'https://goo.gl/Fz9nrQ'}/>
-            <CardText>
 
                 <Alert color="primary">
                 <strong>Email: {this.state.email}</strong>
@@ -103,7 +108,6 @@ class Account extends Component {
                     <Alert color="success">
                     <strong> Accuracy: {this.state.accuracy}</strong>
                       </Alert>
-          </CardText>
             </Card>
           </Col>
 

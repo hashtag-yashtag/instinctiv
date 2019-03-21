@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input, Button, Col, Row, Card, CardText, Alert } from 'reactstrap';
+import { Input, Table, Button, Col, Row, Card, Alert } from 'reactstrap';
 import './stocks.css';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
+//import { Timestamp } from "@google-cloud/firestore";
 
 class Stocks extends Component {
 
   constructor(props){
     super(props);
+    this.user = null;
     this.state = {
       username: '',
       balance: '',
@@ -18,13 +20,26 @@ class Stocks extends Component {
   }
 
   componentDidMount() {
-    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
+    this.user = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
         balance: docSnapshot.data().balance,
         username: docSnapshot.data().username,
         stock: this.props.match.params.name
       });      // ...
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+
+    this.bets = this.props.firebase.db.collection("Bets").where('stockId', '==', this.props.match.params.name).onSnapshot(querySnapshot => {
+      console.log(`Received query snapshot of size ${querySnapshot.size}`);
+      document.getElementById("bodyBets").innerHTML = "";
+      querySnapshot.forEach(element => {
+          this.renderBets(element, element.id);
+        //element.data().id = element.id;
+        //this.state.betsList.push(element.data());
+      });
+      console.log(querySnapshot, this.state.betsList);
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
@@ -51,6 +66,31 @@ class Stocks extends Component {
     this.viewNews();
   }
 
+  componentWillUnmount(){
+    this.user();
+    this.bets();
+  }
+
+
+  renderBets(bet, index) {
+    //var db = this.props.firebase.db;
+    var row = document.createElement('tr');
+    row.setAttribute('id', bet.id);
+    var stockIdTD = document.createElement('td');
+    stockIdTD.textContent = bet.data().stockId;
+    var betTD = document.createElement('td');
+    betTD.textContent = bet.data().bet;
+    var dirTD = document.createElement('td');
+    dirTD.textContent = bet.data().direction;
+    //del.appendChild(delBut);
+    row.appendChild(stockIdTD);
+    row.appendChild(betTD);
+    row.appendChild(dirTD);
+
+    document.getElementById("bodyBets").appendChild(row);
+    
+  }
+
   render() {
     return (
       <AuthUserContext.Consumer>
@@ -59,7 +99,6 @@ class Stocks extends Component {
           <div className="column small-centered small-11 medium-6 large-5">
           <h1>{this.props.match.params.name}</h1>
           <Card body outline color="primary">
-              <CardText>
                   <Alert color="primary">
                     <strong>name: {this.state.name}</strong>
                   </Alert>
@@ -87,7 +126,6 @@ class Stocks extends Component {
                   <Alert color="success">
                     <strong>time_updated: {this.state.time_updated}</strong>
                   </Alert>
-              </CardText>
             </Card>
 
           <Row>
@@ -108,6 +146,18 @@ class Stocks extends Component {
             {this.formatNumberOfTokensLeft()}
           </span>
           <h6> number of tokens.</h6>
+          <Table striped hover>
+              <thead>
+                <tr>
+                  <th>Stock Name</th>
+                  <th>Tokens Bet</th>
+                  <th>Up/Down</th>
+                </tr>
+              </thead>
+              <tbody id='bodyBets'>
+
+              </tbody>
+            </Table>
           </div>
           <div className="float-center">
             <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
@@ -162,6 +212,24 @@ class Stocks extends Component {
         })
       }
     )
+    if(this.state.balance < 100){
+      this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O)
+      .collection("notifications")
+      .where('type', '==', 'lowTokens')
+            .where("active", '==', true).get().then(docSnapshot => {
+                if(docSnapshot.size===0){ 
+                this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("notifications").add({
+                  message: 'You have less than 100 tokens left, go to the account section to add tokens.',
+                  active: true,
+                  type: 'lowTokens',
+                  time: new Date(),
+                });
+              } 
+              }, err => {
+                console.log(`Encountered error: ${err}`);
+              });
+      
+    }
   }
 
 

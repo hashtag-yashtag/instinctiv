@@ -122,7 +122,7 @@ class HomePage extends Component {
 
                 <h3>Favorites</h3>
 
-              <Table stripped>
+              <Table>
                 <thead>
                   <tr>
                     <th>Ticker</th>
@@ -156,7 +156,7 @@ class HomePage extends Component {
 
             <div className="float-left">
               <h3>Leaderboard</h3>
-              <Table stripped>
+              <Table>
                 <thead>
                   <tr>
                     <th>User</th>
