@@ -106,7 +106,7 @@ class Account extends Component {
             </Card>
           </Col>
 
-          <Col sm="4">
+          <Col sm="5">
              <Card body outline color="warning">
             <Table striped hover>
               <thead>
@@ -125,7 +125,7 @@ class Account extends Component {
             </Card>
             </Col>
 
-            <Col sm="4">
+            <Col sm="3">
                <Card body outline color="info">
                  <h3><strong>Change Password</strong></h3>
                  <PasswordChangeForm />

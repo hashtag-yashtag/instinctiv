@@ -89,10 +89,11 @@ class Stocks extends Component {
       </Card>
           </Col>
           <Col sm="7">
-            <Card body outline color="info">
+            <h4>Description</h4>
+            <Card body inverse color="info">
       <CardText>
-          <Alert color="dark">
-            <strong>StockExchange: {this.state.description}</strong><br/>
+          <Alert color="warning">
+            <strong>{this.state.description}</strong><br/>
           </Alert>
       </CardText>
     </Card>
@@ -101,11 +102,9 @@ class Stocks extends Component {
     <Button color = "success" block size="lg" id="up" onClick={this.handleUp.bind(this)} type="submit"> Up </Button>
     <Button color = "danger" block size="lg"id="down" onClick={this.handleDown.bind(this)} type="submit"> Down </Button>
 
-      <h3>You currently have</h3>
-      <span className={this.getBadgeClasses()}>
+      <h5>You currently have<span className={this.getBadgeClasses()}>
         {this.formatNumberOfTokensLeft()}
-      </span>
-      <h6> number of tokens.</h6>
+      </span> number of tokens.</h5>
         </Col>
           </Row>
 
