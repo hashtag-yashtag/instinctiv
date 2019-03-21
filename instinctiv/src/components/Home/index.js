@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Alert } from 'reactstrap';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
-import { Table } from 'reactstrap';
+import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
 //import {Button, Input, Label} from 'reactstrap';
 import './home.css';
 import 'react-autocomplete-input/dist/bundle.css'
@@ -54,7 +53,7 @@ var userSearchList = []
     console.log(stocksList);
   }
 } */
-/* 
+/*
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
@@ -81,7 +80,7 @@ function viewNews(ticker) {
       var date = data.articles[i].publishedAt;
 /*
       var child = document.createElement('div');
-      child.innerHTML 
+      child.innerHTML
 
 
 
@@ -125,7 +124,7 @@ class HomePage extends Component {
     });
     var db = this.props.firebase.db;
     //get collection for stocks per user
-    
+
     db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").onSnapshot(querySnapshot=> {
       querySnapshot.forEach(element => {
         this.renderFavorites(element, element.id);
@@ -185,10 +184,13 @@ class HomePage extends Component {
             </div>
           </div>
         </div>
-            <div className="float-right">
+        <Row>
+        <Col sm="6">
+          <h3>Favorites</h3>
+                <Card body outline color="info">
 
-                <h3>Favorites</h3>
 
+                <CardText>
               <Table>
                 <thead>
                   <tr>
@@ -197,13 +199,18 @@ class HomePage extends Component {
                   </tr>
                 </thead>
                 <tbody id ="favs">
-                  
+
                 </tbody>
               </Table>
-            </div>
+            </CardText>
+            </Card>
+            </Col>
 
-            <div className="float-left">
+          <Col sm="6">
+
               <h3>Leaderboard</h3>
+                <Card body outline color="info">
+                  <CardText>
               <Table>
                 <thead>
                   <tr>
@@ -234,15 +241,22 @@ class HomePage extends Component {
                   </tr>
                 </tbody>
               </Table>
-            </div>
-            <div className="stock-chart">
-              <TradingViewWidget
-                symbol="AMZN"
-                theme={Themes.LIGHT}
-                locale="en"
-              />
+            </CardText>
+            </Card>
+          </Col>
+          <Col sm="12">
+          <div className="stock-chart">
+            <h3>Chart</h3>
+            <TradingViewWidget
+              symbol="AMZN"
+              theme={Themes.LIGHT}
+              locale="en"
+            />
 
-            </div>
+          </div>
+        </Col>
+        </Row>
+
             <div id="news">
 
             </div>

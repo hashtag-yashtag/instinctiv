@@ -4,7 +4,7 @@ import SignOutButton from "../SignOut";
 import Notifications from "../Notifications";
 
 import * as ROUTES from "../../constants/routes";
-
+import {Navbar} from 'react-bootstrap';
 
 /*
 this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
@@ -19,12 +19,12 @@ this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSna
  */
 
 const NavigationAuth = () => (
-  <div>
+  <div class = "top-bar">
+    <Navbar.Brand href = {ROUTES.HOME}>Instinctiv</Navbar.Brand>
     <div className="top-bar-right">
       <ul className="vertical medium-horizontal menu">
         <li>
-          <Link
-            to={ROUTES.HOME}
+          <Link to={ROUTES.HOME}
             className="menu-text1"
             activeclassname="active"
             activestyle={{ fontWeight: "bold" }}
@@ -53,7 +53,7 @@ const NavigationAuth = () => (
           </Link>
         </li>
           <Notifications />
-        
+
         <li>
           <SignOutButton />
         </li>

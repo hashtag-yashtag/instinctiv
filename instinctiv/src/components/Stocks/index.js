@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input, Table, Button, Col, Row, Card, Alert, CardText } from 'reactstrap';
+import { Input, Button, Col, Row, Card, Alert, CardText } from 'reactstrap';
 import './stocks.css';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 //import { Timestamp } from "@google-cloud/firestore";
