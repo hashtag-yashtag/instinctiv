@@ -6,18 +6,16 @@ import * as ROUTES from '../../constants/routes';
  */
 
 const NavigationNonAuth = () => (
-  <div>
-    <div div className="top-bar-right">
+    <div className="top-bar-right">
     <ul className="vertical medium-horizontal menu">
       <li>
-        <Link to={ROUTES.SIGN_IN} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Sign In</Link>
+        <Link to={ROUTES.SIGN_IN} className="menu-text1" activeclassname="active" activestyle={{fontWeight: 'bold'}}>Sign In</Link>
       </li>
       <li>
-        <Link to={ROUTES.LANDING} className="menu-text1" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Landing</Link>
+        <Link to={ROUTES.LANDING} className="menu-text1" activeclassname="active" activestyle={{fontWeight: 'bold'}}>Landing</Link>
       </li>
     </ul>
     </div>
-  </div>
 );
 
 export default NavigationNonAuth;

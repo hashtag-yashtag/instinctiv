@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input, Button, Col, Row, Card, CardText, Alert, Table } from 'reactstrap';
+import { Input, Table, Button, Col, Row, Card, Alert, CardText } from 'reactstrap';
 import './stocks.css';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
+//import { Timestamp } from "@google-cloud/firestore";
 
 class Stocks extends Component {
 
   constructor(props){
     super(props);
+    this.user = null;
     this.state = {
       username: '',
       balance: '',
@@ -18,13 +20,26 @@ class Stocks extends Component {
   }
 
   componentDidMount() {
-    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
+    this.user = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
         balance: docSnapshot.data().balance,
         username: docSnapshot.data().username,
         stock: this.props.match.params.name
       });      // ...
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+
+    this.bets = this.props.firebase.db.collection("Bets").where('stockId', '==', this.props.match.params.name).onSnapshot(querySnapshot => {
+      console.log(`Received query snapshot of size ${querySnapshot.size}`);
+      document.getElementById("bodyBets").innerHTML = "";
+      querySnapshot.forEach(element => {
+          this.renderBets(element, element.id);
+        //element.data().id = element.id;
+        //this.state.betsList.push(element.data());
+      });
+      console.log(querySnapshot, this.state.betsList);
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
@@ -49,6 +64,31 @@ class Stocks extends Component {
       console.log(`Encountered error: ${err}`);
     });
     this.viewNews();
+  }
+
+  componentWillUnmount(){
+    this.user();
+    this.bets();
+  }
+
+
+  renderBets(bet, index) {
+    //var db = this.props.firebase.db;
+    var row = document.createElement('tr');
+    row.setAttribute('id', bet.id);
+    var stockIdTD = document.createElement('td');
+    stockIdTD.textContent = bet.data().stockId;
+    var betTD = document.createElement('td');
+    betTD.textContent = bet.data().bet;
+    var dirTD = document.createElement('td');
+    dirTD.textContent = bet.data().direction;
+    //del.appendChild(delBut);
+    row.appendChild(stockIdTD);
+    row.appendChild(betTD);
+    row.appendChild(dirTD);
+
+    document.getElementById("bodyBets").appendChild(row);
+
   }
 
   render() {
@@ -107,9 +147,6 @@ class Stocks extends Component {
       </span> number of tokens.</h5>
         </Col>
           </Row>
-
-
-
           </div>
           <div>
             <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
@@ -174,6 +211,24 @@ class Stocks extends Component {
         })
       }
     )
+    if(this.state.balance < 100){
+      this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O)
+      .collection("notifications")
+      .where('type', '==', 'lowTokens')
+            .where("active", '==', true).get().then(docSnapshot => {
+                if(docSnapshot.size===0){
+                this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("notifications").add({
+                  message: 'You have less than 100 tokens left, go to the account section to add tokens.',
+                  active: true,
+                  type: 'lowTokens',
+                  time: new Date(),
+                });
+              }
+              }, err => {
+                console.log(`Encountered error: ${err}`);
+              });
+
+    }
   }
 
 

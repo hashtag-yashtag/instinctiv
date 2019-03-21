@@ -1,7 +1,10 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> db44897d6774e5080d10531d35885ca0679076da
+node_modules
+
+
+chronoJob/node_modules
+
+instinctiv/node_modules/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

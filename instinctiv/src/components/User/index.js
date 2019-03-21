@@ -14,8 +14,9 @@ class User extends Component {
       accuracy: 0,
     }
 
-    this.props.firebase.db.collection("Bets").where('username', '==', this.props.match.params.name).onSnapshot(querySnapshot => {
+    this.bets = this.props.firebase.db.collection("Bets").where('username', '==', this.props.match.params.name).onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
+      document.getElementById("bodyBets").innerHTML = "";
       querySnapshot.forEach(element => {
           this.renderBets(element, element.id);
         //element.data().id = element.id;
@@ -62,9 +63,11 @@ class User extends Component {
       
     }, err => {
       console.log(`Encountered error: ${err}`);
-    });
+    }); 
+  }
 
-    
+  componentWillUnmount() {
+    this.bets();
   }
   
   render() {

@@ -4,7 +4,7 @@ import { AuthUserContext, withAuthorization } from '../Session';
 import { Alert } from 'reactstrap';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import { Table } from 'reactstrap';
-import {Button, Input, Label} from 'reactstrap';
+//import {Button, Input, Label} from 'reactstrap';
 import './home.css';
 import 'react-autocomplete-input/dist/bundle.css'
 import Autocomplete from "./Autocomplete"
@@ -54,7 +54,7 @@ var userSearchList = []
     console.log(stocksList);
   }
 } */
-
+/* 
 function viewNews(ticker) {
   document.getElementById('news').innerHTML ='';
   var stock = ticker;
@@ -81,7 +81,7 @@ function viewNews(ticker) {
       var date = data.articles[i].publishedAt;
 /*
       var child = document.createElement('div');
-      child.innerHTML */
+      child.innerHTML 
 
 
 
@@ -96,7 +96,7 @@ function viewNews(ticker) {
       ;
       }
   });
-}
+} */
 
 class HomePage extends Component {
 
@@ -189,7 +189,7 @@ class HomePage extends Component {
 
                 <h3>Favorites</h3>
 
-              <Table stripped>
+              <Table>
                 <thead>
                   <tr>
                     <th>Ticker</th>
@@ -204,7 +204,7 @@ class HomePage extends Component {
 
             <div className="float-left">
               <h3>Leaderboard</h3>
-              <Table stripped>
+              <Table>
                 <thead>
                   <tr>
                     <th>User</th>
