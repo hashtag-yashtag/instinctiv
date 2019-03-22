@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+}
+
+.navbar {
+  height: 100;
+  background-color: black;
+  color: whitesmoke;
+  margin-bottom: 15;
+  text-align: center;
+  font-size: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Parth_104 {
+  background-image: url(./Parth_104.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.Parth_102 {
+  background-image: url(./Parth_102.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.Parth_103 {
+  background-image: url(./Parth_103.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.Parth_101 {
+  background-image: url(./Parth_101.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
