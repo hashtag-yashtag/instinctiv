@@ -6,7 +6,7 @@ import {Navbar, Nav} from 'react-bootstrap';
  */
 
 const NavigationNonAuth = () => (
-  <div class = "top-bar">
+  <div className="top-bar">
     <div className="top-bar-right">
     <ul className="vertical medium-horizontal menu">
       <li>

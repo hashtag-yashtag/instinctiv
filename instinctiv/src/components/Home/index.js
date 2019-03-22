@@ -8,8 +8,6 @@ import './home.css';
 import 'react-autocomplete-input/dist/bundle.css'
 import Autocomplete from "./Autocomplete"
 
-var stockSearchList = []
-var userSearchList = []
 
 class HomePage extends Component {
 
@@ -25,8 +23,6 @@ class HomePage extends Component {
   }
 
   async componentDidMount() {
-    stockSearchList = []
-    userSearchList = []
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
@@ -52,19 +48,6 @@ class HomePage extends Component {
       });
     })
 
-    await this.props.firebase.db.collection("Stocks").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          stockSearchList.push(doc.data()['ticker'] + ": " + doc.data()['name'])
-      });
-    });
-
-    await this.props.firebase.db.collection("Users").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          userSearchList.push(doc.data()['username']);
-      });
-    });
   }
 
 
@@ -112,11 +95,6 @@ class HomePage extends Component {
             </Alert>
           </Col>
         </Row>
-          
-          
-                <div className="column small-centered small-11 medium-6 large-5">
-                  <Autocomplete suggestions={stockSearchList} userSuggestions={userSearchList} />
-            </div>
         </div>
         <Row>
         <Col sm="6">

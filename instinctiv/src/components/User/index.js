@@ -20,7 +20,7 @@ class User extends Component {
       querySnapshot.forEach(element => {
           this.renderBets(element, element.id);
         //element.data().id = element.id;
-        this.state.betsList.push(element.data());
+        //this.state.betsList.push(element.data());
       });
       console.log(querySnapshot, this.state.betsList);
     }, err => {

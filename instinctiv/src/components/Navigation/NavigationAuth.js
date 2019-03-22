@@ -1,10 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../SignOut";
 import Notifications from "../Notifications";
+import { AuthUserContext, withAuthorization, withAuthentication } from '../Session';
 
 import * as ROUTES from "../../constants/routes";
 import {Navbar} from 'react-bootstrap';
+import Autocomplete from "./Autocomplete"
+import 'react-autocomplete-input/dist/bundle.css'
 
 /*
 this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
@@ -18,48 +21,105 @@ this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSna
 /* export default withAuthentication(AppS);
  */
 
-const NavigationAuth = () => (
-  <div class = "top-bar">
-    <Navbar.Brand href = {ROUTES.HOME}>Instinctiv</Navbar.Brand>
-    <div className="top-bar-right">
-      <ul className="vertical medium-horizontal menu">
-        <li>
-          <Link to={ROUTES.HOME}
-            className="menu-text1"
-            activeclassname="active"
-            activestyle={{ fontWeight: "bold" }}
-          >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            to={ROUTES.ACCOUNT}
-            className="menu-text1"
-            activeclassname="active"
-            activestyle={{ fontWeight: "bold" }}
-          >
-            Account
-          </Link>
-        </li>
-        <li>
-          <Link
-            to={ROUTES.ADMIN}
-            className="menu-text1"
-            activeclassname="active"
-            activestyle={{ fontWeight: "bold" }}
-          >
-            Admin
-          </Link>
-        </li>
-          <Notifications />
 
-        <li>
-          <SignOutButton />
-        </li>
-      </ul>
+var stockSearchList = []
+var userSearchList = []
+
+class NavigationAuth extends Component {
+  constructor(){
+    super();/* 
+    this.setState({
+      stockSearchLis: [],
+      userSearchList: [],
+    }) */
+
+  }
+
+  async componentDidMount() {/* 
+    this.setState({
+      stockSearchLis: [],
+      userSearchList: [],
+    }) */
+    stockSearchList = []
+    userSearchList = []
+
+
+
+
+    await this.props.firebase.db.collection("Stocks").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          stockSearchList.push(doc.data()['ticker'] + ": " + doc.data()['name'])
+      });
+    });
+
+    await this.props.firebase.db.collection("Users").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          userSearchList.push(doc.data()['username']);
+      });
+    });
+  }
+
+
+  render() {
+    return (/* 
+      <AuthUserContext.Consumer>
+      {authUser => ( */
+      <div className= "top-bar">
+      <Navbar.Brand href = {ROUTES.HOME}>Instinctiv</Navbar.Brand>
+      <div className="column small-centered small-11 medium-6 large-5">
+        <Autocomplete suggestions={stockSearchList} userSuggestions={userSearchList} />
+      </div>
+      <div className="top-bar-right">
+        <ul className="vertical medium-horizontal menu">
+          <li>
+            <Link to={ROUTES.HOME}
+              className="menu-text1"
+              activeclassname="active"
+              activestyle={{ fontWeight: "bold" }}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={ROUTES.ACCOUNT}
+              className="menu-text1"
+              activeclassname="active"
+              activestyle={{ fontWeight: "bold" }}
+            >
+              Account
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={ROUTES.ADMIN}
+              className="menu-text1"
+              activeclassname="active"
+              activestyle={{ fontWeight: "bold" }}
+            >
+              Admin
+            </Link>
+          </li>
+            <Notifications />
+
+          <li>
+            <SignOutButton />
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-);
+      );
 
-export default NavigationAuth;
+  }
+
+}
+
+const condition = authUser => !!authUser;
+
+
+export default withAuthentication(NavigationAuth);
+/* )}
+      </AuthUserContext.Consumer>
+     */
