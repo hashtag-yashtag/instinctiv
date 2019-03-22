@@ -1,7 +1,7 @@
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Alert, Table, Card, Col, Row } from 'reactstrap';
+import { Alert, Table, Card, Col, Row, Button } from 'reactstrap';
 
 class Account extends Component {
   constructor(props){
@@ -29,6 +29,12 @@ class Account extends Component {
       console.log(`Encountered error: ${err}`);
     });
   }
+
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
 
   componentDidMount() {
     var db = this.props.firebase.db;
@@ -88,6 +94,8 @@ class Account extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
           <div>
+            <body id="body" class="light-mode">
+            <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
             <Row>
             <Col sm="4">
             <Card body outline color="primary">
@@ -139,6 +147,7 @@ class Account extends Component {
                </Card>
                </Col>
               </Row>
+            </body>
           </div>
         )}
       </AuthUserContext.Consumer>

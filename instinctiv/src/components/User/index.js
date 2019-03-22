@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
+import { Alert, Table, Card, Col, Row, CardText, Button } from 'reactstrap';
 import { withAuthorization } from '../Session';
 
 
@@ -28,6 +28,12 @@ class User extends Component {
     });
   }
 
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
+
   renderBets(bet, index) {
     //var db = this.props.firebase.db;
     var row = document.createElement('tr');
@@ -44,9 +50,9 @@ class User extends Component {
     row.appendChild(dirTD);
 
     document.getElementById("bodyBets").appendChild(row);
-    
+
   }
-    
+
   componentDidMount() {
     this.props.firebase.db.collection("Users").where('username', '==', this.props.match.params.name)
                                                     .limit(1).onSnapshot(querySnapshot => {
@@ -60,19 +66,21 @@ class User extends Component {
           accuracy: docSnapshot.data().accuracy,
         });      // ...
       });
-      
+
     }, err => {
       console.log(`Encountered error: ${err}`);
-    }); 
+    });
   }
 
   componentWillUnmount() {
     this.bets();
   }
-  
+
   render() {
     return (
       <div>
+        <body id="body" class="light-mode">
+        <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
         <Row>
           <Col sm="4">
             <Card body outline color="primary">
@@ -85,7 +93,7 @@ class User extends Component {
                   <Alert color="info">
                   <strong>Username: {this.state.username}</strong>
                     </Alert>
-                    {/* 
+                    {/*
                     <Alert color="warning">
                     <strong> Balance: {this.state.balance}</strong>
                       </Alert> */}
@@ -116,6 +124,7 @@ class User extends Component {
           </Col>
 
         </Row>
+      </body>
       </div>
     )
   }

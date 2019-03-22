@@ -9,3 +9,4 @@ export const NOTIFICATIONS = "/notifications";
 export const STOCKS = "/stocks/:name";
 export const USER = "/user/:name";
 export const CHECKOUT = "/Checkout";
+export const HELP = "/help";

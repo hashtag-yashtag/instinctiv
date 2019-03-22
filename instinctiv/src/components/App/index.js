@@ -11,7 +11,7 @@ import AccountPage from "../Account";
 import Notifications from "../Notifications";
 import Stocks from "../Stocks";
 import User from "../User";
-
+import Help from "../Help";
 import { withAuthentication } from "../Session";
 
 import AdminPage from "../Admin";
@@ -34,6 +34,7 @@ const App = () => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.HELP} component={Help} />
       <Route path={ROUTES.NOTIFICATIONS} component={Notifications} />
       <Route path={ROUTES.STOCKS} component={Stocks} />
       <Route path={ROUTES.USER} component={User}/>

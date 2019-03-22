@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { AuthUserContext, withAuthorization } from '../Session';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
-import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
+import { Alert, Table, Card, Col, Row, CardText, Button } from 'reactstrap';
 //import {Button, Input, Label} from 'reactstrap';
 import './home.css';
 import 'react-autocomplete-input/dist/bundle.css'
@@ -21,6 +21,12 @@ class HomePage extends Component {
     //this.handleChange = this.handleChange.bind(this);
     //this.handleSubmitStock = this.handleSubmitStock.bind(this);
   }
+
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
 
   async componentDidMount() {
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
@@ -88,7 +94,8 @@ class HomePage extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
       <div>
-
+        <body id="body" class="light-mode">
+        <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
         <div className="home-page">
         <Row>
           <Col sm="4">
@@ -136,7 +143,7 @@ class HomePage extends Component {
                   </tr>
                 </thead>
                 <tbody id="leaders">
-                  
+
                 </tbody>
               </Table>
             </CardText>
@@ -158,6 +165,7 @@ class HomePage extends Component {
             <div id="news">
 
             </div>
+          </body>
         </div>
       )}
       </AuthUserContext.Consumer>

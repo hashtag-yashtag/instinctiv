@@ -2,6 +2,7 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios'
 import "./checkout.css"
+import {Button} from 'reactstrap';
 
 export default class Checkout extends React.Component {
 
@@ -13,6 +14,12 @@ export default class Checkout extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
+
+    toggleDarkLight = event => {
+     var body = document.getElementById("body");
+     var currentClass = body.className;
+     body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+   }
 
     componentDidMount() {
     }
@@ -62,6 +69,8 @@ export default class Checkout extends React.Component {
         return (
 
             <div class="align-center">
+              <body id="body" class="light-mode">
+              <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
                 <h4>Buy Tokens</h4>
                 <form onSubmit={this.handleSubmit}>
                     <input
@@ -87,6 +96,7 @@ export default class Checkout extends React.Component {
                     token={this.onToken}
                     zipCode
                 />
+            </body>
             </div>
         )
     }

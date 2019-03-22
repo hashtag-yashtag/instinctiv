@@ -51,3 +51,27 @@ input {
 .suggestions li:not(:last-of-type) {
   border-bottom: 1px solid #999;
 }
+
+body.dark-mode {
+  background-color: #111;
+  color: #eee;
+  a {
+    color: #111;
+  }
+  button {
+    background-color: #eee;
+    color: #111;
+  }
+}
+
+body.light-mode {
+  background-color: #eee;
+  color: #111;
+  a {
+    color: #111;
+  }
+  button {
+    background-color: #111;
+    color: #eee;
+  }
+}

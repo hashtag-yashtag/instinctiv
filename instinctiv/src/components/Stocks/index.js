@@ -19,6 +19,12 @@ class Stocks extends Component {
     //this.handleSubmitStock = this.handleSubmitStock.bind(this);
   }
 
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
+
   componentDidMount() {
     this.user = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
@@ -82,12 +88,12 @@ class Stocks extends Component {
   renderBets(bet, index) {
     //var db = this.props.firebase.db;
     var row = document.createElement('tr');
-    row.setAttribute('id', bet.id);/* 
+    row.setAttribute('id', bet.id);/*
     var stockIdTD = document.createElement('td');
     stockIdTD.textContent = bet.data().stockId; */
     var betTD = document.createElement('td');
     betTD.textContent = bet.data().bet;
-  
+
     var dirTD = document.createElement('td');
     dirTD.textContent = bet.data().direction;
     //del.appendChild(delBut);
@@ -104,6 +110,8 @@ class Stocks extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
+          <body id="body" class="light-mode">
+          <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
           <div>
             <Row>
             <Col sm="5">
@@ -179,7 +187,7 @@ class Stocks extends Component {
           </div>
           <h4> Stock News</h4>
           <div id="news"></div>{/* <Button outline color="primary" onClick={this.viewNews} block>Search</Button> */}
-
+          </body>
         </div>
 
       )}
@@ -218,7 +226,7 @@ class Stocks extends Component {
       var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker).delete();
       document.getElementById('fav').innerText = 'Favorite';
     }
-    
+
   }
 
   handleSubmit(dir) {
