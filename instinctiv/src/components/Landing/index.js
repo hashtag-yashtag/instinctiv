@@ -1,16 +1,16 @@
 import React from "react";
-import Parth_104 from "./Parth_104.png";
-import Parth_102 from "./Parth_102.png";
-import Parth_103 from "./Parth_103.png";
-import Parth_101 from "./Parth_101.png";
+import MC104 from "./MC104.png";
+import MC102 from "./MC102.png";
+import MC103 from "./MC103.png";
+import MC101 from "./MC101.png";
 
 function Header() {
   return (
     <div>
-      <img src={Parth_104} alt="Parth_104" />
-      <img src={Parth_102} alt="Parth_102" />
-      <img src={Parth_103} alt="Parth_103" />
-      <img src={Parth_101} alt="Parth_101" />
+      <img src={MC104} alt="MC104" />
+      <img src={MC102} alt="MC102" />
+      <img src={MC103} alt="MC103" />
+      <img src={MC101} alt="MC101" />
     </div>
   );
 }
