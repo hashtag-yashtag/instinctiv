@@ -6,6 +6,26 @@ var intrinioSDK = require('intrinio-sdk');
 intrinioSDK.ApiClient.instance.authentications['ApiKeyAuth'].apiKey = "OjcyZjYxNWY0YWYyNDJjZWU2OWJiNmI3MDMyMWIwNThk";
 var companyAPI = new intrinioSDK.CompanyApi();
 var firebase = require('firebase');
+const stripe = require("stripe")("sk_test_O5wvtpdkhKiwidIk8Q48kUhC");
+
+app.use(require("body-parser").text());
+
+app.post("/charge", async (req, res) => {
+    try {
+      let {status} = await stripe.charges.create({
+        amount: 2000,
+        currency: "usd",
+        description: "An example charge",
+        source: req.body
+      });
+  
+      res.json({status});
+    } catch (err) {
+      res.status(500).end();
+    }
+  });
+  
+
 
 var config = {
     apiKey: "AIzaSyBvSjVcV8LNU63a5BKYuSRNh68G67Upbsk",
@@ -67,6 +87,6 @@ app.get('/api/hello', (req, res) => {
 })
 
 app.listen(4000, function () {
-    console.log('App listening on port 3000')
+    console.log('App listening on port 4000')
 })
 

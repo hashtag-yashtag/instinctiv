@@ -98,6 +98,7 @@ class NavigationAuth extends Component {
               Account
             </Link>
           </li>
+          
           <li>
             <Link
               to={ROUTES.ADMIN}
@@ -108,8 +109,17 @@ class NavigationAuth extends Component {
               Admin
             </Link>
           </li>
+          <li>
+              <Link
+              to={ROUTES.CHECKOUT}
+              className="menu-text1"
+              activeclassname="active"
+              activestyle={{ fontWeight: "bold" }}
+              >
+              Buy Tokens</Link>
+              
+            </li>
             <Notifications />
-
           <li>
             <SignOutButton />
           </li>

@@ -20,6 +20,7 @@ import * as ROUTES from "../../constants/routes";
 import "bootstrap-css-only/css/bootstrap.min.css";
 
 import "foundation-sites/dist/css/foundation.min.css";
+import Checkout from "../Checkout";
 
 const App = () => (
   <Router>
@@ -35,7 +36,8 @@ const App = () => (
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.NOTIFICATIONS} component={Notifications} />
       <Route path={ROUTES.STOCKS} component={Stocks} />
-      <Route path={ROUTES.USER} component={User} />
+      <Route path={ROUTES.USER} component={User}/>
+      <Route path={ROUTES.CHECKOUT} component={Checkout}/>
     </div>
   </Router>
 );

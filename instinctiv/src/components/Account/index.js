@@ -93,7 +93,9 @@ class Account extends Component {
             <Card body outline color="primary">
             <img alt='' src={authUser.photoURL || 'https://goo.gl/Fz9nrQ'}/>
 
-                <Alert color="primary">
+                <Card body outline color="info">
+                 <h3><button>Buy Tokens</button></h3>
+               </Card>                <Alert color="primary">
                 <strong>Email: {this.state.email}</strong>
                   </Alert>
 
@@ -107,7 +109,7 @@ class Account extends Component {
 
                     <Alert color="success">
                     <strong> Accuracy: {this.state.accuracy}</strong>
-                      </Alert>
+                    </Alert>
             </Card>
           </Col>
 

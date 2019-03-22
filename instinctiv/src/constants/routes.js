@@ -8,3 +8,4 @@ export const PASSWORD_FORGET = "/pw-forget";
 export const NOTIFICATIONS = "/notifications";
 export const STOCKS = "/stocks/:name";
 export const USER = "/user/:name";
+export const CHECKOUT = "/Checkout";
