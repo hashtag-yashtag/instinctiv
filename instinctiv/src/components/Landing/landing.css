@@ -14,29 +14,36 @@ body {
   align-items: center;
 }
 
-.MC104 {
+.img {
+  background-image: url(./MC_02.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.img {
   background-image: url(./MC104.png);
   align-items: left;
   height: 100;
   width: 100;
 }
 
-.MC102 {
+.img {
   background-image: url(./MC102.png);
   align-items: left;
   height: 100;
   width: 100;
 }
 
-.MC103 {
+.img {
   background-image: url(./MC103.png);
   align-items: left;
   height: 100;
   width: 100;
 }
 
-.MC101 {
-  background-image: url(./MC101.png);
+.img {
+  background-image: url(./MC02.png);
   align-items: left;
   height: 100;
   width: 100;
