@@ -5,7 +5,7 @@ import { PasswordForgetLink} from '../PasswordForget';
 import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
-import {Button, Form, Input} from 'reactstrap';
+import {Button, Form, Input, Row, Col} from 'reactstrap';
 import SignInGoogleBase from '../Google/SignInGoogle';
 
 const SignInPage = () => (
@@ -56,8 +56,10 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
+      <div>
+            <Row>
+         <Col sm="3"></Col>
+          <Col sm="5">
       <Form onSubmit={this.onSubmit}>
         <Input
           name="email"
@@ -79,8 +81,9 @@ class SignInFormBase extends Component {
         {error && <p>{error.message}</p>}
       </Form>
         <SignInGoogle />
-
-    </div>
+        </Col>
+        <Col sm="4"></Col>
+        </Row>
   </div>
     );
   }

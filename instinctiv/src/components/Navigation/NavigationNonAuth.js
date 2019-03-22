@@ -5,6 +5,13 @@ import {Navbar, Nav} from 'react-bootstrap';
 
 const NavigationNonAuth = () => (
   <div className="top-bar">
+    <div className="top-bar-left">
+      <ul className="vertical medium-horizontal menu">
+        <li>
+      <Navbar.Brand href = {ROUTES.LANDING}>Instinctiv</Navbar.Brand>
+      </li>
+    </ul>
+  </div>
     <div className="top-bar-right">
     <ul className="vertical medium-horizontal menu">
       <li>

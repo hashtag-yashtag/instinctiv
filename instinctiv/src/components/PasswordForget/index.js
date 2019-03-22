@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
-import { Button, Form, Input } from "reactstrap";
+import { Button, Form, Input, Col, Row } from "reactstrap";
 
 const PasswordForget = () => (
   <div>
@@ -50,8 +50,10 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === "";
 
     return (
-      <div className="row">
-        <div className="column small-centered small-11 medium-6 large-5">
+      <div>
+        <Row>
+     <Col sm="3"></Col>
+      <Col sm="5">
           <Form onSubmit={this.onSubmit}>
             <p><strong>Forgot Password?</strong></p>
             <Input
@@ -67,19 +69,26 @@ class PasswordForgetFormBase extends Component {
 
             {error && <p>{error.message}</p>}
           </Form>
-        </div>
+        </Col>
+      <Col sm="4"></Col>
+      </Row>
       </div>
     );
   }
 }
 
 const PasswordForgetLink = () => (
-  <div className="row">
-      <div className="column small-centered small-11 medium-6 large-5">
+  <div>
+    <Row>
+ <Col sm="3"></Col>
+  <Col sm="5">
   <p>
     Forgot Password? <Link to={ROUTES.PASSWORD_FORGET}>Reset Password</Link>
   </p>
-</div>
+</Col>
+<Col sm="4"></Col>
+</Row>
+
 </div>
 );
 

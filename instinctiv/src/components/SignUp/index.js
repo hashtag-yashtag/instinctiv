@@ -4,7 +4,7 @@ import { withFirebase } from '../Firebase';
 //import { PasswordForgetForm } from '../PasswordForget';
 
 import * as ROUTES from '../../constants/routes';
-import {Button, Form, Input} from 'reactstrap';
+import {Button, Form, Input, Col, Row} from 'reactstrap';
 
 const SignUpPage = () => (
   <div>
@@ -80,8 +80,10 @@ class SignUpFormBase extends Component {
       photoURL === '';
 
     return (
-      <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
+      <div>
+        <Row>
+     <Col sm="3"></Col>
+      <Col sm="5">
       <Form onSubmit={this.onSubmit}>
         <Input
           name="username"
@@ -122,20 +124,28 @@ class SignUpFormBase extends Component {
       <Button color ="primary" disabled={isInvalid} type="submit">Sign Up</Button>
 
         {error && <p>{error.message}</p>}
+
       </Form>
-    </div>
+      </Col>
+    <Col sm="4"></Col>
+    </Row>
   </div>
     );
   }
 }
 
 const SignUpLink = () => (
-  <div className="row">
-      <div className="column small-centered small-11 medium-6 large-5">
+  <div>
+    <Row>
+ <Col sm="3"></Col>
+  <Col sm="5">
   <p>
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
-</div>
+</Col>
+<Col sm="4"></Col>
+</Row>
+
 </div>
 );
 
