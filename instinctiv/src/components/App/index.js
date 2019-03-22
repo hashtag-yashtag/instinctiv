@@ -19,7 +19,7 @@ import AdminPage from "../Admin";
 import * as ROUTES from "../../constants/routes";
 import "bootstrap-css-only/css/bootstrap.min.css";
 
-import "foundation-sites/dist/css/foundation.min.css";
+import "foundation-sites/dist/foundation.min.css";
 
 const App = () => (
   <Router>

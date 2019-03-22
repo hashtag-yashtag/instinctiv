@@ -27,7 +27,7 @@ var userSearchList = []
 
 class NavigationAuth extends Component {
   constructor(){
-    super();/* 
+    super();/*
     this.setState({
       stockSearchLis: [],
       userSearchList: [],
@@ -35,7 +35,7 @@ class NavigationAuth extends Component {
 
   }
 
-  async componentDidMount() {/* 
+  async componentDidMount() {/*
     this.setState({
       stockSearchLis: [],
       userSearchList: [],
@@ -63,13 +63,19 @@ class NavigationAuth extends Component {
 
 
   render() {
-    return (/* 
+    return (/*
       <AuthUserContext.Consumer>
       {authUser => ( */
       <div className= "top-bar">
-      <Navbar.Brand href = {ROUTES.HOME}>Instinctiv</Navbar.Brand>
-      <div className="column small-centered small-11 medium-6 large-5">
+      <div className="top-bar-left">
+        <ul className="vertical medium-horizontal menu">
+          <li>
+        <Navbar.Brand href = {ROUTES.HOME}>Instinctiv</Navbar.Brand>
+        </li>
+        <li>
         <Autocomplete suggestions={stockSearchList} userSuggestions={userSearchList} />
+        </li>
+      </ul>
       </div>
       <div className="top-bar-right">
         <ul className="vertical medium-horizontal menu">
