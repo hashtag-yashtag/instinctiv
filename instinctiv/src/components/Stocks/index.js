@@ -87,6 +87,7 @@ class Stocks extends Component {
     stockIdTD.textContent = bet.data().stockId; */
     var betTD = document.createElement('td');
     betTD.textContent = bet.data().bet;
+  
     var dirTD = document.createElement('td');
     dirTD.textContent = bet.data().direction;
     //del.appendChild(delBut);
