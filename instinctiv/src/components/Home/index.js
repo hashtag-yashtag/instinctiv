@@ -42,7 +42,7 @@ class HomePage extends Component {
     })
 
 
-    this.leaders = db.collection("Users").orderBy('accuracy').limit(5).onSnapshot(querySnapshot=> {
+    this.leaders = db.collection("Users").orderBy('accuracy', 'desc').limit(5).onSnapshot(querySnapshot=> {
       querySnapshot.forEach(element => {
         this.renderLeaderBoard(element, element.id);
       });
