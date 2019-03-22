@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "alphavantage": "^1.2.0",
+    "boostrap": "^2.0.0",
     "css-loader": "^0.23.1",
     "firebase": "^5.8.3",
     "foundation-sites": "^6.5.3",

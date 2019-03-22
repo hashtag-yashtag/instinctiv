@@ -17,10 +17,9 @@ import { withAuthentication } from "../Session";
 import AdminPage from "../Admin";
 
 import * as ROUTES from "../../constants/routes";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
 
 import "foundation-sites/dist/css/foundation.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => (
   <Router>
