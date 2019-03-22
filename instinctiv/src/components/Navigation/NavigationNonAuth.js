@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import {Navbar, Nav} from 'react-bootstrap';
-/* export default withAuthentication(AppS);
- */
 
 const NavigationNonAuth = () => (
   <div className="top-bar">
