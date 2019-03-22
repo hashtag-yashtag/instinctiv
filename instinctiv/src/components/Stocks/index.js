@@ -65,7 +65,7 @@ class Stocks extends Component {
     });
     this.viewNews();
 
-    this.favs = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(this.props.match.params.name)
+    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(this.props.match.params.name)
       .get().then(docSnapshot => {
         if(docSnapshot.exists){
           document.getElementById('fav').innerText = 'Un-favorite';
@@ -76,7 +76,6 @@ class Stocks extends Component {
   componentWillUnmount(){
     this.user();
     this.bets();
-    this.favs();
   }
 
 
