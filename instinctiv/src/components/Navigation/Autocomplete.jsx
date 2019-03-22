@@ -21,7 +21,7 @@ class Autocomplete extends Component {
       // The active selection's index
       activeSuggestion: 0,
       // The suggestions that match the user's input
-      filteredSuggestions: [],
+      filteredSuggestions: [],  
       filteredUserSuggestions: [],
       // Whether or not the suggestion list is shown
       showSuggestions: false,

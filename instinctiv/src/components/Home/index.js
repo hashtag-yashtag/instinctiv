@@ -86,7 +86,7 @@ class HomePage extends Component {
 
         <div className="home-page">
         <Row>
-          <Col sm="2">
+          <Col sm="4">
             <h1>Hi, {this.state.username}!</h1>
           </Col>
           <Col sm="4">
