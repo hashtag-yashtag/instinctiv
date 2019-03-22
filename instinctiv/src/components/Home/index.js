@@ -35,19 +35,24 @@ class HomePage extends Component {
     var db = this.props.firebase.db;
     //get collection for stocks per user
 
-    db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").onSnapshot(querySnapshot=> {
+    this.favs = db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").onSnapshot(querySnapshot=> {
       querySnapshot.forEach(element => {
         this.renderFavorites(element, element.id);
     });
     })
 
 
-    db.collection("Users").orderBy('accuracy').limit(5).onSnapshot(querySnapshot=> {
+    this.leaders = db.collection("Users").orderBy('accuracy').limit(5).onSnapshot(querySnapshot=> {
       querySnapshot.forEach(element => {
         this.renderLeaderBoard(element, element.id);
       });
     })
 
+  }
+
+  componentWillUnmount() {
+    this.favs();
+    this.leaders();
   }
 
 
