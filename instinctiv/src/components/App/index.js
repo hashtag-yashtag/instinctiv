@@ -17,17 +17,14 @@ import { withAuthentication } from "../Session";
 import AdminPage from "../Admin";
 
 import * as ROUTES from "../../constants/routes";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
 
-import "foundation-sites/dist/foundation.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "foundation-sites/dist/css/foundation.min.css";
 
 const App = () => (
   <Router>
     <div>
       <Navigation />
-
-      <hr />
 
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />

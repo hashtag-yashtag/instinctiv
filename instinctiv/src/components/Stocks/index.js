@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input, Button, Col, Row, Card, Alert, CardText } from 'reactstrap';
+import { Input, Button, Col, Row, Label, Card, Alert, CardText, Table } from 'reactstrap';
 import './stocks.css';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 //import { Timestamp } from "@google-cloud/firestore";
@@ -64,6 +64,13 @@ class Stocks extends Component {
       console.log(`Encountered error: ${err}`);
     });
     this.viewNews();
+
+    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(this.props.match.params.name)
+      .get().then(docSnapshot => {
+        if(docSnapshot.exists){
+          document.getElementById('fav').innerText = 'Un-favorite';
+        }
+      });
   }
 
   componentWillUnmount(){
@@ -75,15 +82,16 @@ class Stocks extends Component {
   renderBets(bet, index) {
     //var db = this.props.firebase.db;
     var row = document.createElement('tr');
-    row.setAttribute('id', bet.id);
+    row.setAttribute('id', bet.id);/* 
     var stockIdTD = document.createElement('td');
-    stockIdTD.textContent = bet.data().stockId;
+    stockIdTD.textContent = bet.data().stockId; */
     var betTD = document.createElement('td');
     betTD.textContent = bet.data().bet;
+  
     var dirTD = document.createElement('td');
     dirTD.textContent = bet.data().direction;
     //del.appendChild(delBut);
-    row.appendChild(stockIdTD);
+    //row.appendChild(stockIdTD);
     row.appendChild(betTD);
     row.appendChild(dirTD);
 
@@ -101,6 +109,7 @@ class Stocks extends Component {
             <Col sm="5">
               <Card body inverse color="info">
         <CardText>
+            <Button color="success" id="fav" onClick={this.handleFavorite.bind(this)} type="submit">Favorite</Button>
             <Alert color="primary">
               <strong>Name: {this.state.name}</strong>
             </Alert>
@@ -149,13 +158,29 @@ class Stocks extends Component {
           </Row>
           </div>
           <div>
+            <Row>
+              <Col sm="5">
+            <Table striped hover>
+              <thead>
+                <tr>
+                  <th>Tokens bet on {this.props.match.params.name}</th>
+                  <th>Up/Down</th>
+                </tr>
+              </thead>
+              <tbody id='bodyBets'>
+
+              </tbody>
+            </Table>
+            </Col>
+            <Col sm="5">
             <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
+            </Col>
+            </Row>
           </div>
           <h4> Stock News</h4>
           <div id="news"></div>{/* <Button outline color="primary" onClick={this.viewNews} block>Search</Button> */}
 
         </div>
-
 
       )}
       </AuthUserContext.Consumer>
@@ -175,12 +200,25 @@ class Stocks extends Component {
   }
 
   handleFavorite(e){
-    var ticker = this.props.match.params.name;
-    var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker)
-    userDoc.set({
-      Ticker: ticker,
-      price: this.state.price
-    })
+
+    if(document.getElementById('fav').innerText === 'Favorite'){
+      console.log('favoriting');
+      var ticker = this.props.match.params.name;
+      var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker)
+      userDoc.set({
+        Ticker: ticker,
+        price: this.state.price
+      })
+      document.getElementById('fav').innerText = 'Un-favorite';
+
+
+    }else{
+      console.log('unfavoriting');
+      var ticker = this.props.match.params.name;
+      var userDoc = this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).collection("favorites").doc(ticker).delete();
+      document.getElementById('fav').innerText = 'Favorite';
+    }
+    
   }
 
   handleSubmit(dir) {

@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+}
+
+.navbar {
+  height: 100;
+  background-color: black;
+  color: whitesmoke;
+  margin-bottom: 15;
+  text-align: center;
+  font-size: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  background-image: url(./MC_02.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.img {
+  background-image: url(./MC104.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.img {
+  background-image: url(./MC102.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.img {
+  background-image: url(./MC103.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
+
+.img {
+  background-image: url(./MC02.png);
+  align-items: left;
+  height: 100;
+  width: 100;
+}
