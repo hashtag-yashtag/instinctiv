@@ -8,94 +8,8 @@ import './home.css';
 import 'react-autocomplete-input/dist/bundle.css'
 import Autocomplete from "./Autocomplete"
 
-/*
-const SYMBOL = '01. symbol'
-const OPEN_PRICE = '02. open'
-const HIGH_PRICE = '03. high'
-const LOW_PRICE = '04. low'
-const CURRENT_PRICE = '05. price'
-
-
-var stocksList = [
-  {ticker:'AAPL', price: ''},
-  {ticker:'MSFT', price: ''},
-  {ticker:'TSLA', price: ''},
-  {ticker:'FB', price: ''},
-  {ticker:'NFLX', price: ''}
-];*/
-
 var stockSearchList = []
 var userSearchList = []
-
-//var alphaKey = '2U48DC45SZ4PJT3U'
-
-/* async function getStockPrices() {
-  for (var stock of stocksList) {
-    //Comment out for actual values
-    // var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='+stock.ticker+'&apikey='+alphaKey;
-
-    //Comment out for dummy values
-    var alphaURL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo'
-
-    stock.price = await fetch(alphaURL).then(
-      response => response.json()).then(
-        data => {
-          return data['Global Quote'][CURRENT_PRICE];
-        }
-    )
-    stock.ticker = await fetch(alphaURL).then(
-      response => response.json()).then(
-        data => {
-          return data['Global Quote'][SYMBOL];
-        }
-    )
-    console.log(stock.price);
-    console.log(stocksList);
-  }
-} */
-/*
-function viewNews(ticker) {
-  document.getElementById('news').innerHTML ='';
-  var stock = ticker;
-  var url = 'https://newsapi.org/v2/everything?q='
-            + stock  +
-            '&apiKey=34c665fbab834d7c80356f0bf458b1a7';
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-
-    for(var i=0; i < 12; i++){
-
-      var title = data.articles[i].title;
-
-      if(title == null){
-        title ="";
-      }
-      var desc = data.articles[i].description;
-      var auth = data.articles[i].author;
-      var link = data.articles[i].url;
-      var link1 = data.articles[i].urlToImage;
-      var date = data.articles[i].publishedAt;
-/*
-      var child = document.createElement('div');
-      child.innerHTML
-
-
-
-    document.getElementById('news').innerHTML += '<div class="item"><h2 class="header">' + title + '</h2>' +
-               //character of escape: "quotes" and '+'
-      '<img src="' + link1 +'">' +
-      '<p class="publishedAt">' + date + '</p>' +
-      '<p>' + desc + '</p>' +
-      '<p>' + auth + '</p>' +
-               //character of escape: "quotes" and '+'
-      '<a href="'+ link +'">Read more</a></div>'
-      ;
-      }
-  });
-} */
 
 class HomePage extends Component {
 
@@ -129,7 +43,13 @@ class HomePage extends Component {
       querySnapshot.forEach(element => {
         this.renderFavorites(element, element.id);
     });
+    })
 
+
+    db.collection("Users").orderBy('accuracy').limit(5).onSnapshot(querySnapshot=> {
+      querySnapshot.forEach(element => {
+        this.renderLeaderBoard(element, element.id);
+      });
     })
 
     await this.props.firebase.db.collection("Stocks").get().then(function(querySnapshot) {
@@ -147,6 +67,19 @@ class HomePage extends Component {
     });
   }
 
+
+  renderLeaderBoard(leader, id){
+    var row = document.createElement('tr');
+    var leaderTD = document.createElement('td');
+    leaderTD.textContent = leader.data().username;
+    var accuracyTD = document.createElement('td');
+    accuracyTD.textContent = leader.data().accuracy;
+
+    row.appendChild(leaderTD);
+    row.appendChild(accuracyTD);
+    document.getElementById("leaders").appendChild(row);
+
+  }
 
   renderFavorites(ticker, id){
     var row = document.createElement('tr');
@@ -218,27 +151,8 @@ class HomePage extends Component {
                     <th>Score</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Alpha</td>
-                    <td>95.33%</td>
-                  </tr>
-                  <tr>
-                    <td>Beta</td>
-                    <td>92.1%</td>
-                  </tr>
-                  <tr>
-                    <td>Gamma</td>
-                    <td>75.66%</td>
-                  </tr>
-                  <tr>
-                    <td>Delta</td>
-                    <td>72.54%</td>
-                  </tr>
-                  <tr>
-                    <td>Epsilon</td>
-                    <td>56.5%</td>
-                  </tr>
+                <tbody id="leaders">
+                  
                 </tbody>
               </Table>
             </CardText>

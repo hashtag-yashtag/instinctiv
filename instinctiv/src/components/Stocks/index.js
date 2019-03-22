@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthUserContext, withAuthorization } from '../Session';
-import { Input, Button, Col, Row, Card, Alert, CardText } from 'reactstrap';
+import { Input, Button, Col, Row, Card, Alert, CardText, Table } from 'reactstrap';
 import './stocks.css';
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 //import { Timestamp } from "@google-cloud/firestore";
@@ -75,15 +75,15 @@ class Stocks extends Component {
   renderBets(bet, index) {
     //var db = this.props.firebase.db;
     var row = document.createElement('tr');
-    row.setAttribute('id', bet.id);
+    row.setAttribute('id', bet.id);/* 
     var stockIdTD = document.createElement('td');
-    stockIdTD.textContent = bet.data().stockId;
+    stockIdTD.textContent = bet.data().stockId; */
     var betTD = document.createElement('td');
     betTD.textContent = bet.data().bet;
     var dirTD = document.createElement('td');
     dirTD.textContent = bet.data().direction;
     //del.appendChild(delBut);
-    row.appendChild(stockIdTD);
+    //row.appendChild(stockIdTD);
     row.appendChild(betTD);
     row.appendChild(dirTD);
 
@@ -149,13 +149,29 @@ class Stocks extends Component {
           </Row>
           </div>
           <div>
+            <Row>
+              <Col sm="5">
+            <Table striped hover>
+              <thead>
+                <tr>
+                  <th>Tokens bet on {this.props.match.params.name}</th>
+                  <th>Up/Down</th>
+                </tr>
+              </thead>
+              <tbody id='bodyBets'>
+
+              </tbody>
+            </Table>
+            </Col>
+            <Col sm="5">
             <TradingViewWidget symbol={this.props.match.params.name} theme={Themes.LIGHT} locale="en"/>
+            </Col>
+            </Row>
           </div>
           <h4> Stock News</h4>
           <div id="news"></div>{/* <Button outline color="primary" onClick={this.viewNews} block>Search</Button> */}
 
         </div>
-
 
       )}
       </AuthUserContext.Consumer>
