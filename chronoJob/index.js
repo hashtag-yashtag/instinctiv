@@ -2,7 +2,7 @@ var intrinioSDK = require('intrinio-sdk');
 var firebase = require('firebase');
 const util = require('util')
 
-const CALLS_PER_MIN = 20; 
+const CALLS_PER_MIN = 20;
 const CALL_INTERVAL = 1000*60; /* one minute */
 
 const stockTickers = []
@@ -19,7 +19,7 @@ firebase.initializeApp(config);
 intrinioSDK.ApiClient.instance.authentications['ApiKeyAuth'].apiKey = "OjcyZjYxNWY0YWYyNDJjZWU2OWJiNmI3MDMyMWIwNThk";
 var securityAPI = new intrinioSDK.SecurityApi();
 var db = firebase.firestore();
-var opts = { 'source': 'bats_delayed' };  
+var opts = { 'source': 'bats_delayed' };
 
 
 //To read from DB
@@ -40,7 +40,7 @@ async function writeIndex(newIndex) {
 }
 
 async function getCompanies() {
-    
+
     await db.collection('Stocks').get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             stockTickers.push(doc.data()['ticker'])
@@ -61,7 +61,7 @@ async function getPrices() {
                 price: data['last_price'],
                 time_updated: Date.getTime()
             }, { merge: true })
-        ), 
+        ),
         (error) => { throw new Error(error)})
     }
 }
@@ -79,7 +79,7 @@ async function makeCalls(stocks) {
             db.collection('Stocks').doc(stock).update({
                 price: data['last_price']
             })
-        ), 
+        ),
         (error) => { throw new Error(error) })
     }
 }
@@ -101,8 +101,12 @@ async function runScript() {
 
     const index = await getIndex();
     const newIndex = await throttleCalls(index);
-    
+
     await writeIndex(newIndex)
 }
 
 runScript();
+
+setInterval(() =>{
+  runScript();
+}, CALL_INTERVAL);
