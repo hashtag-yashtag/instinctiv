@@ -102,20 +102,21 @@ class HomePage extends Component {
       <div>
 
         <div className="home-page">
-          <h1>Welcome to Instinctiv, {this.state.username}</h1>
-
-          <p>The Home Page is accessible by every signed in user.</p>
-            <div className="row">
+        <Row>
+          <Col sm="2">
+            <h1>Hi, {this.state.username}!</h1>
+          </Col>
+          <Col sm="4">
+            <Alert color="primary">
+              Token Balance: {this.state.balance}
+            </Alert>
+          </Col>
+        </Row>
+          
+          
                 <div className="column small-centered small-11 medium-6 large-5">
                   <Autocomplete suggestions={stockSearchList} userSuggestions={userSearchList} />
-
-              <div className="float-center">
-              <Alert color="primary">
-                Token Balance: {this.state.balance}
-              </Alert>
-                </div>
             </div>
-          </div>
         </div>
         <Row>
         <Col sm="6">
