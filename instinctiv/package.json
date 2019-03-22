@@ -7,7 +7,7 @@
     "boostrap": "^2.0.0",
     "css-loader": "^0.23.1",
     "firebase": "^5.8.3",
-    "foundation-sites": "^6.5.3",
+    "foundation-sites": "^6.2.0",
     "highcharts": "^7.0.3",
     "highcharts-react-official": "^2.0.0",
     "jquery": "^2.2.4",
