@@ -105,4 +105,6 @@ async function runScript() {
     await writeIndex(newIndex)
 }
 
-runScript();
+setInterval(() => {
+    runScript();
+}, CALL_INTERVAL);
