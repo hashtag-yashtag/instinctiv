@@ -1,12 +1,12 @@
 import React from 'react';
-
+import { AuthUserContext, withAuthorization } from '../Session';
 
 const Admin = () => (
   <div className="row">
-      <div className="column small-centered small-11 medium-6 large-5">
-    Admin
-  </div>
+    Hi Admin!
 </div>
 );
 
-export default Admin;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Admin);
