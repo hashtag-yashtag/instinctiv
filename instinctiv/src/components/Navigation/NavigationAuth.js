@@ -5,6 +5,7 @@ import Notifications from "../Notifications";
 import { AuthUserContext, withAuthorization, withAuthentication } from '../Session';
 
 import * as ROUTES from "../../constants/routes";
+import * as ROLES from "../../constants/roles";
 import {Navbar} from 'react-bootstrap';
 import Autocomplete from "./Autocomplete"
 import 'react-autocomplete-input/dist/bundle.css'
@@ -26,8 +27,8 @@ var stockSearchList = []
 var userSearchList = []
 
 class NavigationAuth extends Component {
-  constructor(){
-    super();/*
+  constructor(props){
+    super(props);/*
     this.setState({
       stockSearchLis: [],
       userSearchList: [],
@@ -98,17 +99,16 @@ class NavigationAuth extends Component {
               Account
             </Link>
           </li>
-
-          <li>
-            <Link
-              to={ROUTES.ADMIN}
+          {!!this.props.authUser.roles[ROLES.ADMIN] && (
+            <li>
+              <Link to={ROUTES.ADMIN}
               className="menu-text1"
               activeclassname="active"
               activestyle={{ fontWeight: "bold" }}
-            >
-              Admin
-            </Link>
-          </li>
+              >Admin
+              </Link>
+            </li>
+          )}
           <li>
               <Link
               to={ROUTES.CHECKOUT}
@@ -141,10 +141,10 @@ class NavigationAuth extends Component {
   }
 
 }
-
+/* 
 const condition = authUser => !!authUser;
 
-
+ */
 export default withAuthentication(NavigationAuth);
 /* )}
       </AuthUserContext.Consumer>

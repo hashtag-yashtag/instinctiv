@@ -11,6 +11,7 @@ class SignInGoogleBase extends Component {
     }
   
     onSubmit = event => {
+      const roles = {};
       this.props.firebase
         .doSignInWithGoogle()
         .then(socialAuthUser => {
@@ -29,6 +30,7 @@ class SignInGoogleBase extends Component {
                   balance: 500,
                   correctBets: 0,
                   totalBets: 0,
+                  roles: roles,
                   accuracy: 0.5
                   //roles: [],
                 }, {merge: true});
