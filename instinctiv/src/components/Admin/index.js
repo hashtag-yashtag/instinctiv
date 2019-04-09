@@ -7,43 +7,74 @@ import { withFirebase } from '../Firebase';
 
 import { compose } from 'recompose';
 
+import BootstrapTable from 'react-bootstrap-table-next';
 
 
 class Admin extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      betsCol: [{
+        dataField: 'stockId',
+        text: 'Stock ID',
+        sort: true
+      }, {
+        dataField: 'bet',
+        text: 'Tokens Bet',
+        sort: true
+      }, {
+        dataField: 'username',
+        text: 'User',
+        sort: true
+      }, {
+        dataField: 'direction',
+        text: 'Direction'
+      }],
+      bets: [],
+    };
+  }
+
+  componentDidMount() {
+    this.bets = this.props.firebase.db.collection("Bets").onSnapshot(querySnapshot => {
+      console.log(`Received query snapshot of size ${querySnapshot.size}`);
+      this.setState({
+        bets: [],
+      })
+      querySnapshot.forEach(element => {
+        this.state.bets.push({
+          id: element.id,
+          stockId:element.data().stockId,
+          bet: element.data().bet,
+          username: element.data().username,
+          direction: element.data().direction,
+        });
+        this.setState({
+          bets: this.state.bets,
+        })
+      });
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+  }
+
+  componentWillUnmount() {
+    this.bets();
+  }
+
   render() {
     return (
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
-          <p>
-            Restricted area! Only users with the admin role are authorized.
-          </p>
           <Row>
             <Col sm="8"></Col>
             <Col sm="4">
-              <h3>Most Betted on</h3>
-          <Table>
-              <thead>
-                <tr>
-                  <th>Stocks</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>AAPL</th>
-                </tr>
-                <tr>
-                  <th>FB</th>
-                </tr>
-                <tr>
-                  <th>MSFT</th>
-                </tr>
-              </tbody>
-            </Table>
+              <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } />
+
             </Col>
             </Row>
         </div>
-        
       )}
       </AuthUserContext.Consumer>
     );
