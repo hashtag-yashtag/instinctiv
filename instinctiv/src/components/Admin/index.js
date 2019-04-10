@@ -8,7 +8,7 @@ import { withFirebase } from '../Firebase';
 import { compose } from 'recompose';
 
 import BootstrapTable from 'react-bootstrap-table-next';
-
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 class Admin extends Component {
 
@@ -70,7 +70,7 @@ class Admin extends Component {
           <Row>
             <Col sm="8"></Col>
             <Col sm="4">
-              <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } />
+              <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } pagination={ paginationFactory() } />
 
             </Col>
             </Row>
