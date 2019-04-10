@@ -68,7 +68,29 @@ class Admin extends Component {
       {authUser => (
         <div>
           <Row>
-            <Col sm="8"></Col>
+            <Col sm="5"></Col>
+            <Col sm="3">
+              <h3>Popular Stocks</h3>
+              <Table>
+
+                <thead>
+          <tr>
+            <th>Stocks Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>AAPL</th>
+          </tr>
+          <tr>
+            <th>MSFT</th>
+          </tr>
+          <tr>
+            <th>TWTR</th>
+          </tr>
+        </tbody>
+              </Table>
+            </Col>
             <Col sm="4">
               <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } />
 
