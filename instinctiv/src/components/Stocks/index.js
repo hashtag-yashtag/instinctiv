@@ -245,10 +245,15 @@ class Stocks extends Component {
         userDoc: userDoc,
         stockId: stock,
         direction: dir,
+        timestamp: new Date(),
         username: this.state.username,
         bet: tokens
       });
     }
+    /* 
+    TODO retreive bets for current period
+    fix leaderboard bug
+    */
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
         console.log(data.data().balance);

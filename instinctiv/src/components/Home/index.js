@@ -47,8 +47,9 @@ class HomePage extends Component {
     });
     })
 
-
+    
     this.leaders = db.collection("Users").orderBy('accuracy', 'desc').limit(5).onSnapshot(querySnapshot=> {
+      document.getElementById("leaders").innerHTML = "";
       querySnapshot.forEach(element => {
         this.renderLeaderBoard(element, element.id);
       });
