@@ -36,18 +36,22 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    var db = this.props.firebase.db;
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
       console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
       this.setState({
-        email: docSnapshot.data().email,
+        balance: docSnapshot.data().balance,
         username: docSnapshot.data().username
       });      // ...
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
-
-
+    var db = this.props.firebase.db;
+    this.users = db.collection("Users").orderBy('username', 'asc').limit(20).onSnapshot(querySnapshot=> {
+      document.getElementById("users").innerHTML = "";
+      querySnapshot.forEach(element => {
+        this.renderUserBoard(element, element.id);
+      });
+    })
     this.bets = this.props.firebase.db.collection("Bets").onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       this.setState({
@@ -72,6 +76,21 @@ class Admin extends Component {
 
   componentWillUnmount() {
     this.bets();
+    this.users();
+  }
+
+  renderUserBoard(leader, id){
+    var row = document.createElement('tr');
+    var leaderTD = document.createElement('td');
+    leaderTD.textContent = leader.data().username;
+    var accuracyTD = document.createElement('td');
+    accuracyTD.textContent = leader.data().email;
+
+
+    row.appendChild(leaderTD);
+    row.appendChild(accuracyTD);
+    document.getElementById("users").appendChild(row);
+
   }
 
   render() {
@@ -84,6 +103,9 @@ class Admin extends Component {
             <Col sm="6">
             <h3>User Database</h3>
               <Table>
+              <tbody id="users">
+
+              </tbody>
                 <thead>
                   <tr>
                     <th>Username</th>
@@ -93,11 +115,8 @@ class Admin extends Component {
                 </thead>
                 <tbody id='userBody'>
                 <tr>
-           <td>{this.state.username}</td>
-           <td>{this.state.email}</td>
-           <td>
-           <Button color = "primary">Add</Button>
-           </td>
+
+
          </tr>
          <tr>
          </tr>
