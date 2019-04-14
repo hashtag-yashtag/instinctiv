@@ -1,20 +1,7 @@
-<<<<<<< HEAD
-import {toggleDarkLight} from '../Home'
-import React from 'react';
-import PasswordChangeForm from '../PasswordChange';
-import { AuthUserContext, withAuthorization } from '../Session';
-import {Button} from 'reactstrap';
-
-=======
 import React,  { Component }  from 'react';
 import PasswordChangeForm from '../PasswordChange';
 import { AuthUserContext, withAuthorization } from '../Session';
-<<<<<<< HEAD
-import { Table, Button } from 'reactstrap';
->>>>>>> bf936d23a353427159960f6eb17d5a190f150177
-=======
-import { Alert, Table, Card, Col, Row, CardText } from 'reactstrap';
->>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
+import { Alert, Table, Card, Col, Row, Input, Fade, Button } from 'reactstrap';
 
 class Account extends Component {
   constructor(props){
@@ -26,28 +13,15 @@ class Account extends Component {
       balance: 0,
       email: '',
       accuracy: 0,
+      fadeInImage: false,
+      fadeInUsername: false
     }
+    this.toggleImage = this.toggleImage.bind(this);
     var db = this.props.firebase.db;
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-const Account = () => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-      <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
-        <h1>Account: {authUser.email}</h1>
-        <PasswordChangeForm />
-      </div>
-    </div>
-    )}
-  </AuthUserContext.Consumer>
-);
-=======
-=======
->>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
-    db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
+    this.bets = db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
+      document.getElementById("bodyBets").innerHTML = "";
       querySnapshot.forEach(element => {
           this.renderBets(element, element.id);
         //element.data().id = element.id;
@@ -59,6 +33,12 @@ const Account = () => (
     });
   }
 
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
+
   componentDidMount() {
     var db = this.props.firebase.db;
     db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
@@ -68,20 +48,22 @@ const Account = () => (
         username: docSnapshot.data().username,
         betsList: this.state.betsList,
         authUser: docSnapshot.data(),
+        photoURL: docSnapshot.data().photoURL,
         email: docSnapshot.data().email,
         accuracy:docSnapshot.data().accuracy,
       });      // ...
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
-
-
+  }
+  componentWillUnmount() {
+    this.bets();
   }
 
   renderBets(bet, index) {
     //var db = this.props.firebase.db;
     var row = document.createElement('tr');
-    row.setAttribute('id', bet.id);
+    row.setAttribute('id', bet.id+':'+bet.data().bet);
     var stockIdTD = document.createElement('td');
     stockIdTD.textContent = bet.data().stockId;
     var betTD = document.createElement('td');
@@ -91,8 +73,12 @@ const Account = () => (
     var delBut = document.createElement('button');
     delBut.addEventListener('click',(e)=>{
       e.stopPropagation();
-      console.log(e.target.parentElement.getAttribute('id'));
-      this.props.firebase.db.collection("Bets").doc(e.target.parentElement.getAttribute('id')).delete();
+      var id = e.target.parentElement.getAttribute('id');
+      console.log(id);
+      this.props.firebase.db.collection('Users').doc(this.props.firebase.auth.O).update({
+        balance: this.state.balance + (+ id.substring(id.indexOf(':')+1)),
+      });
+      this.props.firebase.db.collection("Bets").doc(id.substring(0, id.indexOf(':'))).delete();
       document.getElementById("bodyBets").innerHTML = "";
     });
     delBut.textContent = 'X';
@@ -103,28 +89,71 @@ const Account = () => (
     row.appendChild(delBut);
 
     document.getElementById("bodyBets").appendChild(row);
-    
+
   }
 
+  toggleImage(e){
+    this.setState({
+      fadeInImage: !this.state.fadeInImage
+    });
+  }
+
+  changeImageURL(e) {
+    var db = this.props.firebase.db;
+    if(document.getElementById("newImageText").value !== ''){
+      db.collection("Users").doc(this.props.firebase.auth.O).update({
+        photoURL: document.getElementById("newImageText").value,
+      });
+    }
+
+  }
+
+
+  toggleUsername(e){
+    this.setState({
+      fadeInUsername: !this.state.fadeInUsername
+    });
+  }
+
+  changeUsername(e) {
+    var db = this.props.firebase.db;
+    if(document.getElementById("newUsername").value !== ''){
+      db.collection("Users").doc(this.props.firebase.auth.O).update({
+        username: document.getElementById("newUsername").value,
+      });
+    }
+
+  }
 
   render() {
     return (
       <AuthUserContext.Consumer>
       {authUser => (
           <div>
+            <body id="body" class="light-mode">
+            <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
             <Row>
             <Col sm="4">
             <Card body outline color="primary">
-            <img alt='' src={authUser.photoURL || 'https://goo.gl/Fz9nrQ'}/>
-            <CardText>
+            <img alt='' src={this.state.photoURL || 'https://goo.gl/Fz9nrQ'}/>
+              <Button color="success" id="editImageToggle" onClick={this.toggleImage.bind(this)} type="submit">Edit Image</Button>
+              <Fade in={this.state.fadeInImage} tag="h5" className="mt-3">
+                <Input type="text" name="PhotoUrl" id="newImageText" placeholder="Enter a new image URL"/>
+                <Button color="success" id="editImageToggle" onClick={this.changeImageURL.bind(this)} type="submit">Submit</Button>
+              </Fade>
 
-                <Alert color="primary">
+               <Alert color="primary">
                 <strong>Email: {this.state.email}</strong>
                   </Alert>
 
                 <Alert color="info">
                  <strong>Username: {this.state.username}</strong>
                   </Alert>
+                  <Button color="success" id="editUsernameToggle" onClick={this.toggleUsername.bind(this)} type="submit">Edit Username</Button>
+                                  <Fade in={this.state.fadeInUsername} tag="h5" className="mt-3">
+                                    <Input type="text" name="username" id="newUsername" placeholder="Enter a new Username"/>
+                                    <Button color="success" id="editUsername" onClick={this.changeUsername.bind(this)} type="submit">Submit</Button>
+                                  </Fade>
 
                   <Alert color="warning">
                   <strong> Balance: {this.state.balance}</strong>
@@ -132,12 +161,11 @@ const Account = () => (
 
                     <Alert color="success">
                     <strong> Accuracy: {this.state.accuracy}</strong>
-                      </Alert>
-          </CardText>
+                    </Alert>
             </Card>
           </Col>
 
-          <Col sm="4">
+          <Col sm="5">
              <Card body outline color="warning">
             <Table striped hover>
               <thead>
@@ -156,23 +184,20 @@ const Account = () => (
             </Card>
             </Col>
 
-            <Col sm="4">
+            <Col sm="3">
                <Card body outline color="info">
                  <h3><strong>Change Password</strong></h3>
                  <PasswordChangeForm />
                </Card>
                </Col>
               </Row>
+            </body>
           </div>
         )}
       </AuthUserContext.Consumer>
     );
   }
 }
-<<<<<<< HEAD
->>>>>>> bf936d23a353427159960f6eb17d5a190f150177
-=======
->>>>>>> 73e05bc2ded05f0f67e50f49386f7f2e5e7a9ae9
 
 const condition = authUser => !!authUser;
 
