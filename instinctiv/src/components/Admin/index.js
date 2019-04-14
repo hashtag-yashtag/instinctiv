@@ -106,9 +106,16 @@ class Admin extends Component {
               <Table striped hover>
                 <thead>
                   <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Admin</th>
+                    <th>Username
+
+                    </th>
+                    <th>Email
+
+                    </th>
+
+                    <th>Admin
+
+                    </th>
                   </tr>
                 </thead>
                 <tbody id='userBody'>
@@ -123,21 +130,8 @@ class Admin extends Component {
             )
         }
           <Row>
-            <Col sm="5"></Col>
-            <Col sm="4">
-              <Table striped hover>
-                <thead>
-                  <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Admin</th>
-                  </tr>
-                </thead>
-                <tbody id='userBody'>
+            <Col sm="8"></Col>
 
-                </tbody>
-              </Table>
-            </Col>
             <Col sm="4">
               <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } pagination={ paginationFactory() } />
 
