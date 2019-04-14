@@ -36,6 +36,18 @@ class Admin extends Component {
   }
 
   componentDidMount() {
+    var db = this.props.firebase.db;
+    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
+      console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
+      this.setState({
+        email: docSnapshot.data().email,
+        username: docSnapshot.data().username
+      });      // ...
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+
+
     this.bets = this.props.firebase.db.collection("Bets").onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       this.setState({
@@ -81,18 +93,13 @@ class Admin extends Component {
                 </thead>
                 <tbody id='userBody'>
                 <tr>
-           <td>Tanuj Yadav</td>
-           <td>tanujyd@gmail.com</td>
+           <td>{this.state.username}</td>
+           <td>{this.state.email}</td>
            <td>
            <Button color = "primary">Add</Button>
            </td>
          </tr>
          <tr>
-           <td>Test</td>
-           <td>Test@test.com</td>
-           <td>
-           <Button color = "primary">Add</Button>
-           </td>
          </tr>
                 </tbody>
               </Table>
