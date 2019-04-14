@@ -9,7 +9,17 @@ import * as ROLES from "../../constants/roles";
 import {Navbar} from 'react-bootstrap';
 import Autocomplete from "./Autocomplete"
 import 'react-autocomplete-input/dist/bundle.css'
-
+import {
+  Collapse,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 /*
 this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
   console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
@@ -99,16 +109,40 @@ class NavigationAuth extends Component {
               Account
             </Link>
           </li>
-          {!!this.props.authUser.roles[ROLES.ADMIN] && (
-            <li>
-              <Link to={ROUTES.ADMIN}
-              className="menu-text1"
-              activeclassname="active"
-              activestyle={{ fontWeight: "bold" }}
-              >Admin
-              </Link>
-            </li>
-          )}
+          <li>
+            <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                              Admin
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                              <DropdownItem>
+                                {!!this.props.authUser.roles[ROLES.ADMIN] && (
+                                  <li>
+                                    <Link to={ROUTES.ADMIN}
+                                    className="menu-text1"
+                                    activeclassname="active"
+                                    activestyle={{ fontWeight: "bold" }}
+                                    >Users
+                                    </Link>
+                                  </li>
+                                )}
+                              </DropdownItem>
+                              <DropdownItem divider />
+                              <DropdownItem>
+                                {!!this.props.authUser.roles[ROLES.ADMIN] && (
+                                  <li>
+                                    <Link to={ROUTES.STOCKDATA}
+                                    className="menu-text1"
+                                    activeclassname="active"
+                                    activestyle={{ fontWeight: "bold" }}
+                                    >Stocks
+                                    </Link>
+                                  </li>
+                                )}
+                              </DropdownItem>
+                            </DropdownMenu>
+                          </UncontrolledDropdown>
+          </li>
           <li>
               <Link
               to={ROUTES.CHECKOUT}
@@ -141,7 +175,7 @@ class NavigationAuth extends Component {
   }
 
 }
-/* 
+/*
 const condition = authUser => !!authUser;
 
  */

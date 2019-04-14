@@ -15,6 +15,7 @@ import Help from "../Help";
 import { withAuthentication } from "../Session";
 
 import AdminPage from "../Admin";
+import StockData from '../StockData';
 
 import * as ROUTES from "../../constants/routes";
 import "bootstrap-css-only/css/bootstrap.min.css";
@@ -37,6 +38,7 @@ const App = () => (
       <Route path={ROUTES.HELP} component={Help} />
       <Route path={ROUTES.NOTIFICATIONS} component={Notifications} />
       <Route path={ROUTES.STOCKS} component={Stocks} />
+      <Route path={ROUTES.STOCKDATA} component={StockData} />
       <Route path={ROUTES.USER} component={User}/>
       <Route path={ROUTES.CHECKOUT} component={Checkout}/>
     </div>

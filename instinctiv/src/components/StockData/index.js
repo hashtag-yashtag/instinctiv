@@ -68,25 +68,13 @@ class Admin extends Component {
       {authUser => (
         <div>
           <Row>
-            <Col sm="5"></Col>
-            <Col sm="4">
-              <Table striped hover>
-                <thead>
-                  <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Admin</th>
-                  </tr>
-                </thead>
-                <tbody id='userBody'>
-
-                </tbody>
-              </Table>
-            </Col>
-            <Col sm="4">
+            <Col sm="3"></Col>
+            <Col sm="6">
+            <h3>Stock Database</h3>
               <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } pagination={ paginationFactory() } />
 
             </Col>
+            <Col sm="3"></Col>
             </Row>
         </div>
       )}
