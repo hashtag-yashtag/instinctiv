@@ -10,4 +10,5 @@ export const STOCKS = "/stocks/:name";
 export const USER = "/user/:name";
 export const CHECKOUT = "/Checkout";
 export const HELP = "/help";
-export const STOCKDATA = "/stockdata"
+export const STOCKDATA = "/stockdata";
+export const USERDATA = "/userdata";

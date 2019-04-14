@@ -118,7 +118,7 @@ class NavigationAuth extends Component {
                               <DropdownItem>
                                 {!!this.props.authUser.roles[ROLES.ADMIN] && (
                                   <li>
-                                    <Link to={ROUTES.ADMIN}
+                                    <Link to={ROUTES.USERDATA}
                                     className="menu-text1"
                                     activeclassname="active"
                                     activestyle={{ fontWeight: "bold" }}
