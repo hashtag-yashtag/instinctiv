@@ -81,14 +81,18 @@ class Admin extends Component {
 
   renderUserBoard(leader, id){
     var row = document.createElement('tr');
-    var leaderTD = document.createElement('td');
-    leaderTD.textContent = leader.data().username;
-    var accuracyTD = document.createElement('td');
-    accuracyTD.textContent = leader.data().email;
+    var name = document.createElement('td');
+    name.textContent = leader.data().username;
+    var mail = document.createElement('td');
+    mail.textContent = leader.data().email;
+    var add = document.createElement('Button');
+    add.innerHTML = 'Add as Admin'
+    add.style.color = 'blue';
+    
 
-
-    row.appendChild(leaderTD);
-    row.appendChild(accuracyTD);
+    row.appendChild(name);
+    row.appendChild(mail);
+    row.appendChild(add)
     document.getElementById("users").appendChild(row);
 
   }
