@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import { withAuthorization, AuthUserContext } from '../Session';
 import * as ROLES from '../../constants/roles';
-import { Table, Col, Row } from 'reactstrap';
+import { Table, Col, Row, Button } from 'reactstrap';
 import { withFirebase } from '../Firebase';
 
 import { compose } from 'recompose';
@@ -15,7 +15,6 @@ class Admin extends Component {
   constructor(props){
     super(props);
     this.state = {
-      showMenu: false,
       betsCol: [{
         dataField: 'stockId',
         text: 'Stock ID',
@@ -34,28 +33,6 @@ class Admin extends Component {
       }],
       bets: [],
     };
-    this.showMenu = this.showMenu.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
-
-  }
-
-  showMenu(event) {
-    event.preventDefault();
-
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
-    });
-  }
-
-  closeMenu(event) {
-
-    if (!this.dropdownMenu.contains(event.target)) {
-
-      this.setState({ showMenu: false }, () => {
-        document.removeEventListener('click', this.closeMenu);
-      });
-
-    }
   }
 
   componentDidMount() {
@@ -90,42 +67,11 @@ class Admin extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
-        <button onClick={this.showMenu}>
-          <h3>Show Users</h3>
-        </button>
-        {
-          this.state.showMenu
-            ? (
-              <div
-                className="menu"
-                ref={(element) => {
-                  this.dropdownMenu = element;
-                }}
-              >
-              <Col sm="4">
-              <Table striped hover>
-                <thead>
-                  <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Admin</th>
-                  </tr>
-                </thead>
-                <tbody id='userBody'>
-
-                </tbody>
-              </Table>
-              </Col>
-              </div>
-            )
-            : (
-              null
-            )
-        }
           <Row>
-            <Col sm="5"></Col>
-            <Col sm="4">
-              <Table striped hover>
+            <Col sm="3"></Col>
+            <Col sm="6">
+            <h3>User Database</h3>
+              <Table>
                 <thead>
                   <tr>
                     <th>Username</th>
@@ -134,14 +80,24 @@ class Admin extends Component {
                   </tr>
                 </thead>
                 <tbody id='userBody'>
-
+                <tr>
+           <td>Tanuj Yadav</td>
+           <td>tanujyd@gmail.com</td>
+           <td>
+           <Button color = "primary">Add</Button>
+           </td>
+         </tr>
+         <tr>
+           <td>Test</td>
+           <td>Test@test.com</td>
+           <td>
+           <Button color = "primary">Add</Button>
+           </td>
+         </tr>
                 </tbody>
               </Table>
             </Col>
-            <Col sm="4">
-              <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } pagination={ paginationFactory() } />
-
-            </Col>
+            <Col sm="3"></Col>
             </Row>
         </div>
       )}

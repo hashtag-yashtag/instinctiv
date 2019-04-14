@@ -8,7 +8,7 @@
     "boostrap": "^2.0.0",
     "css-loader": "^0.23.1",
     "firebase": "^5.8.3",
-    "foundation-sites": "^6.2.0",
+    "foundation-sites": "^6.5.3",
     "highcharts": "^7.0.3",
     "highcharts-react-official": "^2.0.0",
     "jquery": "^2.2.4",
@@ -27,7 +27,10 @@
     "reactstrap": "^7.1.0",
     "recompose": "^0.30.0",
     "script-loader": "^0.6.1",
-    "style-loader": "^0.13.0"
+    "style-loader": "^0.13.0",
+    "ts-pnp": "^1.0.1",
+    "typescript": "^3.4.3",
+    "what-input": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

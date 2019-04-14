@@ -47,7 +47,7 @@ class HomePage extends Component {
     });
     })
 
-    
+
     this.leaders = db.collection("Users").orderBy('accuracy', 'desc').limit(5).onSnapshot(querySnapshot=> {
       document.getElementById("leaders").innerHTML = "";
       querySnapshot.forEach(element => {
@@ -149,6 +149,32 @@ class HomePage extends Component {
               </Table>
             </CardText>
             </Card>
+          </Col>
+          <Col sm="6">
+            <h3>Popular Stocks</h3>
+              <Card body outline color="info">
+                <CardText>
+            <Table>
+
+              <thead>
+        <tr>
+          <th>Stocks Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>AAPL</th>
+        </tr>
+        <tr>
+          <th>MSFT</th>
+        </tr>
+        <tr>
+          <th>TWTR</th>
+        </tr>
+      </tbody>
+            </Table>
+            </CardText>
+          </Card>
           </Col>
           <Col sm="12">
           <div className="stock-chart">
