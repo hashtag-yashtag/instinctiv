@@ -68,7 +68,10 @@ class Admin extends Component {
       {authUser => (
         <div>
           <Row>
-            <Col sm="3"></Col>
+            <Col sm="3">
+            <div className="back">
+            </div>
+            </Col>
             <Col sm="6">
             <h3>User Database</h3>
               <Table>
