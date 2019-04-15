@@ -36,6 +36,22 @@ class Admin extends Component {
   }
 
   componentDidMount() {
+    this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
+      console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
+      this.setState({
+        balance: docSnapshot.data().balance,
+        username: docSnapshot.data().username
+      });      // ...
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+    var db = this.props.firebase.db;
+    this.users = db.collection("Users").orderBy('username', 'asc').limit(20).onSnapshot(querySnapshot=> {
+      document.getElementById("users").innerHTML = "";
+      querySnapshot.forEach(element => {
+        this.renderUserBoard(element, element.id);
+      });
+    })
     this.bets = this.props.firebase.db.collection("Bets").onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       this.setState({
@@ -60,6 +76,25 @@ class Admin extends Component {
 
   componentWillUnmount() {
     this.bets();
+    this.users();
+  }
+
+  renderUserBoard(leader, id){
+    var row = document.createElement('tr');
+    var name = document.createElement('td');
+    name.textContent = leader.data().username;
+    var mail = document.createElement('td');
+    mail.textContent = leader.data().email;
+    var add = document.createElement('Button');
+    add.innerHTML = 'Add as Admin'
+    add.style.color = 'blue';
+    
+
+    row.appendChild(name);
+    row.appendChild(mail);
+    row.appendChild(add)
+    document.getElementById("users").appendChild(row);
+
   }
 
   render() {
@@ -75,6 +110,9 @@ class Admin extends Component {
             <Col sm="6">
             <h3>User Database</h3>
               <Table>
+              <tbody id="users">
+
+              </tbody>
                 <thead>
                   <tr>
                     <th>Username</th>
@@ -84,18 +122,10 @@ class Admin extends Component {
                 </thead>
                 <tbody id='userBody'>
                 <tr>
-           <td>Tanuj Yadav</td>
-           <td>tanujyd@gmail.com</td>
-           <td>
-           <Button color = "primary">Add</Button>
-           </td>
+
+
          </tr>
          <tr>
-           <td>Test</td>
-           <td>Test@test.com</td>
-           <td>
-           <Button color = "primary">Add</Button>
-           </td>
          </tr>
                 </tbody>
               </Table>
