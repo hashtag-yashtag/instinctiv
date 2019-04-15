@@ -34,6 +34,11 @@ class Admin extends Component {
       bets: [],
     };
   }
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
 
   componentDidMount() {
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
@@ -88,7 +93,7 @@ class Admin extends Component {
     var add = document.createElement('Button');
     add.innerHTML = 'Add as Admin'
     add.style.color = 'blue';
-    
+
 
     row.appendChild(name);
     row.appendChild(mail);
@@ -102,6 +107,8 @@ class Admin extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
+        <body id="body" class="light-mode">
+        <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
           <Row>
             <Col sm="3">
             <div className="back">
@@ -132,6 +139,7 @@ class Admin extends Component {
             </Col>
             <Col sm="3"></Col>
             </Row>
+            </body>
         </div>
       )}
       </AuthUserContext.Consumer>

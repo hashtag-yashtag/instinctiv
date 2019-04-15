@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import { withAuthorization, AuthUserContext } from '../Session';
 import * as ROLES from '../../constants/roles';
-import { Table, Col, Row } from 'reactstrap';
+import { Table, Col, Row, Button } from 'reactstrap';
 import { withFirebase } from '../Firebase';
 
 import { compose } from 'recompose';
@@ -34,6 +34,12 @@ class Admin extends Component {
       bets: [],
     };
   }
+  toggleDarkLight = event => {
+   var body = document.getElementById("body");
+   var currentClass = body.className;
+   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+ }
+
 
   componentDidMount() {
     this.bets = this.props.firebase.db.collection("Bets").onSnapshot(querySnapshot => {
@@ -67,6 +73,8 @@ class Admin extends Component {
       <AuthUserContext.Consumer>
       {authUser => (
         <div>
+        <body id="body" class="light-mode">
+          <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
           <Row>
             <Col sm="3"></Col>
             <Col sm="6">
@@ -76,6 +84,7 @@ class Admin extends Component {
             </Col>
             <Col sm="3"></Col>
             </Row>
+            </body>
         </div>
       )}
       </AuthUserContext.Consumer>
