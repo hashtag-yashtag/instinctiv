@@ -19,7 +19,9 @@ class Account extends Component {
     this.toggleImage = this.toggleImage.bind(this);
     var db = this.props.firebase.db;
 
-    this.bets = db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O)).onSnapshot(querySnapshot => {
+    this.bets = db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O))
+                  //.where('timestamp', '<=' )  
+                  .onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       document.getElementById("bodyBets").innerHTML = "";
       querySnapshot.forEach(element => {
