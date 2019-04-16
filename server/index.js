@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 const util = require('util')
 const bodyParser = require('body-parser');
+import schedule from 'node-schedule'
 // var intrinioSDK = require('intrinio-sdk');
 // intrinioSDK.ApiClient.instance.authentications['ApiKeyAuth'].apiKey = "OjcyZjYxNWY0YWYyNDJjZWU2OWJiNmI3MDMyMWIwNThk";
 // var companyAPI = new intrinioSDK.CompanyApi();
@@ -38,8 +39,10 @@ var config = {
 firebase.initializeApp(config);
 
 var db = firebase.firestore();
-const betUp = {}
-const betDown = {}
+var bettingPool = {}
+var marketSplit = {}
+var weightedMarketSplit = {}
+var msToNextDay = 0;
 
 async function startNewGame() {
     var now = new Date();
@@ -49,16 +52,34 @@ async function startNewGame() {
         now.getDate() + 1,
         7, 59, 59
     );
-    var msToNextDay = nextDay.getTime() - now.getTime();
-    setInterval(function() {
-        //Functions to be called
-        betUp = {}
-        betDown = {}
-        startNewGame()
-    }, msToNextDay);
+    msToNextDay = nextDay.getTime() - now.getTime();
+    console.log(msToNextDay)
+
+    bettingPool = {}
+    marketSplit = {}
+    weightedMarketSplit = {}
+
+    getBetList()
+    console.log(bettingPool)
+    console.log(marketSplit)
+    console.log(weightedMarketSplit)
+
+    setTimeout(startNewGame(), msToNextDay);
 }
 
-startNewGame();
+var j = schedule.scheduleJob({hour: 07, minute: 59}, startNewGame())
+
+const stockTickers = []
+const stockNames = []
+
+db.collection('Stocks').get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+        if (doc.data()['ticker']) {
+            stockTickers.push(doc.data()['ticker'])
+            stockNames.push(doc.data()['name'])
+        }
+    });
+});
 
 async function setUserAccuracy(uid) {
 
@@ -69,53 +90,15 @@ async function predictStock(stockTicker) {
     return;
 }
 
-// async function getBetList() {
-//     await db.collection('Bets').get().then(
-//         function(querySnapshot) {
-//             querySnapshot.forEach(function(doc) {
-//                 var bet = doc.data();
-//                 if (bet['direction'] == 'Up') {
-//                     if (!betUp[bet['stockId']]) {
-//                         betUp[bet['stockId']] = [];
-//                     }
-//                     const docRef = bet['userDoc']
-//                     const uid = docRef['_key']['path']['segments'][6]
-
-//                     const accuracy = 0;
-
-//                     const l = {}
-//                     l[uid] = accuracy;
-//                     betUp[bet['stockId']].push(l);
-//                 }
-//                 else if (bet['direction'] == 'Down') {
-//                     if (!betDown[bet['stockId']]) {
-//                         betDown[bet['stockId']] = [];
-//                     }
-//                     var docRef = bet['userDoc']
-//                     uid = docRef['_key']['path']['segments'][6]
-//                     var accuracy = 0
-//                     betDown[bet['stockId']].push({uid: accuracy});
-//                 }
-//             })
-//         }
-//     );
-
-//     console.log(betUp);
-// }
-
-const bettingPool = {}
-const marketSplit = {}
-const weightedMarketSplit = {}
-
 async function getBetList() {
     const users = []
     const accuracy = []
     await db.collection('Bets').get().then(
         function (querySnapshot) {
             querySnapshot.forEach(
-                function(doc) {
+                function (doc) {
                     doc.data().userDoc.onSnapshot(docSnapshot => {
-                        
+
                         /* Betting Pool Split
                                 bettingPool - By Money
                                 marketSplit - By Users
@@ -153,7 +136,7 @@ async function getBetList() {
     )
 
     for (var user of users) {
-        db.collection("Users").doc(''+user).onSnapshot(querySnapshot => {
+        db.collection("Users").doc('' + user).onSnapshot(querySnapshot => {
             // if(querySnapshot.data()['accuracy']) {
             //     accuracy.push(querySnapshot.data()['accuracy'])
             // }
@@ -163,7 +146,7 @@ async function getBetList() {
             // console.log(querySnapshot.data())
         })
     }
-    
+
 }
 getBetList();
 

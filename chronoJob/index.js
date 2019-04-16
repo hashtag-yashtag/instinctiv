@@ -34,7 +34,7 @@ async function getIndex() {
 //To write into DB
 
 async function writeIndex(newIndex) {
-    await db.collection('Variable').doc('INDEX_STOCK_ARRAY').set({
+    await db.collection('Variable').doc('INDEX_STOCK_ARRAY').update({
         index: newIndex
     })
 }
@@ -50,21 +50,7 @@ async function getCompanies() {
     });
 }
 
-async function getPrices() {
-    // populate stock names and tickers
-    await getCompanies();
-    let identifier;
-    for (let stock of stockTickers) {
-        console.log(stock);
-        await securityAPI.getSecurityRealtimePrice(stock, opts).then(data => (
-            db.collection('Stocks').doc(stock).set({
-                price: data['last_price'],
-                time_updated: Date.getTime()
-            }, { merge: true })
-        ),
-        (error) => { throw new Error(error)})
-    }
-}
+
 
 function subarray(arr, beg, end) {
     end = (end > arr.length) ? arr.length : end;
@@ -74,12 +60,22 @@ function subarray(arr, beg, end) {
 async function makeCalls(stocks) {
     for(let stock of stocks) {
         console.log(stock)
-        await securityAPI.getSecurityRealtimePrice(stock, opts).then(data => (
-            // console.log(data['last_price'])
-            db.collection('Stocks').doc(stock).update({
-                price: data['last_price']
+        const time = new Date();
+        await securityAPI.getSecurityRealtimePrice(stock, opts).then(data => {
+            console.log(data['last_price'])
+            const currPrice = 0.0
+            const count = 0
+            db.collection('Stocks').doc(stock).get().then(data => {
+                currPrice = data.data()['price'];
+                count = data.data()['count'];
             })
-        ),
+            db.collection('Stocks').doc(stock).update({
+                price: data['last_price'],
+                priceSum: currPrice + data['last_price'],
+                time_updated: time.getTime(),
+                count: count
+            })
+        },
         (error) => { throw new Error(error) })
     }
 }
@@ -91,7 +87,7 @@ async function throttleCalls(tc_idx) {
         tc_idx = (tc_idx > stockTickers.length) ? 0 : tc_idx;
         return tc_idx;
     } catch(e) {
-        throw new Error(e);
+        console.log(e);
     }
 }
 
@@ -105,6 +101,7 @@ async function runScript() {
     await writeIndex(newIndex)
 }
 
+runScript();
 setInterval(() => {
     runScript();
 }, CALL_INTERVAL);

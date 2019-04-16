@@ -252,7 +252,6 @@ class Stocks extends Component {
     }
     /* 
     TODO retreive bets for current period
-    fix leaderboard bug
     */
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O).get().then(data => {
         this.setState({data: data});
