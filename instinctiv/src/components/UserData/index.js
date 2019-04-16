@@ -86,9 +86,9 @@ class Admin extends Component {
     var mail = document.createElement('td');
     mail.textContent = leader.data().email;
     var add = document.createElement('Button');
-    add.innerHTML = 'Add as Admin'
+    add.innerHTML = 'Add';
     add.style.color = 'blue';
-    
+
 
     row.appendChild(name);
     row.appendChild(mail);
