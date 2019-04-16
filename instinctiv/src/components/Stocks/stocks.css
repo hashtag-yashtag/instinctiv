@@ -2,9 +2,16 @@
 .item {
     width: 400px;
     color: #333;
+    background: white;
+    border: 3px solid#17a2b8;;
     padding: 10px;
+    transition: transform .2s;
     border-radius: 10px;
     box-shadow: 1px 1px 5px rgba(100, 100, 100, 0.5);
+}
+
+.item:hover{
+  transform: scale(1.1);
 }
   
   .item img {
@@ -26,50 +33,20 @@
     grid-gap: 15px;
     justify-items: center;
   }
+
+
   .item:nth-child(7n+1) {
-    background: #b8d1fa;
+    border-color: #4285F4;
   }
   
   .item:nth-child(7n+2) {
-    background: #b8d1fa;
+    border-color: #DB4437;
   }
   
   .item:nth-child(7n+3) {
-    background: #b3c8e9;
+    border-color: #F4B400;
   }
   
   .item:nth-child(7n+4) {
-    background: #8ab2f6;
-  }
-  
-  .item:nth-child(7n+5) {
-    background: #b3c8e9;
-  }
-  
-  .item:nth-child(7n+6) {
-    background: #8ab2f6;
-  }
-  
-  .item:nth-child(7n+7) {
-    background: #6a91d1;
-  }
-  
-  .item:nth-child(7n+8) {
-    background: #f4f7fb;
-  }
-  
-  .item:nth-child(7n+9) {
-    background: #8ab2f6;
-  }
-  
-  .item:nth-child(7n+10) {
-    background: #b3c8e9;
-  }
-  
-  .item:nth-child(7n+11) {
-    background: #b2bccc;
-  }
-  
-  .item:nth-child(7n+12) {
-    background: #8ab2f6;
+    border-color: #0F9D58; 
   }
