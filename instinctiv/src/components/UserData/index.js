@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import { withAuthorization, AuthUserContext } from '../Session';
 import * as ROLES from '../../constants/roles';
-import { Table, Col, Row, Button } from 'reactstrap';
+import { Table, Col, Row, Button, Card } from 'reactstrap';
 import { withFirebase } from '../Firebase';
 
 import { compose } from 'recompose';
@@ -37,7 +37,7 @@ class Admin extends Component {
   toggleDarkLight = event => {
    var body = document.getElementById("body");
    var currentClass = body.className;
-   body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+   body.className = currentClass === "dark-mode" ? "light-mode" : "dark-mode";
  }
 
   componentDidMount() {
@@ -115,7 +115,10 @@ class Admin extends Component {
             </div>
             </Col>
             <Col sm="6">
-            <h3>User Database</h3>
+              <div className="home-page">
+            <h2>User Database</h2>
+            </div>
+             <Card body outline color="primary">
               <Table>
               <tbody id="users">
 
@@ -136,6 +139,7 @@ class Admin extends Component {
          </tr>
                 </tbody>
               </Table>
+            </Card>
             </Col>
             <Col sm="3"></Col>
             </Row>
