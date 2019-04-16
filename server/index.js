@@ -27,6 +27,22 @@ var firebase = require('firebase');
 //   });
 
 
+// ********* script for time checking 7:59am *******
+// var now = new Date();
+// var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 7, 59, 0, 0) - now;
+// if (millisTill10 < 0) {
+//      millisTill10 += 86400000; // it's after 7:59am, try 7:59am tomorrow.
+// }
+// setTimeout(function(){alert("It's 7:59am!")}, millisTill10);
+
+// ********* script for time checking 6:00pm *******
+// var now = new Date();
+// var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 0, 0, 0) - now;
+// if (millisTill10 < 0) {
+//      millisTill10 += 86400000; // it's after 6:00pm, try 6:00pm tomorrow.
+// }
+// setTimeout(function(){alert("It's 6:00pm!")}, millisTill10);
+
 
 var config = {
     apiKey: "AIzaSyBvSjVcV8LNU63a5BKYuSRNh68G67Upbsk",
@@ -197,4 +213,7 @@ getBetList();
 app.listen(4000, function () {
     console.log('App listening on port 4000')
 })
+
+
+
 

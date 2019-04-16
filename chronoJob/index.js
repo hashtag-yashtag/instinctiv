@@ -57,6 +57,7 @@ function subarray(arr, beg, end) {
     return arr.slice(beg, end);
 }
 
+//confused by this
 async function makeCalls(stocks) {
     for(let stock of stocks) {
         console.log(stock)
