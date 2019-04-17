@@ -1,5 +1,6 @@
 import React from "react";
 import logotrial from "./logotrial.png";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import MC104 from "./MC104.png";
 import MC102 from "./MC102.png";
 import MC103 from "./MC103.png";
