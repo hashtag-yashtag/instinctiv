@@ -57,7 +57,7 @@ function subarray(arr, beg, end) {
     return arr.slice(beg, end);
 }
 
-//confused by this
+//confused by this where do i add count I see count already and a curr price
 async function makeCalls(stocks) {
     for(let stock of stocks) {
         console.log(stock)
