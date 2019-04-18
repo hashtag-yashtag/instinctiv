@@ -109,7 +109,9 @@ class NavigationAuth extends Component {
               Account
             </Link>
           </li>
-          <li>
+
+          {!!this.props.authUser.roles[ROLES.ADMIN] && (
+            <li>
             <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                               Admin
@@ -142,7 +144,8 @@ class NavigationAuth extends Component {
                               </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
-          </li>
+              </li>
+          )}
           <li>
               <Link
               to={ROUTES.CHECKOUT}
