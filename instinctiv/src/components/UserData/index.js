@@ -57,42 +57,34 @@ class Admin extends Component {
         this.renderUserBoard(element, element.id);
       });
     })
-    this.bets = this.props.firebase.db.collection("Bets").onSnapshot(querySnapshot => {
-      console.log(`Received query snapshot of size ${querySnapshot.size}`);
-      this.setState({
-        bets: [],
-      })
-      querySnapshot.forEach(element => {
-        this.state.bets.push({
-          id: element.id,
-          stockId:element.data().stockId,
-          bet: element.data().bet,
-          username: element.data().username,
-          direction: element.data().direction,
-        });
-        this.setState({
-          bets: this.state.bets,
-        })
-      });
-    }, err => {
-      console.log(`Encountered error: ${err}`);
-    });
   }
 
   componentWillUnmount() {
-    this.bets();
     this.users();
   }
 
   renderUserBoard(leader, id){
     var row = document.createElement('tr');
+    row.setAttribute('user',leader.data().username);
     var name = document.createElement('td');
     name.textContent = leader.data().username;
     var mail = document.createElement('td');
     mail.textContent = leader.data().email;
-    var add = document.createElement('Button');
-    add.innerHTML = 'Add';
-    add.style.color = 'blue';
+    var add = document.createElement('Input');
+    add.setAttribute("type","checkbox");
+    //add.setAttribute("id",leader.data().username+"check");
+    if(leader.data().roles && leader.data().roles.ADMIN=='ADMIN'){
+      add.setAttribute('checked',true);
+    }
+    //console.log(leader.data().roles.ADMIN);
+    add.addEventListener('click',(e)=>{
+      e.stopPropagation();
+      console.log(add.checked);
+      var adminStr = add.checked?'ADMIN':'';
+      this.props.firebase.db.collection("Users").doc(id).update({
+        "roles.ADMIN": adminStr,
+      })
+    });
 
 
     row.appendChild(name);
@@ -120,9 +112,6 @@ class Admin extends Component {
             </div>
              <Card body outline color="primary">
               <Table>
-              <tbody id="users">
-
-              </tbody>
                 <thead>
                   <tr>
                     <th>Username</th>
@@ -130,18 +119,12 @@ class Admin extends Component {
                     <th>Admin</th>
                   </tr>
                 </thead>
-                <tbody id='userBody'>
-                <tr>
+              <tbody id="users">
 
-
-         </tr>
-         <tr>
-         </tr>
-                </tbody>
+              </tbody>
               </Table>
             </Card>
             </Col>
-            <Col sm="3"></Col>
             </Row>
             </body>
         </div>
