@@ -7,23 +7,31 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  UncontrolledPopover,
+  PopoverHeader,
+  PopoverBody
 } from "reactstrap";
 import MC104 from "./MC104.png";
 import MC102 from "./MC102.png";
 import MC103 from "./MC103.png";
 import MC101 from "./MC101.png";
+import Parth_104_copy from "./Parth_104_copy.png";
 
 class ModalExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      popoverOpen: false
     };
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
+    this.setState({
+      popoverOpen: !this.state.popoverOpen
+    });
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -66,10 +74,83 @@ class ModalExample extends React.Component {
           <ModalFooter>
             <ButtonToolbar>
               <ButtonGroup>
-                <Button color="success">STOCKS</Button>
-                <Button color="success">BETS</Button>
-                <Button color="success">USER PROFILE</Button>
-                <Button color="success">NEWS</Button>
+                <Button id="Popover1" type="button" color="success">
+                  STOCKS
+                </Button>
+                <UncontrolledPopover
+                  trigger="legacy"
+                  placement="bottom"
+                  target="Popover1"
+                >
+                  <PopoverHeader>STOCKS</PopoverHeader>
+                  <PopoverBody>
+                    <img src={Parth_104_copy} alt="Parth_104_copy" />
+                    Legacy is a reactstrap special trigger value (outside of
+                    bootstrap's spec/standard). Before reactstrap correctly
+                    supported click and focus, it had a hybrid which was very
+                    useful and has been brought back as trigger="legacy". One
+                    advantage of the legacy trigger is that it allows the
+                    popover text to be selected while also closing when clicking
+                    outside the triggering element and popover itself.
+                  </PopoverBody>
+                </UncontrolledPopover>
+                <Button id="Popover2" type="button" color="success">
+                  BETS
+                </Button>
+                <UncontrolledPopover
+                  trigger="legacy"
+                  placement="bottom"
+                  target="Popover2"
+                >
+                  <PopoverHeader>BETS</PopoverHeader>
+                  <PopoverBody>
+                    Legacy is a reactstrap special trigger value (outside of
+                    bootstrap's spec/standard). Before reactstrap correctly
+                    supported click and focus, it had a hybrid which was very
+                    useful and has been brought back as trigger="legacy". One
+                    advantage of the legacy trigger is that it allows the
+                    popover text to be selected while also closing when clicking
+                    outside the triggering element and popover itself.
+                  </PopoverBody>
+                </UncontrolledPopover>
+                <Button id="Popover3" type="button" color="success">
+                  USER PROFILE
+                </Button>
+                <UncontrolledPopover
+                  trigger="legacy"
+                  placement="bottom"
+                  target="Popover3"
+                >
+                  <PopoverHeader>USER PROFILE</PopoverHeader>
+                  <PopoverBody>
+                    Legacy is a reactstrap special trigger value (outside of
+                    bootstrap's spec/standard). Before reactstrap correctly
+                    supported click and focus, it had a hybrid which was very
+                    useful and has been brought back as trigger="legacy". One
+                    advantage of the legacy trigger is that it allows the
+                    popover text to be selected while also closing when clicking
+                    outside the triggering element and popover itself.
+                  </PopoverBody>
+                </UncontrolledPopover>
+                <Button id="Popover4" type="button" color="success">
+                  NEWS
+                </Button>
+                <UncontrolledPopover
+                  trigger="legacy"
+                  placement="bottom"
+                  target="Popover4"
+                >
+                  <PopoverHeader>NEWS</PopoverHeader>
+                  <PopoverBody>
+                    Legacy is a reactstrap special trigger value (outside of
+                    bootstrap's spec/standard). Before reactstrap correctly
+                    supported click and focus, it had a hybrid which was very
+                    useful and has been brought back as trigger="legacy". One
+                    advantage of the legacy trigger is that it allows the
+                    popover text to be selected while also closing when clicking
+                    outside the triggering element and popover itself.
+                  </PopoverBody>
+                </UncontrolledPopover>
               </ButtonGroup>
             </ButtonToolbar>
           </ModalFooter>

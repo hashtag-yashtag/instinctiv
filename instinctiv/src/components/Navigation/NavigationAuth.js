@@ -92,7 +92,7 @@ class NavigationAuth extends Component {
         <div className="top-bar-left">
           <ul className="vertical medium-horizontal menu">
             <li>
-              <Navbar.Brand href={ROUTES.HOME}>Instinctiv</Navbar.Brand>
+              <Navbar.Brand href={ROUTES.LANDING}>Instinctiv</Navbar.Brand>
             </li>
             <li>
               <Autocomplete
@@ -174,16 +174,6 @@ class NavigationAuth extends Component {
                 </UncontrolledDropdown>
               </li>
             )}
-            <li>
-              <Link
-                to={ROUTES.LANDING}
-                className="menu-text1"
-                activeclassname="active"
-                activestyle={{ fontWeight: "bold" }}
-              >
-                About Us
-              </Link>
-            </li>
             <li>
               <Link
                 to={ROUTES.HOME}
