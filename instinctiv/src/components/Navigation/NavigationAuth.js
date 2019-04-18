@@ -176,64 +176,6 @@ class NavigationAuth extends Component {
             )}
             <li>
               <Link
-                to={ROUTES.HOME}
-                className="menu-text1"
-                activeclassname="active"
-                activestyle={{ fontWeight: "bold" }}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={ROUTES.ACCOUNT}
-                className="menu-text1"
-                activeclassname="active"
-                activestyle={{ fontWeight: "bold" }}
-              >
-                Account
-              </Link>
-            </li>
-            <li>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Admin
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    {!!this.props.authUser.roles[ROLES.ADMIN] && (
-                      <li>
-                        <Link
-                          to={ROUTES.USERDATA}
-                          className="menu-text1"
-                          activeclassname="active"
-                          activestyle={{ fontWeight: "bold" }}
-                        >
-                          Users
-                        </Link>
-                      </li>
-                    )}
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    {!!this.props.authUser.roles[ROLES.ADMIN] && (
-                      <li>
-                        <Link
-                          to={ROUTES.STOCKDATA}
-                          className="menu-text1"
-                          activeclassname="active"
-                          activestyle={{ fontWeight: "bold" }}
-                        >
-                          Stocks
-                        </Link>
-                      </li>
-                    )}
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </li>
-            <li>
-              <Link
                 to={ROUTES.CHECKOUT}
                 className="menu-text1"
                 activeclassname="active"

@@ -176,18 +176,10 @@ class HomePage extends Component {
                         <thead>
                           <tr>
                             <th>Stocks Name</th>
+                            <th># of bets</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th>AAPL</th>
-                          </tr>
-                          <tr>
-                            <th>MSFT</th>
-                          </tr>
-                          <tr>
-                            <th>TWTR</th>
-                          </tr>
+                        <tbody id="bodyPopStocks">
                         </tbody>
                       </Table>
                     </CardText>
