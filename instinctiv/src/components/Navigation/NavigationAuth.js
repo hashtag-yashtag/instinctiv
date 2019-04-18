@@ -118,7 +118,6 @@ class NavigationAuth extends Component {
                             </DropdownToggle>
                             <DropdownMenu right>
                               <DropdownItem>
-                                {!!this.props.authUser.roles[ROLES.ADMIN] && (
                                   <li>
                                     <Link to={ROUTES.USERDATA}
                                     className="menu-text1"
@@ -127,11 +126,9 @@ class NavigationAuth extends Component {
                                     >Users
                                     </Link>
                                   </li>
-                                )}
                               </DropdownItem>
                               <DropdownItem divider />
                               <DropdownItem>
-                                {!!this.props.authUser.roles[ROLES.ADMIN] && (
                                   <li>
                                     <Link to={ROUTES.STOCKDATA}
                                     className="menu-text1"
@@ -140,7 +137,6 @@ class NavigationAuth extends Component {
                                     >Stocks
                                     </Link>
                                   </li>
-                                )}
                               </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
