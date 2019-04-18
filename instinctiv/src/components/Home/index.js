@@ -185,7 +185,7 @@ class HomePage extends Component {
         </tr>
       </thead>
       <tbody id="bodyPopStocks">
-        
+
       </tbody>
             </Table>
             </CardText>
