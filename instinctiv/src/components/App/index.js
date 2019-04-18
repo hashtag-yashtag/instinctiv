@@ -13,10 +13,9 @@ import Stocks from "../Stocks";
 import User from "../User";
 import Help from "../Help";
 import { withAuthentication } from "../Session";
-
-import AdminPage from "../Admin";
 import StockData from '../StockData';
 import UserData from '../UserData';
+import Prediction from '../Prediction';
 
 import * as ROUTES from "../../constants/routes";
 import "bootstrap-css-only/css/bootstrap.min.css";
@@ -35,12 +34,12 @@ const App = () => (
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.HELP} component={Help} />
       <Route path={ROUTES.NOTIFICATIONS} component={Notifications} />
       <Route path={ROUTES.STOCKS} component={Stocks} />
       <Route path={ROUTES.STOCKDATA} component={StockData} />
       <Route path={ROUTES.USERDATA} component={UserData} />
+      <Route path={ROUTES.PREDICTION} component={Prediction} />
       <Route path={ROUTES.USER} component={User}/>
       <Route path={ROUTES.CHECKOUT} component={Checkout}/>
     </div>

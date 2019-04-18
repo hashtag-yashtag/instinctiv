@@ -138,6 +138,17 @@ class NavigationAuth extends Component {
                                     </Link>
                                   </li>
                               </DropdownItem>
+                              <DropdownItem divider />
+                              <DropdownItem>
+                                  <li>
+                                    <Link to={ROUTES.PREDICTION}
+                                    className="menu-text1"
+                                    activeclassname="active"
+                                    activestyle={{ fontWeight: "bold" }}
+                                    >Prediction
+                                    </Link>
+                                  </li>
+                              </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
               </li>
