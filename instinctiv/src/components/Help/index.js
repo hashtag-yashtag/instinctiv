@@ -45,7 +45,7 @@ class Help extends Component{
   Yes, you can. A comprehensive summary of the performance of all of your stocks can be viewed at the end of each day through our notifications tab. Make sure to keep checking it.<br/>
   <br/>
   <strong> Is there an Instinctiv app for mobile devices?</strong><br/>
-  As of right now, we d not have an app. But you can access our mobile friendly page on any other devices with ease.<br/>
+  As of right now, we do not have an app. But you can access our mobile friendly page on any other devices with ease.<br/>
   <br/>
   <h2> Contact Us </h2>
   Have questions that are not answered above. Let us know about your issues or feedback by contacting the following mail. We typically reply within one business day.<br/>
