@@ -12,27 +12,13 @@ class Account extends Component {
       authUser: null,
       balance: 0,
       email: '',
+      username: '',
       accuracy: 0,
       fadeInImage: false,
       fadeInUsername: false
     }
     this.toggleImage = this.toggleImage.bind(this);
-    var db = this.props.firebase.db;
-
-    this.bets = db.collection("Bets").where('userDoc', '==',  db.collection('Users').doc(this.props.firebase.auth.O))
-                  //.where('timestamp', '<=' )  
-                  .onSnapshot(querySnapshot => {
-      console.log(`Received query snapshot of size ${querySnapshot.size}`);
-      document.getElementById("bodyBets").innerHTML = "";
-      querySnapshot.forEach(element => {
-          this.renderBets(element, element.id);
-        //element.data().id = element.id;
-        this.state.betsList.push(element.data());
-      });
-      console.log(querySnapshot, this.state.betsList);
-    }, err => {
-      console.log(`Encountered error: ${err}`);
-    });
+    
   }
 
   toggleDarkLight = event => {
@@ -54,6 +40,35 @@ class Account extends Component {
         email: docSnapshot.data().email,
         accuracy:docSnapshot.data().accuracy,
       });      // ...
+    }, err => {
+      console.log(`Encountered error: ${err}`);
+    });
+
+    var start = new Date();
+    if(start.getHours() < 8){
+      start = new Date((new Date()).getTime()-8*60*60*1000);
+    }
+    start.setHours(8,0,0);
+    var end = new Date((new Date()).getTime()+1000*60*60*24);
+    end.setHours(8,0,0);
+    
+    var dbCol = db.collection('Users').doc(this.props.firebase.auth.O);
+    this.bets = db.collection("Bets")
+                  .where('timestamp', '>=' , start)
+                  .where('timestamp', '<' ,end)
+                  .where('userDoc', '==', dbCol)
+                  .onSnapshot(querySnapshot => {
+      console.log(`Received query snapshot of size ${querySnapshot.size}`);
+      document.getElementById("bodyBets").innerHTML = "";
+      querySnapshot.forEach(element => {
+        //if(element.data().timestamp < end && element.data().timestamp >= start){
+
+         this.renderBets(element, element.id);
+          //element.data().id = element.id;
+          this.state.betsList.push(element.data());
+        //}
+      });
+      console.log(querySnapshot, this.state.betsList);
     }, err => {
       console.log(`Encountered error: ${err}`);
     });

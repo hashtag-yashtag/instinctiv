@@ -106,6 +106,76 @@ class NavigationAuth extends Component {
           <ul className="vertical medium-horizontal menu">
             <li>
               <Link
+                to={ROUTES.HOME}
+                className="menu-text1"
+                activeclassname="active"
+                activestyle={{ fontWeight: "bold" }}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={ROUTES.ACCOUNT}
+                className="menu-text1"
+                activeclassname="active"
+                activestyle={{ fontWeight: "bold" }}
+              >
+                Account
+              </Link>
+            </li>
+
+            {!!this.props.authUser.roles[ROLES.ADMIN] && (
+              <li>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Admin
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>
+                      <li>
+                        <Link
+                          to={ROUTES.USERDATA}
+                          className="menu-text1"
+                          activeclassname="active"
+                          activestyle={{ fontWeight: "bold" }}
+                        >
+                          Users
+                        </Link>
+                      </li>
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>
+                      <li>
+                        <Link
+                          to={ROUTES.STOCKDATA}
+                          className="menu-text1"
+                          activeclassname="active"
+                          activestyle={{ fontWeight: "bold" }}
+                        >
+                          Stocks
+                        </Link>
+                      </li>
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>
+                      <li>
+                        <Link
+                          to={ROUTES.PREDICTION}
+                          className="menu-text1"
+                          activeclassname="active"
+                          activestyle={{ fontWeight: "bold" }}
+                        >
+                          Prediction
+                        </Link>
+                      </li>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </li>
+            )}
+            <li>
+              <Link
                 to={ROUTES.LANDING}
                 className="menu-text1"
                 activeclassname="active"

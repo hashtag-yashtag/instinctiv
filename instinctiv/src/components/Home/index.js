@@ -54,14 +54,14 @@ class HomePage extends Component {
         });
       });
 
-    this.leaders = db
-      .collection("Users")
-      .orderBy("accuracy", "desc")
+    this.stocks = db
+      .collection("Stocks")
+      .orderBy("nOfBets", "desc")
       .limit(5)
       .onSnapshot(querySnapshot => {
-        document.getElementById("leaders").innerHTML = "";
+        document.getElementById("bodyPopStocks").innerHTML = "";
         querySnapshot.forEach(element => {
-          this.renderLeaderBoard(element, element.id);
+          this.renderPopularStocks(element, element.id);
         });
       });
   }
@@ -81,6 +81,18 @@ class HomePage extends Component {
     row.appendChild(leaderTD);
     row.appendChild(accuracyTD);
     document.getElementById("leaders").appendChild(row);
+  }
+
+  renderPopularStocks(leader, id) {
+    var row = document.createElement("tr");
+    var leaderTD = document.createElement("td");
+    leaderTD.textContent = leader.data().name;
+    var accuracyTD = document.createElement("td");
+    accuracyTD.textContent = leader.data().nOfBets;
+
+    row.appendChild(leaderTD);
+    row.appendChild(accuracyTD);
+    document.getElementById("bodyPopStocks").appendChild(row);
   }
 
   renderFavorites(ticker, id) {

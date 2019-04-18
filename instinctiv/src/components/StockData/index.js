@@ -10,7 +10,7 @@ import { compose } from 'recompose';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
-class Admin extends Component {
+class StockData extends Component {
 
   constructor(props){
     super(props);
@@ -101,4 +101,4 @@ const condition = authUser =>
 export default compose(
   withAuthorization(condition),
   withFirebase,
-)(Admin);
+)(StockData);

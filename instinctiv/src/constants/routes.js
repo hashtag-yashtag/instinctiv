@@ -12,3 +12,4 @@ export const CHECKOUT = "/Checkout";
 export const HELP = "/help";
 export const STOCKDATA = "/stockdata";
 export const USERDATA = "/userdata";
+export const PREDICTION = "/prediction";
