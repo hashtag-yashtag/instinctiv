@@ -75,11 +75,24 @@ class HomePage extends Component {
           this.renderPopularStocks(element, element.id);
         });
       });
+
+      this.hottestStock = db
+      .collection("Stocks")
+      .orderBy("betsToday", "desc")
+      .limit(1)
+      .onSnapshot(querySnapshot => {
+        document.getElementById("hottestStock").innerHTML = "";
+        querySnapshot.forEach(element => {
+          this.renderTopStock(element, element.id);
+        });
+      });
   }
 
   componentWillUnmount() {
     this.favs();
     this.leaders();
+    this.stocks();
+    this.hottestStock();
   }
 
   renderLeaderBoard(leader, id) {
@@ -104,6 +117,18 @@ class HomePage extends Component {
     row.appendChild(leaderTD);
     row.appendChild(accuracyTD);
     document.getElementById("bodyPopStocks").appendChild(row);
+  }
+
+  renderTopStock(leader, id) {
+    var row = document.createElement("tr");
+    var leaderTD = document.createElement("td");
+    leaderTD.textContent = leader.data().name;
+    var accuracyTD = document.createElement("td");
+    accuracyTD.textContent = leader.data().betsToday;
+
+    row.appendChild(leaderTD);
+    row.appendChild(accuracyTD);
+    document.getElementById("hottestStock").appendChild(row);
   }
 
   renderFavorites(ticker, id) {
@@ -203,13 +228,12 @@ class HomePage extends Component {
                       <Table>
                         <thead>
                           <tr>
-                            <th>Hottest Stock On The Market:</th>
-                            <t>
-                              Currently AAPL is the most popular stock being
-                              traded among the users.
+                            <th>Hottest Stock On The Market By Number of Bets:</th>
+                            <t >
+                              
                             </t>
                           </tr>
-                          <tr>
+                          {/* <tr>
                             <th>Trendsetting News Of The Day:</th>
                             <t>
                               AAPL has recently launched it's own streaming
@@ -224,8 +248,11 @@ class HomePage extends Component {
                               and compound annual growth rate (CAGR) before
                               betting.
                             </t>
-                          </tr>
+                          </tr> */}
                         </thead>
+                        <tbody id="hottestStock">
+
+                        </tbody>
                       </Table>
                     </CardText>
                   </Card>
