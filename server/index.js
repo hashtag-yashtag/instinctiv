@@ -95,7 +95,7 @@ async function startNewGame() {
     // setTimeout(startNewGame(), msToNextDay);
 }
 startNewGame();
-accuracy();
+accuracy(usrID);
 
 
 // var j = schedule.scheduleJob({hour: 07, minute: 59}, startNewGame())
@@ -142,7 +142,7 @@ async function accuracy(){
           millisTill10 += 86400000; // it's after 6:00pm, try 6:00pm tomorrow.
      }
      setTimeout(function(){
-        generateResults();
+        setUserAccuracy();
 
     }, millisTill10);
 }
