@@ -55,15 +55,15 @@ class HomePage extends Component {
         });
       });
 
-      this.leaders = db
-        .collection("Users")
-        .doc(this.props.firebase.auth.O)
-        .collection("favorites")
-        .onSnapshot(querySnapshot => {
-          querySnapshot.forEach(element => {
-            this.renderFavorites(element, element.id);
-          });
+    this.leaders = db
+      .collection("Users")
+      .doc(this.props.firebase.auth.O)
+      .collection("favorites")
+      .onSnapshot(querySnapshot => {
+        querySnapshot.forEach(element => {
+          this.renderFavorites(element, element.id);
         });
+      });
 
     this.stocks = db
       .collection("Stocks")
@@ -76,7 +76,7 @@ class HomePage extends Component {
         });
       });
 
-      this.hottestStock = db
+    this.hottestStock = db
       .collection("Stocks")
       .orderBy("betsToday", "desc")
       .limit(1)
@@ -215,8 +215,7 @@ class HomePage extends Component {
                             <th># of bets</th>
                           </tr>
                         </thead>
-                        <tbody id="bodyPopStocks">
-                        </tbody>
+                        <tbody id="bodyPopStocks" />
                       </Table>
                     </CardText>
                   </Card>
@@ -228,10 +227,11 @@ class HomePage extends Component {
                       <Table>
                         <thead>
                           <tr>
-                            <th>Hottest Stock On The Market By Number of Bets:</th>
-                            <t >
-                              
-                            </t>
+                            <th>
+                              Hottest Stock On The Market Today (By Number of
+                              Bets):
+                            </th>
+                            <t />
                           </tr>
                           {/* <tr>
                             <th>Trendsetting News Of The Day:</th>
@@ -250,9 +250,7 @@ class HomePage extends Component {
                             </t>
                           </tr> */}
                         </thead>
-                        <tbody id="hottestStock">
-
-                        </tbody>
+                        <tbody id="hottestStock" />
                       </Table>
                     </CardText>
                   </Card>
