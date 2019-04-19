@@ -36,12 +36,7 @@ var firebase = require('firebase');
 // setTimeout(function(){alert("It's 7:59am!")}, millisTill10);
 
 // ********* script for time checking 6:00pm *******
-// var now = new Date();
-// var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 0, 0, 0) - now;
-// if (millisTill10 < 0) {
-//      millisTill10 += 86400000; // it's after 6:00pm, try 6:00pm tomorrow.
-// }
-// setTimeout(function(){alert("It's 6:00pm!")}, millisTill10);
+
 
 
 async function userAccuracyUpdate() {
@@ -100,6 +95,8 @@ async function startNewGame() {
     // setTimeout(startNewGame(), msToNextDay);
 }
 startNewGame();
+accuracy(usrID);
+
 
 // var j = schedule.scheduleJob({hour: 07, minute: 59}, startNewGame())
 
@@ -136,6 +133,21 @@ async function setUserAccuracy(uid) {
 async function predictStock(stockTicker) {
     return;
 }
+
+
+async function accuracy(){
+    var now = new Date();
+    var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 0, 0, 0) - now;
+    if (millisTill10 < 0) {
+          millisTill10 += 86400000; // it's after 6:00pm, try 6:00pm tomorrow.
+     }
+     setTimeout(function(){
+        setUserAccuracy();
+
+    }, millisTill10);
+}
+
+
 
 async function getBetList() {
     console.log("inside getBetList")
