@@ -119,7 +119,7 @@ class StockData extends Component {
 
   componentWillUnmount() {
     this.bets();
-    this.users();
+    //this.users();
   }
 
   render() {

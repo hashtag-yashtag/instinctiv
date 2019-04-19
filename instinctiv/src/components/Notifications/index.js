@@ -16,7 +16,7 @@ class Notifications extends Component {
     this.state = {
       dropdownOpen: false
     }
-    
+
   }
 
 
@@ -48,7 +48,7 @@ class Notifications extends Component {
 
     document.getElementById("menu").appendChild(row);
   }
-  
+
   componentDidMount() {
     this.props.firebase.db.collection("Users").doc(this.props.firebase.auth.O)
             .collection("notifications")
