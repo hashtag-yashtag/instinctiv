@@ -115,6 +115,33 @@ class StockData extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
+    var user = document.getElementById('user').value;
+    this.users = this.props.firebase.db.collection("Bets")
+                .where('username', '==', user)
+                .orderBy('stockId','asc')
+                .onSnapshot(querySnapshot => {
+    console.log(`Received query snapshot of size ${querySnapshot.size}`);
+    document.getElementById("usersBets").innerHTML = "";
+    var currentStock = '';
+    var mapIndex = -1;
+    querySnapshot.forEach(element => {
+      if(currentStock != element.data().stockId){
+        mapIndex++;
+        this.state.dataPie.push({
+          label: element.data().stockId,
+          value: 0,
+        });
+
+      }
+        currentStock = element.data().stockId;
+        this.renderUserBets(element, element.id, mapIndex);
+      //element.data().id = element.id;
+      //this.state.betsList.push(element.data());
+    });
+    console.log(querySnapshot);
+  }, err => {
+    console.log(`Encountered error: ${err}`);
+  });
   }
 
   componentWillUnmount() {
