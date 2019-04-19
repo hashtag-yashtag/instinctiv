@@ -45,7 +45,7 @@ class StockData extends Component {
  handleUser(e){
   e.preventDefault();
   var user = document.getElementById('user').value;
-  this.users = this.props.firebase.db.collection("Bets")
+  this.props.firebase.db.collection("Bets")
                 .where('username', '==', user)
                 .orderBy('stockId','asc')
                 .onSnapshot(querySnapshot => {
@@ -78,23 +78,47 @@ class StockData extends Component {
    //var db = this.props.firebase.db;
    var row = document.createElement('tr');
    this.state.dataPie[mapIndex].value++;
-   row.setAttribute('id', bet.id);
+   row.setAttribute('id', bet.id+':'+bet.data().bet);
    var stockIdTD = document.createElement('td');
    stockIdTD.textContent = bet.data().stockId;
    var betTD = document.createElement('td');
    betTD.textContent = bet.data().bet;
    var dirTD = document.createElement('td');
    dirTD.textContent = bet.data().direction;
+
+   var delBut = document.createElement('button');
+    delBut.addEventListener('click',(e)=>{
+      e.stopPropagation();
+      var id = e.target.parentElement.getAttribute('id');
+      console.log(id);
+      bet.data().userDoc.update({//need balance of this user
+        balance: this.state.balance + (+ id.substring(id.indexOf(':')+1)),
+      });
+      this.props.firebase.db.collection("Bets").doc(id.substring(0, id.indexOf(':'))).delete();
+      document.getElementById("usersBets").innerHTML = "";
+    });
+    delBut.textContent = 'X';
+
    //del.appendChild(delBut);
    row.appendChild(stockIdTD);
    row.appendChild(betTD);
    row.appendChild(dirTD);
+   row.appendChild(delBut);
 
    document.getElementById("usersBets").appendChild(row);
  }
 
 
   componentDidMount() {
+    var db = this.props.firebase.db;
+      db.collection("Users").doc(this.props.firebase.auth.O).onSnapshot(docSnapshot => {
+        //console.log(`Received doc snapshot: docSnapshot`, docSnapshot.data());
+        this.setState({
+          balance: docSnapshot.data().balance,
+        });      // ...
+      }, err => {
+        console.log(`Encountered error: ${err}`);
+      });
     this.bets = this.props.firebase.db.collection("Bets").onSnapshot(querySnapshot => {
       console.log(`Received query snapshot of size ${querySnapshot.size}`);
       this.setState({
@@ -115,6 +139,33 @@ class StockData extends Component {
     }, err => {
       console.log(`Encountered error: ${err}`);
     });
+    var user = document.getElementById('user').value;
+    this.users = this.props.firebase.db.collection("Bets")
+                .where('username', '==', user)
+                .orderBy('stockId','asc')
+                .onSnapshot(querySnapshot => {
+    console.log(`Received query snapshot of size ${querySnapshot.size}`);
+    document.getElementById("usersBets").innerHTML = "";
+    var currentStock = '';
+    var mapIndex = -1;
+    querySnapshot.forEach(element => {
+      if(currentStock != element.data().stockId){
+        mapIndex++;
+        this.state.dataPie.push({
+          label: element.data().stockId,
+          value: 0,
+        });
+
+      }
+        currentStock = element.data().stockId;
+        this.renderUserBets(element, element.id, mapIndex);
+      //element.data().id = element.id;
+      //this.state.betsList.push(element.data());
+    });
+    console.log(querySnapshot);
+  }, err => {
+    console.log(`Encountered error: ${err}`);
+  });
   }
 
   componentWillUnmount() {
@@ -151,6 +202,7 @@ class StockData extends Component {
                     <th>Stock</th>
                     <th>Bet</th>
                     <th>Direction</th>
+                    <th>Remove</th>
                   </tr>
                 </thead>
               <tbody id="usersBets">
