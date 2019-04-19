@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 const util = require('util')
 const bodyParser = require('body-parser');
-import schedule from 'node-schedule'
+var schedule = require('node-schedule');
 // var intrinioSDK = require('intrinio-sdk');
 // intrinioSDK.ApiClient.instance.authentications['ApiKeyAuth'].apiKey = "OjcyZjYxNWY0YWYyNDJjZWU2OWJiNmI3MDMyMWIwNThk";
 // var companyAPI = new intrinioSDK.CompanyApi();
@@ -44,6 +44,29 @@ var firebase = require('firebase');
 // setTimeout(function(){alert("It's 6:00pm!")}, millisTill10);
 
 
+async function userAccuracyUpdate() {
+    getCompanies();
+    getPrices();
+    db.collection('Bets').get().then(
+        function (querySnapshot) {
+            querySnapshot.forEach(
+                function (doc) {
+                    doc.data().userDoc.onSnapshot(docSnapshot => {
+
+                        /* Betting Pool Split
+                                bettingPool - By Money
+                                marketSplit - By Users
+                                weightedMarketSplit - By users * accuracy
+                        */
+                        doc.data()['stockId']
+                        
+                    });
+                }
+            )
+        }
+    )
+}
+
 var config = {
     apiKey: "AIzaSyBvSjVcV8LNU63a5BKYuSRNh68G67Upbsk",
     authDomain: "project-instinctiv.firebaseapp.com",
@@ -61,6 +84,7 @@ var weightedMarketSplit = {}
 var msToNextDay = 0;
 
 async function startNewGame() {
+    await getBetList();
     var now = new Date();
     var nextDay = new Date(
         now.getFullYear(),
@@ -69,36 +93,43 @@ async function startNewGame() {
         7, 59, 59
     );
     msToNextDay = nextDay.getTime() - now.getTime();
-    console.log(msToNextDay)
-
-    bettingPool = {}
-    marketSplit = {}
-    weightedMarketSplit = {}
-
-    getBetList()
-    console.log(bettingPool)
-    console.log(marketSplit)
-    console.log(weightedMarketSplit)
-
-    setTimeout(startNewGame(), msToNextDay);
+    // console.log(msToNextDay)
+    // bettingPool = {}
+    // marketSplit = {}
+    // weightedMarketSplit = {}
+    // setTimeout(startNewGame(), msToNextDay);
 }
+startNewGame();
 
-var j = schedule.scheduleJob({hour: 07, minute: 59}, startNewGame())
+// var j = schedule.scheduleJob({hour: 07, minute: 59}, startNewGame())
 
 const stockTickers = []
 const stockNames = []
+const stockPrices = []
 
-db.collection('Stocks').get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-        if (doc.data()['ticker']) {
-            stockTickers.push(doc.data()['ticker'])
-            stockNames.push(doc.data()['name'])
-        }
-    });
-});
+// db.collection('Stocks').get().then(function (querySnapshot) {
+//     querySnapshot.forEach(function (doc) {
+//         if (doc.data()['ticker']) {
+//             stockTickers.push(doc.data()['ticker'])
+//             stockNames.push(doc.data()['name'])
+//             stockPrices.push
+//         }
+//     });
+// });
 
 async function setUserAccuracy(uid) {
-
+    getStocks();
+    db.collection('Bets').get().then(
+        function (querySnapshot) {
+            querySnapshot.forEach(
+                function (doc) {
+                    doc.data().userDoc.onSnapshot(docSnapshot => {
+                        doc.data()['stockId'];
+                    });
+                }
+            )
+        }
+    )
     return;
 }
 
@@ -107,9 +138,10 @@ async function predictStock(stockTicker) {
 }
 
 async function getBetList() {
+    console.log("inside getBetList")
     const users = []
     const accuracy = []
-    await db.collection('Bets').get().then(
+    db.collection('Bets').get().then(
         function (querySnapshot) {
             querySnapshot.forEach(
                 function (doc) {
@@ -145,57 +177,71 @@ async function getBetList() {
                             bettingPool[doc.data()['stockId']].Down += Number(doc.data()['bet'])
                             weightedMarketSplit[doc.data()['stockId']].Down += (docSnapshot.data()['accuracy'])
                         }
-                    });
+                    })
                 }
             )
         }
     )
 
-    for (var user of users) {
-        db.collection("Users").doc('' + user).onSnapshot(querySnapshot => {
-            // if(querySnapshot.data()['accuracy']) {
-            //     accuracy.push(querySnapshot.data()['accuracy'])
-            // }
-            // else {
-            //     accuracy.push(0.5);
-            // }
-            // console.log(querySnapshot.data())
-        })
-    }
-
+    // for (var user of users) {
+    //     db.collection("Users").doc('' + user).onSnapshot(querySnapshot => {
+    //         // if(querySnapshot.data()['accuracy']) {
+    //         //     accuracy.push(querySnapshot.data()['accuracy'])
+    //         // }
+    //         // else {
+    //         //     accuracy.push(0.5);
+    //         // }
+    //         // console.log(querySnapshot.data())
+    //     })
+    // }
 }
-getBetList();
 
-// const stockNames = []
-// const stockTickers = []
+async function getStocks() {
+    await db.collection('Stocks').get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            stockTickers.push(doc.data()['ticker'])
+            stockNames.push(doc.data()['name'])
+            stockPrices.push(doc.data()['price'])
+        });
+    });
+}
 
-// async function getCompanies() {
-//     await db.collection('Stocks').get().then(function(querySnapshot) {
-//         querySnapshot.forEach(function(doc) {
-//             stockTickers.push(doc.data()['ticker'])
-//             stockNames.push(doc.data()['name'])
-//         });
-//     });
-// }
+async function generateResults() {
+    let result = {}
+    await db.collection('Stocks').get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            ticker = doc.data()['ticker'];
+            newPrice = doc.data()['price'];
+            priceSum = doc.data()['priceSum'];
+            intervals = doc.data()['count'];
+            avgPrice = Number(priceSum) / Number(intervals);
+        }).then(() => {
+            db.collection('Results').doc(ticker).set({
+                ticker: ticker,
+                result: "UP"
+            })
+        });
+    });
+}
 
-// async function getPrices() {
-//     // populate stock names and tickers
-//     await getCompanies();
-//     let identifier;
-//     for (let stock of stockTickers) {
-//         await companyAPI.getCompany(stock).then(data => (
-//             db.collection('Stocks').doc(stock).set({
-//                 description: data['short_description'],
-//                 stockExchange: data['stock_exchange'],
-//                 companyURL: data['company_url'],
-//                 ceo: data['ceo'],
-//                 address: data['business_address'],
-//                 employees: data['employees']
-//             }, { merge: true })
-//         ), 
-//         (error) => console.error(error));          
-//     }
-// }
+async function getPrices() {
+    // populate stock names and tickers
+    await getCompanies();
+    let identifier;
+    for (let stock of stockTickers) {
+        await companyAPI.getCompany(stock).then(data => (
+            db.collection('Stocks').doc(stock).set({
+                description: data['short_description'],
+                stockExchange: data['stock_exchange'],
+                companyURL: data['company_url'],
+                ceo: data['ceo'],
+                address: data['business_address'],
+                employees: data['employees']
+            }, { merge: true })
+        ), 
+        (error) => console.error(error));          
+    }
+}
 
 // getPrices();
 

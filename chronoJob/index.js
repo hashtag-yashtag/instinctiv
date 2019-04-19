@@ -2,7 +2,7 @@ var intrinioSDK = require('intrinio-sdk');
 var firebase = require('firebase');
 const util = require('util')
 
-const CALLS_PER_MIN = 20;
+const CALLS_PER_MIN = 15;
 const CALL_INTERVAL = 1000*60; /* one minute */
 
 const stockTickers = []
@@ -50,8 +50,6 @@ async function getCompanies() {
     });
 }
 
-
-
 function subarray(arr, beg, end) {
     end = (end > arr.length) ? arr.length : end;
     return arr.slice(beg, end);
@@ -64,23 +62,31 @@ async function makeCalls(stocks) {
         const time = new Date();
         await securityAPI.getSecurityRealtimePrice(stock, opts).then(data => {
             console.log(data['last_price'])
-            const currPrice = 0.0
-            const count = 0
+            let currPrice = 0.0
+            // let count = 0;
             db.collection('Stocks').doc(stock).get().then(data => {
-                currPrice = data.data()['price'];
-                count = data.data()['count'];
-            })
-            db.collection('Stocks').doc(stock).update({
-                price: data['last_price'],
-                priceSum: currPrice + data['last_price'],
-                time_updated: time.getTime(),
-                count: count
-            })
+                // currPrice = data.data()['price'];
+                // count = data.data()['count'];
+            }).then(() => {
+                let count = 0;
+                if (Number.isNaN(count)) {
+                    count = 0;
+                }
+                console.log(stock)
+                console.log(currPrice);
+                // count += 1;
+                db.collection('Stocks').doc(stock).update({
+                    price: data['last_price'],
+                    priceSum: currPrice + data['last_price'],
+                    time_updated: time.getTime(),
+                    count: count
+                })
+            }) 
+            
         },
         (error) => { throw new Error(error) })
     }
 }
-
 async function throttleCalls(tc_idx) {
     try {
         await makeCalls(subarray(stockTickers, tc_idx, tc_idx + CALLS_PER_MIN));
