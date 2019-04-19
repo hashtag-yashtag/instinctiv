@@ -60,7 +60,7 @@ class StockData extends Component {
           label: element.data().stockId,
           value: 0,
         });
-        
+
       }
         currentStock = element.data().stockId;
         this.renderUserBets(element, element.id, mapIndex);
@@ -130,7 +130,6 @@ class StockData extends Component {
         <body id="body" class="light-mode">
           <Button color="primary" name="dark_light" onClick= {this.toggleDarkLight} title="Toggle dark/light mode">Change Theme</Button>
           <Row>
-            <Col sm="3"></Col>
             <Col sm="6">
               <div className="home-page">
             <h2>Stock Database</h2>
@@ -139,8 +138,6 @@ class StockData extends Component {
               <BootstrapTable keyField='id' data={ this.state.bets } columns={ this.state.betsCol } pagination={ paginationFactory() } />
               </Card>
             </Col>
-            <Col sm="3"></Col>            
-            <Col sm="3"></Col>
             <Col sm="6">
               <div className="home-page">
             <h2>Bets for specific User </h2>
