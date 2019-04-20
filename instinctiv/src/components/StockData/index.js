@@ -50,7 +50,12 @@ class StockData extends Component {
                 .orderBy('stockId','asc')
                 .onSnapshot(querySnapshot => {
     console.log(`Received query snapshot of size ${querySnapshot.size}`);
-    document.getElementById("usersBets").innerHTML = "";
+    if(document.getElementById("usersBets")){
+      document.getElementById("usersBets").innerHTML = "";
+    } 
+    this.setState({
+      dataPie: [],
+    })
     var currentStock = '';
     var mapIndex = -1;
     querySnapshot.forEach(element => {
@@ -64,6 +69,9 @@ class StockData extends Component {
       }
         currentStock = element.data().stockId;
         this.renderUserBets(element, element.id, mapIndex);
+        this.setState({
+          dataPie: this.state.dataPie,
+        })
       //element.data().id = element.id;
       //this.state.betsList.push(element.data());
     });
@@ -79,6 +87,7 @@ class StockData extends Component {
    var row = document.createElement('tr');
    this.state.dataPie[mapIndex].value++;
    row.setAttribute('id', bet.id+':'+bet.data().bet);
+   this.state.dataPie[mapIndex].value++;
    var stockIdTD = document.createElement('td');
    stockIdTD.textContent = bet.data().stockId;
    var betTD = document.createElement('td');
