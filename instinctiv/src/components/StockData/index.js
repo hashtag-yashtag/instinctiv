@@ -113,8 +113,10 @@ class StockData extends Component {
    row.appendChild(betTD);
    row.appendChild(dirTD);
    row.appendChild(delBut);
+    if(document.getElementById("usersBets")){
+      document.getElementById("usersBets").appendChild(row);
 
-   document.getElementById("usersBets").appendChild(row);
+    }
  }
 
 
