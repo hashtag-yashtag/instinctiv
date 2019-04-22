@@ -67,7 +67,7 @@ class Stocks extends Component {
         time_updated: docSnapshot.data().time_updated,
         nOfBets: docSnapshot.data().nOfBets,
         betsToday: docSnapshot.data().betsToday,
-        lastBetDate: docSnapshot.data().lastBetDate,
+        lastBetDate: docSnapshot.data().lastBetDate?(new Date(docSnapshot.data().lastBetDate.seconds*1000)):new Date(),
       });      // ...
     }, err => {
       console.log(`Encountered error: ${err}`);
@@ -242,16 +242,16 @@ class Stocks extends Component {
     //var betsToday;
     
     if(tokens !==  "" && this.state.balance-tokens  >= 0){
-      var bets = this.state.nOfBets == null ? 0:this.state.nOfBets; 
-      var betsToday = this.state.betsToday == null ? 0:this.state.betsToday; 
-      if(new Date(this.state.lastBetDate.seconds*1000) < date){
+      var bets = this.state.nOfBets ===undefined ? 0:this.state.nOfBets; 
+      var betsToday = this.state.betsToday ===undefined ? 0:this.state.betsToday; 
+      if(this.state.lastBetDate < date){
         betsToday = 0;
       }
 
       this.props.firebase.db.collection("Stocks").doc(this.props.match.params.name).update({
         nOfBets: bets +1 ,
         betsToday: betsToday + 1,
-        lastBetDate: date,
+        lastBetDate: new Date(),
       });
 
       console.log(this.props.firebase.auth.O);
