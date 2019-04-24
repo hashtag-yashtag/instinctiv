@@ -66,9 +66,13 @@ class Prediction extends Component {
               <div className="home-page">
             <h2>Prediction Database</h2>
             </div>
+            <h2>AAPL </h2>
             <DonutChart data = {this.state.dataPie[0]} />
+            <h2>ADBE </h2>
             <DonutChart data = {this.state.dataPie[1]} />
+            <h2>INTC </h2>
             <DonutChart data = {this.state.dataPie[2]} />
+            <h2>MSFT </h2>
             <DonutChart data = {this.state.dataPie[3]} />
 
             </Col>
