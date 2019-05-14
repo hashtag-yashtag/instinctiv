@@ -63,12 +63,7 @@ async function userAccuracyUpdate() {
 }
 
 var config = {
-    apiKey: "AIzaSyBvSjVcV8LNU63a5BKYuSRNh68G67Upbsk",
-    authDomain: "project-instinctiv.firebaseapp.com",
-    databaseURL: "https://project-instinctiv.firebaseio.com",
-    storageBucket: "project-instinctiv.appspot.com",
-    projectId: "project-instinctiv",
-    messagingSenderId: "438722528457"
+    
 };
 firebase.initializeApp(config);
 
