@@ -8,12 +8,7 @@ const CALL_INTERVAL = 1000*60; /* one minute */
 const stockTickers = []
 const stockNames = []
 var config = {
-    apiKey: "AIzaSyBvSjVcV8LNU63a5BKYuSRNh68G67Upbsk",
-    authDomain: "project-instinctiv.firebaseapp.com",
-    databaseURL: "https://project-instinctiv.firebaseio.com",
-    storageBucket: "project-instinctiv.appspot.com",
-    projectId: "project-instinctiv",
-    messagingSenderId: "438722528457"
+    
   };
 firebase.initializeApp(config);
 intrinioSDK.ApiClient.instance.authentications['ApiKeyAuth'].apiKey = "OjcyZjYxNWY0YWYyNDJjZWU2OWJiNmI3MDMyMWIwNThk";
