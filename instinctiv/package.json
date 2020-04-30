@@ -11,7 +11,7 @@
     "foundation-sites": "^6.5.3",
     "highcharts": "^7.0.3",
     "highcharts-react-official": "^2.0.0",
-    "jquery": "^2.2.4",
+    "jquery": "^3.5.0",
     "react": "^16.8.2",
     "react-autocomplete": "^1.8.1",
     "react-autocomplete-input": "^1.0.10",
